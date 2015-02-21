@@ -1,4 +1,4 @@
 ramify
 ================================================================================
 
-Additional matrix functions for R
+Additional matrix functionality for R
