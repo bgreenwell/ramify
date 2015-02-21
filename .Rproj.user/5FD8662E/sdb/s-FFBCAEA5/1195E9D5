@@ -1,0 +1,16 @@
+{
+    "contents" : "##' Matrices\n##'\n##' Like \\code{matrix}, \\code{mat} creates a matrix from the given set of \n##' values. These values can be represented by either a character string or a\n##' list of vectors.\n##' \n##' @param x Either a character string or a list.\n##' @param rows Logical. If TRUE (the default) the matrix is filled by rows, \n##'             otherwise the matrix is filled by columns.\n##' @param sep Separator string. Values within each row/column of x are \n##'            separated by this string. Default is \\code{\",\"}.\n##' @param ... Aditional optional arguments.\n##' \n##' @details\n##' Be careful when using \\code{R} functions within character strings in the \n##' call to \\code{mat}. The character string is split according to ';' and then\n##' ','. For example, \\code{mat('rnorm(10)')} will work, but \n##' \\code{mat('rnorm(10, mean = 3)')} will result in an error. A work around would\n##' be to use \\code{mat('3 + rnorm(10, mean = 3)')}.\n##' \n##' @examples\n##' ## Using character vectors\n##' mat('1, 2, 3; 4, 5, 6')\n##' mat('1, 2, 3; 4, 5, 6', rows = TRUE)\n##' (m <- mat(paste('exp(', 1:9, ')')))\n##' resize(m, nrow = 3)\n##' resize(m, nrow = 3, byrow = FALSE)\n##' matrix(exp(1:9), 3, 3)\n##' \n##' ## Using a list\n##' mat(list(1:3, 4:6, 7:9))\n##' mat(list(1:3, 4:6, 7:9), rows = TRUE)\nmat <- function(x, ...) {\n  UseMethod(\"mat\")\n}\n\n##' @rdname mat\n##' @export\n##' @method mat default\nmat.default <- function(x, ...) {\n  matrix(x, ...)  # default to base matrix function\n}\n\n##' @rdname mat\n##' @export\n##' @method mat character\nmat.character <- function(x, rows = TRUE, sep = \",\", ...) {\n  \n  ## Gather rows and individual values\n  vecs <- unlist(strsplit(x, split = \";\"))  # column/row vectors\n  cvals <- unname(unlist(lapply(vecs, strsplit, split = sep)))\n  nvals <- unlist(lapply(cvals, function(x) eval(parse(text = x))))\n  \n  ## Form matrix from parsed values by calling R's built-in matrix function\n  if (rows) {\n    matrix(nvals, nrow = length(vecs), byrow = TRUE)\n  } else {\n    matrix(nvals, ncol = length(vecs), byrow = FALSE)\n  }\n  \n}\n\n##' @rdname mat\n##' @export\n##' @method mat list\nmat.list <- function(x, rows = TRUE, ...) {\n  \n  ## Check element types\n  if (!all(sapply(x, class) %in% c(\"numeric\", \"integer\"))) {\n    stop(\"Each element must be of type 'numeric' or 'integer'.\", call. = FALSE)\n  }\n  \n  ## Check length of each element\n  if (!all(sapply(x, length) >= 1) && length(unique(sapply(x, length))) != 1) {\n    stop(\"Each element must contain at least one value.\", call. = FALSE)\n  }\n  \n  ## Form matrix by combining elements\n  if (rows) do.call(rbind, x) else do.call(cbind, x)\n  \n}",
+    "created" : 1424533684065.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "414892284",
+    "id" : "1195E9D5",
+    "lastKnownWriteTime" : 1424533090,
+    "path" : "~/Desktop/Dropbox/devel/ramify/R/mat.R",
+    "project_path" : "R/mat.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

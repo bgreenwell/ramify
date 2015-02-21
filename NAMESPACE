@@ -1,0 +1,12 @@
+export(
+  mat,
+  resize,
+  ones,
+  zeros,
+  flatten
+)    
+
+## Methods
+S3method(mat, default)    
+S3method(mat, character)
+S3method(mat, list)  

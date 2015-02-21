@@ -1,0 +1,16 @@
+{
+    "contents" : "export(\n  mat,\n  resize,\n  ones,\n  zeros,\n  flatten\n)    \n\n## Methods\nS3method(mat, default)    \nS3method(mat, character)\nS3method(mat, list)  \n",
+    "created" : 1424533110223.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2422461240",
+    "id" : "36F57CC0",
+    "lastKnownWriteTime" : 1424533124,
+    "path" : "~/Desktop/Dropbox/devel/ramify/NAMESPACE",
+    "project_path" : "NAMESPACE",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_namespace"
+}

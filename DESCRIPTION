@@ -1,0 +1,16 @@
+Package: ramify
+Type: Package
+Title: Additional Matrix Functionality
+Version: 0.2
+Date: 2015-02-21
+Author: Brandon M. Greenwell
+Maintainer: Brandon M. Greenwell <greenwell.brandon@gmail.com>
+Description: Additional matrix functionality for R. Includes a new wrapper for
+  the built-in matrix function that extends its functionality by allowing
+  matrices to be created from character strings and lists. A number of 
+  convenience functions have also been added for users more familiar with
+  MATLAB or Julia.
+Suggests:
+    testthat
+License: GPL (>= 2)
+URL: https://github.com/w108bmg/ramify
