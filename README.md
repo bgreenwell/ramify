@@ -14,8 +14,9 @@ The main functions in this package are:
   * `flatten` --- flatten (i.e., collapse) a matrix to one dimension
   * `resize` --- resize a given matrix
   
-To install:
-```S
-## Assuming devtools is available
+## Installation
+`ramify` is not currently available on CRAN. In the mean time, download the development version from GitHub:
+```r
+## Assuming devtools is already installed
 devtools::install_github("w108bmg/ramify")
 ```
