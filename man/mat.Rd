@@ -42,6 +42,7 @@ be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 ## Using character vectors
 mat('1, 2, 3; 4, 5, 6')
 mat('1, 2, 3; 4, 5, 6', rows = TRUE)
+mat("1 2 3; 4 5 6", sep = "")
 (m <- mat(paste('exp(', 1:9, ')')))
 resize(m, nrow = 3)
 resize(m, nrow = 3, byrow = FALSE)
