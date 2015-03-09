@@ -1,10 +1,10 @@
 ##' Matrices
 ##'
 ##' Like \code{matrix}, \code{mat} creates a matrix from the given set of 
-##' values. These values can be represented by either a character string or a
-##' list of vectors.
+##' values. These values can be represented by a data vector, a character,
+##' or a list of vectors.
 ##' 
-##' @param x Either a character string or a list.
+##' @param x A data vector, character string, or a list.
 ##' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
 ##'             otherwise the matrix is filled by columns.
 ##' @param sep Separator string. Values within each row/column of x are 
@@ -49,14 +49,14 @@ mat.character <- function(x, rows = TRUE, sep = ",", ...) {
   
   ## Gather rows and individual values
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
-  cvals <- unname(unlist(lapply(vecs, strsplit, split = sep)))
-  nvals <- unlist(lapply(cvals, function(x) eval(parse(text = x))))
+  char_vals <- unname(unlist(lapply(vecs, strsplit, split = sep)))
+  num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
   
   ## Form matrix from parsed values by calling R's built-in matrix function
   if (rows) {
-    matrix(nvals, nrow = length(vecs), byrow = TRUE)
+    matrix(num_vals, nrow = length(vecs), byrow = TRUE)
   } else {
-    matrix(nvals, ncol = length(vecs), byrow = FALSE)
+    matrix(num_vals, ncol = length(vecs), byrow = FALSE)
   }
   
 }
@@ -79,4 +79,20 @@ mat.list <- function(x, rows = TRUE, ...) {
   ## Form matrix by combining elements
   if (rows) do.call(rbind, x) else do.call(cbind, x)
   
+}
+
+##' Data Frames
+##' 
+##' Like \code{mat}, \coded{mat} creates a data frame from the given set of 
+##' values. These values can be represented by a data vector, a character,
+##' string, or a list of vectors.
+##' 
+##' @param x A data vector, character string, or a list.
+##' @param ... Aditional optional arguments passed on to \code{mat}.
+##' 
+##' @return A \code{dataframe}.
+##' 
+##' @export
+dmat <- function(x, ...) {
+  data.frame(mat(x, ...))
 }
