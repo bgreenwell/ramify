@@ -15,7 +15,7 @@ dmat(x, ...)
 A \code{dataframe}.
 }
 \description{
-Like \code{mat}, \coded{mat} creates a data frame from the given set of
+Like \code{mat}, \code{dmat} creates a data frame from the given set of
 values. These values can be represented by a data vector, a character,
 string, or a list of vectors.
 }
