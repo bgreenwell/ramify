@@ -28,8 +28,8 @@ separated by this string. Default is \code{","}.}
 }
 \description{
 Like \code{matrix}, \code{mat} creates a matrix from the given set of
-values. These values can be represented by a data vector, a character,
-or a list of vectors.
+values. These values can be represented by a data vector, a character
+string, or a list of vectors.
 }
 \details{
 Be careful when using \code{R} functions within character strings in the

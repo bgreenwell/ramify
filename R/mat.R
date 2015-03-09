@@ -1,8 +1,8 @@
 ##' Matrices
 ##'
 ##' Like \code{matrix}, \code{mat} creates a matrix from the given set of 
-##' values. These values can be represented by a data vector, a character,
-##' or a list of vectors.
+##' values. These values can be represented by a data vector, a character
+##' string, or a list of vectors.
 ##' 
 ##' @param x A data vector, character string, or a list.
 ##' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
@@ -84,7 +84,7 @@ mat.list <- function(x, rows = TRUE, ...) {
 ##' Data Frames
 ##' 
 ##' Like \code{mat}, \code{dmat} creates a data frame from the given set of 
-##' values. These values can be represented by a data vector, a character,
+##' values. These values can be represented by a data vector, a character
 ##' string, or a list of vectors.
 ##' 
 ##' @param x A data vector, character string, or a list.
