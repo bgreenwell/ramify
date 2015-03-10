@@ -206,6 +206,8 @@ fill <- function(x, nrow = 1, ncol = 1) {
 ##' 
 ##' Concatenate along the first (i.e., row) dimension.
 ##' 
+##' @param ... Arguments to be formed into a list.
+##' 
 ##' @export
 vcat <- function(...) {
   do.call(rbind, list(...))
@@ -214,6 +216,8 @@ vcat <- function(...) {
 ##' Concatenate Matrices
 ##' 
 ##' Concatenate along the second (i.e., column) dimension.
+##' 
+##' @param ... Arguments to be formed into a list.
 ##' 
 ##' @export
 hcat <- function(...) {

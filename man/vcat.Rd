@@ -6,6 +6,9 @@
 \usage{
 vcat(...)
 }
+\arguments{
+\item{...}{Arguments to be formed into a list.}
+}
 \description{
 Concatenate along the first (i.e., row) dimension.
 }

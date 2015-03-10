@@ -18,9 +18,8 @@ separated by this string. Default is \code{","}.}
 \item{...}{Aditional optional arguments.}
 }
 \description{
-Like \code{matrix}, \code{mat} creates a matrix from the given set of
-values. These values can be represented by a data vector, a character
-string, or a list of vectors.
+Like \code{mat}, \code{bmat} creates a matrix from the given set of values.
+These values, however, must be represented by a character string.
 }
 \details{
 Be careful when using \code{R} functions within character strings in the

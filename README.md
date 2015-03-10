@@ -3,8 +3,8 @@ ramify
 
 Package `ramify` provides additional matrix functionality for R. It includes a wrapper for the built-in matrix function, extending its functionality by allowing 
 matrices to be initialized from character strings and lists. A number of 
-convenience functions have also been added for users more familiar with MATLAB 
-or Julia.
+convenience functions have also been added for users more familiar with MATLAB,
+Python, or Julia.
 
 The main function in this package is `mat`, an extention to the built-in matrix function. Many convenience functions are also available:
 

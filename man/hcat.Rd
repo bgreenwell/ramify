@@ -6,6 +6,9 @@
 \usage{
 hcat(...)
 }
+\arguments{
+\item{...}{Arguments to be formed into a list.}
+}
 \description{
 Concatenate along the second (i.e., column) dimension.
 }

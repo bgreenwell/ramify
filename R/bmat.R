@@ -1,8 +1,7 @@
 ##' Matrices
 ##'
-##' Like \code{matrix}, \code{mat} creates a matrix from the given set of 
-##' values. These values can be represented by a data vector, a character
-##' string, or a list of vectors.
+##' Like \code{mat}, \code{bmat} creates a matrix from the given set of values. 
+##' These values, however, must be represented by a character string.
 ##' 
 ##' @param x A data vector, character string, or a list.
 ##' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
