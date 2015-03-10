@@ -18,13 +18,14 @@
 ##' would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 ##' 
 ##' @examples
+##' # Construct a block matrix from matrices A1, A2, and A3
 ##' A1 <- mat('1, 2; 5, 6')
 ##' A2 <- mat('3, 4; 7, 8')
 ##' A3 <- mat('9, 10, 11, 12')
 ##' bmat('A1, A2; A3')
 bmat <- function(x, rows = TRUE, sep = ",", ...) {
   
-  # Split into pieces
+  # Split string into pieces (pieces are separated by a semicolon)
   pieces <- unlist(strsplit(x, split = ";"))
   
   # Parse, evaluate, and combine pieces

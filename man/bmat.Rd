@@ -29,6 +29,7 @@ call to \code{bmat}. The character string is split according to ';' and then
 would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 }
 \examples{
+# Construct a block matrix from matrices A1, A2, and A3
 A1 <- mat('1, 2; 5, 6')
 A2 <- mat('3, 4; 7, 8')
 A3 <- mat('9, 10, 11, 12')
