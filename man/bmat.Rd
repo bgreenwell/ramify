@@ -32,6 +32,6 @@ would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 A1 <- mat('1, 2; 5, 6')
 A2 <- mat('3, 4; 7, 8')
 A3 <- mat('9, 10, 11, 12')
-A <- bmat('A1, A2; A3')
+bmat('A1, A2; A3')
 }
 
