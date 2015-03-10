@@ -223,3 +223,12 @@ vcat <- function(...) {
 hcat <- function(...) {
   do.call(cbind, list(...))
 }
+
+##' Dimensions of a Matrix
+##' 
+##' Retrieve the dimensions of a matrix.
+##' 
+##' @param x A matrix or data frame.
+size <- function(x) {
+  dim(x)
+}
