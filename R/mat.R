@@ -15,8 +15,8 @@
 ##' Be careful when using \code{R} functions within character strings in the 
 ##' call to \code{mat}. The character string is split according to ';' and then
 ##' ','. For example, \code{mat('rnorm(10)')} will work, but 
-##' \code{mat('rnorm(10, mean = 3)')} will result in an error. A work around would
-##' be to use \code{mat('3 + rnorm(10, mean = 3)')}.
+##' \code{mat('rnorm(10, mean = 3)')} will result in an error. A work around 
+##' would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 ##' 
 ##' @examples
 ##' ## Using character vectors
@@ -79,20 +79,4 @@ mat.list <- function(x, rows = TRUE, ...) {
   ## Form matrix by combining elements
   if (rows) do.call(rbind, x) else do.call(cbind, x)
   
-}
-
-##' Data Frames
-##' 
-##' Like \code{mat}, \code{dmat} creates a data frame from the given set of 
-##' values. These values can be represented by a data vector, a character
-##' string, or a list of vectors.
-##' 
-##' @param x A data vector, character string, or a list.
-##' @param ... Aditional optional arguments passed on to \code{mat}.
-##' 
-##' @return A \code{dataframe}.
-##' 
-##' @export
-dmat <- function(x, ...) {
-  data.frame(mat(x, ...))
 }

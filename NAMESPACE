@@ -1,5 +1,7 @@
 export(
   mat,
+  bmat,
+  dmat,
   dmat,
   resize,
   ones,

@@ -87,3 +87,45 @@ resize <- function(x, nrow, ncol, byrow = TRUE) {
   }
   
 }
+
+trues <- function(nrow = 1, ncol = 1) {
+  matrix(rep(TRUE, times = nrow * ncol), nrow = nrow, ncol = ncol)
+}
+
+falses <- function(nrow = 1, ncol = 1) {
+  matrix(rep(FALSE, times = nrow * ncol), nrow = nrow, ncol = ncol)
+}
+
+rand <- function(nrow = 1, ncol = 1, ...) {
+  matrix(runif(mrow * ncol, ...), nrow = nrow, ncol = ncol)
+}
+
+randn <- function(nrow = 1, ncol = 1, ...) {
+  matrix(rnorm(nrow * ncol, ...), nrow = nrow, ncol = ncol)
+}
+
+eye <- function(nrow = 1, ncol = nrow) {
+  if (ncol == nrow) {
+    diag(nrow)
+  } else if (ncol < nrow) {
+    diag(nrow)[, seq_len(ncol)]
+  } else {
+    cbind(diag(nrow), 0 * diag(ncol - nrow))
+  }
+}
+
+linspace <- function(...) {
+  seq(...)
+}
+
+fill <- function(x, nrow = 1, ncol = 1) {
+  matrix(rep(x, times = nrow * ncol), nrow = nrow, ncol = ncol)
+}
+
+vcat <- function(...) {
+  do.call(rbind, list(...))
+}
+
+hcat <- function(...) {
+  do.call(cbind, list(...))
+}
