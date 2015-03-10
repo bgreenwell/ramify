@@ -2,11 +2,14 @@ export(
   mat,
   bmat,
   dmat,
-  dmat,
   resize,
   ones,
   zeros,
-  flatten
+  flatten,
+  linspace, 
+  logspace,
+  hcat,
+  vcat
 )    
 
 ## Methods

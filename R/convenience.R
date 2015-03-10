@@ -104,6 +104,12 @@ randn <- function(nrow = 1, ncol = 1, ...) {
   matrix(rnorm(nrow * ncol, ...), nrow = nrow, ncol = ncol)
 }
 
+##' Identity Matrix
+##' 
+##' Creates an \code{nrow}-by-\code{ncol} identity matrix.
+##' 
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
 eye <- function(nrow = 1, ncol = nrow) {
   if (ncol == nrow) {
     diag(nrow)
@@ -114,9 +120,33 @@ eye <- function(nrow = 1, ncol = nrow) {
   }
 }
 
-linspace <- function(...) {
-  seq(...)
+##' linearly-spaced Elements
+##' 
+##' Construct a vector of \code{n} linearly-spaced elements from \code{.start} 
+##' to \code{.stop}. 
+##' 
+##' @param .start
+##' @param .stop
+##' @param n
+linspace <- function(.start, .stop, n = 100) {
+  seq(from = .start, to = .stop, length.out = n)
 }
+
+##' Logarithmically-spaced Elements
+##' 
+##' Construct a vector of \code{n} logarithmically-spaced elements from 
+##' 10^\code{.start} to 10^\code{.stop}. 
+##' 
+##' @param .start
+##' @param .stop
+##' @param n
+logspace <- function(.start, .stop, n = 100) {
+  if (.stop == pi)  {
+    .stop <- log10(.stop)
+  }
+  10 ^ seq(from = .start, to = .stop, length.out = n)
+}
+
 
 fill <- function(x, nrow = 1, ncol = 1) {
   matrix(rep(x, times = nrow * ncol), nrow = nrow, ncol = ncol)
