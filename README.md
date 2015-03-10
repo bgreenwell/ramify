@@ -8,8 +8,7 @@ or Julia.
 
 The main function in this package is `mat`, an extention to the built-in matrix function. Many convenience functions are also available:
 
-  * `bmat` - creates a block matrix from individual matrices in a way similar to
-             the character method of `mat`.
+  * `bmat` - creates a block matrix in a way similar to the character method of `mat`.
   * `dmat` - like `mat`, but instead returns a data frame.
   * `ones` - creates a matrix of all ones
   * `zeros` - creates a matrix of all zeros

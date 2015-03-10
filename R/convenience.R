@@ -88,18 +88,54 @@ resize <- function(x, nrow, ncol, byrow = TRUE) {
   
 }
 
+##' Matrix of Logical Values
+##' 
+##' Creates an \code{nrow}-by-\code{ncol} matrix of \code{TRUE}s.
+##' 
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
+##' 
+##' @export
 trues <- function(nrow = 1, ncol = 1) {
   matrix(rep(TRUE, times = nrow * ncol), nrow = nrow, ncol = ncol)
 }
 
+##' Matrix of Logical Values
+##' 
+##' Creates an \code{nrow}-by-\code{ncol} matrix of \code{FALSE}s.
+##' 
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
+##' 
+##' @export
 falses <- function(nrow = 1, ncol = 1) {
   matrix(rep(FALSE, times = nrow * ncol), nrow = nrow, ncol = ncol)
 }
 
+##' Uniform Distributed Random Numbers
+##' 
+##' Creates an \code{nrow}-by-\code{ncol} matrix of uniform distributed random
+##' numbers.
+##' 
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
+##' @param ... Additional optional arguments to be passed on to \code{matrix}.
+##' 
+##' @export
 rand <- function(nrow = 1, ncol = 1, ...) {
   matrix(runif(mrow * ncol, ...), nrow = nrow, ncol = ncol)
 }
 
+##' Normally Distributed Random Numbers
+##' 
+##' Creates an \code{nrow}-by-\code{ncol} matrix of normally distributed random
+##' numbers.
+##' 
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
+##' @param ... Additional optional arguments to be passed on to \code{matrix}.
+##' 
+##' @export
 randn <- function(nrow = 1, ncol = 1, ...) {
   matrix(rnorm(nrow * ncol, ...), nrow = nrow, ncol = ncol)
 }
@@ -110,6 +146,8 @@ randn <- function(nrow = 1, ncol = 1, ...) {
 ##' 
 ##' @param nrow The desired number of rows.
 ##' @param ncol The desired number of columns.
+##' 
+##' @export
 eye <- function(nrow = 1, ncol = nrow) {
   if (ncol == nrow) {
     diag(nrow)
@@ -128,6 +166,8 @@ eye <- function(nrow = 1, ncol = nrow) {
 ##' @param .start
 ##' @param .stop
 ##' @param n
+##' 
+##' @export
 linspace <- function(.start, .stop, n = 100) {
   seq(from = .start, to = .stop, length.out = n)
 }
@@ -140,6 +180,8 @@ linspace <- function(.start, .stop, n = 100) {
 ##' @param .start
 ##' @param .stop
 ##' @param n
+##' 
+##' @export
 logspace <- function(.start, .stop, n = 100) {
   if (.stop == pi)  {
     .stop <- log10(.stop)
@@ -147,15 +189,33 @@ logspace <- function(.start, .stop, n = 100) {
   10 ^ seq(from = .start, to = .stop, length.out = n)
 }
 
-
+##' Fill a Matrix
+##'
+##' Create a matrix filled with the value \code{x}.
+##' 
+##' @param x The (single) value to fill the matrix with.
+##' @param nrow The desired number of rows.
+##' @param ncol The desired number of columns.
+##' 
+##' @export
 fill <- function(x, nrow = 1, ncol = 1) {
   matrix(rep(x, times = nrow * ncol), nrow = nrow, ncol = ncol)
 }
 
+##' Concatenate Matrices
+##' 
+##' Concatenate along the first (i.e., row) dimension.
+##' 
+##' @export
 vcat <- function(...) {
   do.call(rbind, list(...))
 }
 
+##' Concatenate Matrices
+##' 
+##' Concatenate along the second (i.e., column) dimension.
+##' 
+##' @export
 hcat <- function(...) {
   do.call(cbind, list(...))
 }
