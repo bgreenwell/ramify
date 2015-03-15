@@ -123,7 +123,7 @@ falses <- function(nrow = 1, ncol = 1) {
 ##' 
 ##' @export
 rand <- function(nrow = 1, ncol = 1, ...) {
-  matrix(runif(mrow * ncol, ...), nrow = nrow, ncol = ncol)
+  matrix(runif(nrow * ncol, ...), nrow = nrow, ncol = ncol)
 }
 
 ##' Normally Distributed Random Numbers
