@@ -4,17 +4,24 @@
 \alias{logspace}
 \title{Logarithmically-spaced Elements}
 \usage{
-logspace(.start, .stop, n = 100)
+logspace(a, b, n = 50, base = 10)
 }
 \arguments{
-\item{.start}{}
+\item{a}{\code{base^a} is the starting value of the sequence.}
 
-\item{.stop}{}
+\item{b}{\code{base^b} is the final value of the sequence.}
 
-\item{n}{}
+\item{n}{The number of samples to generate. Default is 50.}
+
+\item{base}{The base of the log space.}
 }
 \description{
 Construct a vector of \code{n} logarithmically-spaced elements from
-10^\code{.start} to 10^\code{.stop}.
+10^\code{a} to 10^\code{b}.
+}
+\note{
+If \code{b = pi} and \code{base = 10}, the points are between
+\code{10^a} and \code{pi}, not \code{10^a} and \code{10^pi}, for
+compatibility with the corresponding MATLAB/Octave, and NumPy functions.
 }
 

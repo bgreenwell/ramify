@@ -4,17 +4,17 @@
 \alias{linspace}
 \title{linearly-spaced Elements}
 \usage{
-linspace(.start, .stop, n = 100)
+linspace(a, b, n = 50)
 }
 \arguments{
-\item{.start}{}
+\item{a}{The starting value of the sequence.}
 
-\item{.stop}{}
+\item{b}{The final value of the sequence.}
 
-\item{n}{}
+\item{n}{The number of samples to generate. Default is 50.}
 }
 \description{
-Construct a vector of \code{n} linearly-spaced elements from \code{.start}
-to \code{.stop}.
+Construct a vector of \code{n} linearly-spaced elements from \code{a}
+to \code{b}.
 }
 

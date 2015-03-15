@@ -160,33 +160,39 @@ eye <- function(nrow = 1, ncol = nrow) {
 
 ##' linearly-spaced Elements
 ##' 
-##' Construct a vector of \code{n} linearly-spaced elements from \code{.start} 
-##' to \code{.stop}. 
+##' Construct a vector of \code{n} linearly-spaced elements from \code{a} 
+##' to \code{b}. 
 ##' 
-##' @param .start
-##' @param .stop
-##' @param n
+##' @param a The starting value of the sequence.
+##' @param b The final value of the sequence.
+##' @param n The number of samples to generate. Default is 50.
 ##' 
 ##' @export
-linspace <- function(.start, .stop, n = 100) {
-  seq(from = .start, to = .stop, length.out = n)
+linspace <- function(a, b, n = 50) {
+  seq(from = a, to = b, length.out = n)
 }
 
 ##' Logarithmically-spaced Elements
 ##' 
 ##' Construct a vector of \code{n} logarithmically-spaced elements from 
-##' 10^\code{.start} to 10^\code{.stop}. 
+##' 10^\code{a} to 10^\code{b}. 
 ##' 
-##' @param .start
-##' @param .stop
-##' @param n
+##' @param a \code{base^a} is the starting value of the sequence.
+##' @param b \code{base^b} is the final value of the sequence.
+##' @param n The number of samples to generate. Default is 50.
+##' @param base The base of the log space.
+##' 
+##' @note
+##' If \code{b = pi} and \code{base = 10}, the points are between 
+##' \code{10^a} and \code{pi}, not \code{10^a} and \code{10^pi}, for 
+##' compatibility with the corresponding MATLAB/Octave, and NumPy functions.
 ##' 
 ##' @export
-logspace <- function(.start, .stop, n = 100) {
-  if (.stop == pi)  {
-    .stop <- log10(.stop)
+logspace <- function(a, b, n = 50, base = 10) {
+  if (b == pi && base == 10)  {
+    b <- log(b, base = base)
   }
-  10 ^ seq(from = .start, to = .stop, length.out = n)
+  base ^ seq(from = a, to = b, length.out = n)
 }
 
 ##' Fill a Matrix
