@@ -1,13 +1,16 @@
 export(
   bmat,
   dmat,
-  hcat,
+  eye,
   fill,
   flatten,
+  hcat,
   linspace, 
   logspace,
   mat,
   ones,
+  rand,
+  randn,
   resize,
   vcat,
   zeros
