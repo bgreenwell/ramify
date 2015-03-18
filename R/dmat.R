@@ -17,5 +17,5 @@
 ##' 
 ##' @export
 dmat <- function(x, ...) {
-  data.frame(mat(x, ...))
+  as.data.frame(mat(x, ...))  # FIXME: data.frame or as.data.frame?
 }

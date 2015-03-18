@@ -10,6 +10,8 @@
 ##'            separated by this string. Default is \code{","}.
 ##' @param ... Aditional optional arguments.
 ##' 
+##' @export
+##' 
 ##' @details
 ##' Be careful when using \code{R} functions within character strings in the 
 ##' call to \code{bmat}. The character string is split according to ';' and then
