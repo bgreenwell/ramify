@@ -41,24 +41,24 @@ test_that("dmat works as expected", {
   
 })
 
-test_that("bmat works as expected", {
-  
-  # Using base R
-  A1 <- matrix(c(1, 2, 5, 6), nrow = 2, byrow = TRUE)
-  A2 <- matrix(c(3, 4, 7, 8), nrow = 2, byrow = TRUE)
-  A3 <- matrix(c(9, 10, 11, 12), nrow = 1)
-  A <- rbind(cbind(A1, A2), A3)
-  
-  # Using ramify
-  B1 <- bmat("1, 2; 5, 6")
-  B2 <- bmat("3, 4; 7, 8")
-  B3 <- bmat("9, 10, 11, 12")
-  B <- bmat("B1, B2; B3")
-  
-  expect_equal(A1, B1)
-  expect_equal(A2, B2)
-  expect_equal(A3, B3)
-  expect_equal(A, B)
-  
-})
+# test_that("bmat works as expected", {
+#   
+#   # Using base R
+#   A1 <- matrix(c(1, 2, 5, 6), nrow = 2, byrow = TRUE)
+#   A2 <- matrix(c(3, 4, 7, 8), nrow = 2, byrow = TRUE)
+#   A3 <- matrix(c(9, 10, 11, 12), nrow = 1)
+#   A <- rbind(cbind(A1, A2), A3)
+#   
+#   # Using ramify
+#   B1 <- bmat("1, 2; 5, 6")
+#   B2 <- bmat("3, 4; 7, 8")
+#   B3 <- bmat("9, 10, 11, 12")
+#   B <- bmat("B1, B2; B3")
+#   
+#   expect_equal(A1, B1)
+#   expect_equal(A2, B2)
+#   expect_equal(A3, B3)
+#   expect_equal(A, B)
+#   
+# })
 
