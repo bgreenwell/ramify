@@ -27,13 +27,7 @@
 ##' 
 ##' @export
 eye <- function(nrow = 1, ncol = nrow) {
-  if (ncol == nrow) {
-    diag(nrow)
-  } else if (ncol < nrow) {
-    diag(nrow)[, seq_len(ncol)]
-  } else {
-    cbind(diag(nrow), 0 * diag(ncol - nrow))
-  }
+  diag(1, nrow, ncol)
 }
 
 
@@ -69,11 +63,16 @@ fill <- function(x, nrow = 1, ncol = 1) {
 ##' Flatten (i.e., collapse) a matrix to one dimension.
 ##' 
 ##' @param x A matrix object.
+##' @param across Character string specifying whether to flatten the matrix 
+##'   across \code{"rows"} (default) or \code{"columns"}.
 ##' 
 ##' @return A numeric vector.
 ##' 
 ##' @export
-flatten <- function(x) {
+flatten <- function(x, across = c("rows", "columns")) {
+  ## FIXME: Add across option?
+  across <- match.arg(across)
+  if (across == "rows") x <- t(x)
   dim(x) <- NULL  # remove dimension attribute
   x
 }

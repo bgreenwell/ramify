@@ -8,11 +8,21 @@
 ##' 
 ##' The main functions in this package are:
 ##'   \itemize{
-##'     \item \code{mat} --- matrix wrapper function
-##'     \item \code{ones} --- creates a matrix of all ones
-##'     \item \code{zeros} --- creates a matrix of all zeros
-##'     \item \code{flatten} --- flatten (i.e., collapse) a matrix to one dimension
-##'     \item \code{resize} --- resize a given matrix
+##'     \item \code{mat} - matrix wrapper function
+##'     \item \code{bmat} - like the character method of \code{mat}, but for 
+##'       block matrices
+##'     \item \code{dmat} - like \code{mat}, but instead returns a data frame
+##'     \item \code{eye} - creates an identity matrix
+##'     \item \code{hcat}/\code{vcat} - concatenate matrices
+##'     \item \code{fill} - fills a matrix with a particular value
+##'     \item \code{flatten} - flatten (i.e., collapse) a matrix to one dimension
+##'     \item \code{inv} - calculates the inverse of a square matrix
+##'     \item \code{linspace}/\code{logspace} - constructs a vector of linearly-spaced/logarithmically-spaced elements
+##'     \item \code{ones}/\code{zeros} - creates a matrix of all ones/zeros
+##'     \item \code{rand}/\code{randn} - creates a matrix of uniform/normally distributed random numbers
+##'     \item \code{resize} - resize a given matrix
+##'     \item \code{size} - returns the dimensions of the matrix
+##'     \item \code{trues}/\code{falses} - creates a matrix of all \code{TRUE}s/\code{FALSE}s
 ##'   }
 ##' 
 ##'  @docType package

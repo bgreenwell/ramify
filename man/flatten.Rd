@@ -4,10 +4,13 @@
 \alias{flatten}
 \title{Flatten Matrices}
 \usage{
-flatten(x)
+flatten(x, across = c("rows", "columns"))
 }
 \arguments{
 \item{x}{A matrix object.}
+
+\item{across}{Character string specifying whether to flatten the matrix
+  across \code{"rows"} (default) or \code{"columns"}.}
 }
 \value{
 A numeric vector.
