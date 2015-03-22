@@ -14,4 +14,11 @@ inv(x, ...)
 \description{
 Calculates the inverse of a square matrix.
 }
+\examples{
+m <- 3 * eye(5)
+inv(m)
+}
+\seealso{
+\code{\link{solve}}.
+}
 

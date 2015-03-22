@@ -35,4 +35,7 @@ A2 <- mat('2, 2; 2, 2')
 A3 <- mat('3, 3, 3, 3')
 bmat('A1, A2; A3')
 }
+\seealso{
+\code{\link{mat}}, \code{\link{dmat}}.
+}
 

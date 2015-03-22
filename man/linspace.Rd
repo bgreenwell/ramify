@@ -13,8 +13,20 @@ linspace(a, b, n = 50)
 
 \item{n}{The number of samples to generate. Default is 50.}
 }
+\value{
+A vector of linearly-spaced elements.
+}
 \description{
 Construct a vector of \code{n} linearly-spaced elements from \code{a}
 to \code{b}.
+}
+\examples{
+linspace(0, 1)
+linspace(1, 5, 5)
+linspace(1+2i, 10+10i, 8)
+logspace(0, pi, 10)
+}
+\seealso{
+\code{\link{logspace}}, \code{\link{seq}}.
 }
 

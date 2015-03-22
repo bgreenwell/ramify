@@ -18,4 +18,12 @@ A numeric vector.
 \description{
 Flatten (i.e., collapse) a matrix to one dimension.
 }
+\examples{
+m <- mat("2, 4, 6, 8; 10, 12, 14, 16")
+flatten(m)
+flatten(m, across = "columns")
+}
+\seealso{
+\code{\link{mat}}.
+}
 

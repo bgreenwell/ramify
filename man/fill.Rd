@@ -16,4 +16,12 @@ fill(x, nrow = 1, ncol = 1)
 \description{
 Create a matrix filled with the value \code{x}.
 }
+\examples{
+fill(pi, 3, 5)
+mat(pi, 3, 5)  # same as 'matrix(pi, 3, 5)'
+pi * ones(3, 5)
+}
+\seealso{
+\code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}}, \code{\link{trues}}, \code{\link{mat}}, \code{\link{matrix}}.
+}
 

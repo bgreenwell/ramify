@@ -28,28 +28,24 @@ separated by this string. Default is \code{","}.}
 }
 \description{
 Like \code{matrix}, \code{mat} creates a matrix from the given set of
-values. These values can be represented by a data vector, a character
-string, or a list of vectors.
-}
-\details{
-Be careful when using \code{R} functions within character strings in the
-call to \code{mat}. The character string is split according to ';' and then
-','. For example, \code{mat('rnorm(10)')} will work, but
-\code{mat('rnorm(10, mean = 3)')} will result in an error. A work around
-would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
+values. However, these values can also be represented by a character string,
+or a list of vectors.
 }
 \examples{
 ## Using character vectors
-mat('1, 2, 3; 4, 5, 6')
-mat('1, 2, 3; 4, 5, 6', rows = TRUE)
-mat("1 2 3; 4 5 6", sep = "")
-(m <- mat(paste('exp(', 1:9, ')')))
-resize(m, nrow = 3)
-resize(m, nrow = 3, byrow = FALSE)
-matrix(exp(1:9), 3, 3)
+mat('1, 2, 3, 4; 5, 6, 7, 8')  # ";" separates rows
+mat('1, 2, 3, 4; 5, 6, 7, 8', rows = FALSE)  # ";" separates columns
+mat("1 2 3 4; 5 6 7 8", sep = " ")  # use spaces instead of commas
+mat(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)  # works like matrix too
 
 ## Using a list
-mat(list(1:3, 4:6, 7:9))
-mat(list(1:3, 4:6, 7:9), rows = TRUE)
+z1 <- list(1:5, 6:10)
+z2 <- list(a = 1:5, b = 6:10)
+mat(z1)
+mat(z2)  # preserves names as row names
+mat(z2, rows = FALSE)  # preserves names as column names
+}
+\seealso{
+\code{\link{bmat}}, \code{\link{dmat}}, \code{\link{matrix}}.
 }
 

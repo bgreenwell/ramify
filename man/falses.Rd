@@ -2,16 +2,33 @@
 % Please edit documentation in R/convenience.R
 \name{falses}
 \alias{falses}
+\alias{trues}
 \title{Matrix of Logical Values}
 \usage{
 falses(nrow = 1, ncol = 1)
+
+trues(nrow = 1, ncol = 1)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
 
 \item{ncol}{The desired number of columns.}
 }
+\value{
+An \code{nrow}-by-\code{ncol} matrix of logical values.
+}
 \description{
-Creates an \code{nrow}-by-\code{ncol} matrix of \code{FALSE}s.
+Creates an \code{nrow}-by-\code{ncol} matrix of logical values.
+}
+\examples{
+falses(3)  # column vector of FALSEs
+fill(FALSE, 3)
+resize(as.logical(zeros(3)), 3)
+trues(2, 3)  # 2-by-3 matrix of TRUEs
+fill(TRUE, 2, 3)
+resize(as.logical(ones(2, 3)), 2, 3)
+}
+\seealso{
+\code{\link{fill}}, \code{\link{ones}}, \code{\link{zeros}}.
 }
 

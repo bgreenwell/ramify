@@ -9,7 +9,16 @@ size(x)
 \arguments{
 \item{x}{A matrix or data frame.}
 }
+\value{
+The dimensions of a matrix.
+}
 \description{
 Retrieve the dimensions of a matrix.
+}
+\seealso{
+\code{\link{dim}}.
+
+m <- mat("1, 3, 5; 7, 9, 11")
+size(m)
 }
 

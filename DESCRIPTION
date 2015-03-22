@@ -1,15 +1,15 @@
 Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
-Version: 0.0.0.9000
-Date: 2015-02-21
+Version: 0.1.0
+Date: 2015-03-22
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))
 Description: Additional matrix functionality for R. Includes a wrapper to the 
   base matrix function that extends its functionality by allowing
   matrices to be created from character strings and lists. A number of 
-  convenience functions have also been added for users more familiar with
-  Julia, MATLAB/Octave, and Python.
+  convenience functions have also been added for users more familiar with other
+  scientific languages like Julia, MATLAB/Octave, or Python.
 Suggests:
     testthat
 License: GPL (>= 2)

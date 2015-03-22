@@ -10,6 +10,7 @@ export(
   inv,
   linspace,
   logspace,
+  ones,
   rand,
   randn,
   resize,

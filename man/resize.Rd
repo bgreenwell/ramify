@@ -4,7 +4,7 @@
 \alias{resize}
 \title{Resize Matrix}
 \usage{
-resize(x, nrow, ncol, byrow = TRUE)
+resize(x, nrow, ncol, across = c("rows", "columns"), byrow = FALSE)
 }
 \arguments{
 \item{x}{A \code{"matrix"} or \code{R} object.}
@@ -13,13 +13,25 @@ resize(x, nrow, ncol, byrow = TRUE)
 
 \item{ncol}{The desired number of columns.}
 
-\item{byrow}{Logical. If FALSE (the default) the matrix is filled by
-columns, otherwise the matrix is filled by rows.}
+\item{across}{Character string specifying whether to flatten the matrix
+across \code{"rows"} (default) or \code{"columns"}.}
+
+\item{byrow}{Logical. If FALSE (default) the new matrix is filled by columns,
+                      otherwise it is filled by rows.}
 }
 \value{
 A matrix of dimension \code{nrow}-by-\code{ncol}.
 }
 \description{
-Returns a new matrix of dimension nrow by ncol using the elements of x.
+Change shape and size of a matrix.
+}
+\examples{
+m <- 1:9
+resize(m)
+resize(m, 3, 3)
+resize(m, 2, 2)
+}
+\seealso{
+\code{\link{flatten}}, \code{\link{mat}}, \code{\link{matrix}}.
 }
 

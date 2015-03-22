@@ -2,9 +2,12 @@
 % Please edit documentation in R/convenience.R
 \name{ones}
 \alias{ones}
-\title{Matrix of Ones}
+\alias{zeros}
+\title{Matrix of Ones or Zeros}
 \usage{
 ones(nrow, ncol = 1)
+
+zeros(nrow, ncol = 1)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
@@ -12,9 +15,18 @@ ones(nrow, ncol = 1)
 \item{ncol}{The desired number of columns.}
 }
 \value{
-A matrixof dimension \code{nrow}-by-\code{ncol} filled with ones.
+An \code{nrow}-by-\code{ncol} matrix of ones or zeros.
 }
 \description{
-Creates a matrix of all ones.
+Construct a matrix of all ones or zeros.
+}
+\examples{
+ones(3)  # column matrix of ones
+fill(1, 3)
+zeros(3, 5)  # 3-by-5 matrix of zeros
+fill(0, 3, 5)
+}
+\seealso{
+\code{\link{fill}}, \code{\link{falses}}, \code{\link{trues}}.
 }
 

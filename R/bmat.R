@@ -1,30 +1,31 @@
-##' Matrices
-##'
-##' Like \code{mat}, \code{bmat} creates a matrix from the given set of values. 
-##' These values, however, must be represented by a character string.
-##' 
-##' @param x A data vector, character string, or a list.
-##' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
-##'             otherwise the matrix is filled by columns.
-##' @param sep Separator string. Values within each row/column of x are 
-##'            separated by this string. Default is \code{","}.
-##' @param ... Aditional optional arguments.
-##' 
-##' @export
-##' 
-##' @details
-##' Be careful when using \code{R} functions within character strings in the 
-##' call to \code{bmat}. The character string is split according to ';' and then
-##' ','. For example, \code{mat('rnorm(10)')} will work, but 
-##' \code{mat('rnorm(10, mean = 3)')} will result in an error. A work around 
-##' would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
-##' 
-##' @examples
-##' # Construct a block matrix from matrices A1, A2, and A3
-##' A1 <- mat('1, 1; 1, 1')
-##' A2 <- mat('2, 2; 2, 2')
-##' A3 <- mat('3, 3, 3, 3')
-##' bmat('A1, A2; A3')
+#' Matrices
+#'
+#' Like \code{mat}, \code{bmat} creates a matrix from the given set of values. 
+#' These values, however, must be represented by a character string.
+#' 
+#' @param x A data vector, character string, or a list.
+#' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
+#'             otherwise the matrix is filled by columns.
+#' @param sep Separator string. Values within each row/column of x are 
+#'            separated by this string. Default is \code{","}.
+#' @param ... Aditional optional arguments.
+#' 
+#' @export
+#' @seealso \code{\link{mat}}, \code{\link{dmat}}.
+#'
+#' @details
+#' Be careful when using \code{R} functions within character strings in the 
+#' call to \code{bmat}. The character string is split according to ';' and then
+#' ','. For example, \code{mat('rnorm(10)')} will work, but 
+#' \code{mat('rnorm(10, mean = 3)')} will result in an error. A work around 
+#' would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
+#' 
+#' @examples
+#' # Construct a block matrix from matrices A1, A2, and A3
+#' A1 <- mat('1, 1; 1, 1')
+#' A2 <- mat('2, 2; 2, 2')
+#' A3 <- mat('3, 3, 3, 3')
+#' bmat('A1, A2; A3')
 bmat <- function(x, rows = TRUE, sep = ",", ...) {
   
   # Split string into pieces (pieces are separated by a semicolon)

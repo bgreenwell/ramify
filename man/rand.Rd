@@ -2,19 +2,38 @@
 % Please edit documentation in R/convenience.R
 \name{rand}
 \alias{rand}
-\title{Uniform Distributed Random Numbers}
+\alias{randn}
+\title{Matrix of Random Numbers}
 \usage{
 rand(nrow = 1, ncol = 1, ...)
+
+randn(nrow = 1, ncol = 1, ...)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
 
 \item{ncol}{The desired number of columns.}
 
-\item{...}{Additional optional arguments to be passed on to \code{matrix}.}
+\item{...}{Additional optional arguments to be passed on to \code{runif} or
+           \code{rnorm}.}
+}
+\value{
+An \code{nrow}-by-\code{ncol} matrix of pseudorandom numbers.
 }
 \description{
-Creates an \code{nrow}-by-\code{ncol} matrix of uniform distributed random
-numbers.
+Construct a matrix of random deviates.
+}
+\details{
+\code{rand} generates a matrix of uniform random deviates while
+  \code{randn} generates a matrix of normal random deviates.
+}
+\examples{
+rand(2, 3)  # 2-by-3 matrix of uniform random numbers
+rand(2, 3, min = 100, max = 200)
+randn(2, 3)  # 2-by-3 matrix of standard normal random variates
+randn(2, 3, mean = 10, sd = 0.1)
+}
+\seealso{
+\code{\link{runif}}, \code{\link{rnorm}}.
 }
 
