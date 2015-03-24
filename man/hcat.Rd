@@ -10,7 +10,7 @@ hcat(...)
 vcat(...)
 }
 \arguments{
-\item{...}{Arguments to be formed into a list.}
+\item{...}{Vectors or matrices.}
 }
 \description{
 Concatenate matrices along the first or second dimension.

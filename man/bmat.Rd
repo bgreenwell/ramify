@@ -18,8 +18,7 @@ separated by this string. Default is \code{","}.}
 \item{...}{Aditional optional arguments.}
 }
 \description{
-Like \code{mat}, \code{bmat} creates a matrix from the given set of values.
-These values, however, must be represented by a character string.
+Construct a block matrix using a character string initializer.
 }
 \details{
 Be careful when using \code{R} functions within character strings in the

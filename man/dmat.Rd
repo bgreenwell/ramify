@@ -15,9 +15,7 @@ dmat(x, ...)
 A \code{dataframe}.
 }
 \description{
-Like \code{mat}, \code{dmat} creates a data frame from the given set of
-values. These values can be represented by a data vector, a character
-string, or a list of vectors.
+Like \code{mat}, but returns a data frame.
 }
 \examples{
 dmat('1e-01, 2+5, 3, 4, 5; 6, 7, 8, 9^2, pi', rows = FALSE)

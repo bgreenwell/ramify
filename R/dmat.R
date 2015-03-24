@@ -1,8 +1,6 @@
 #' Data Frames
 #' 
-#' Like \code{mat}, \code{dmat} creates a data frame from the given set of 
-#' values. These values can be represented by a data vector, a character
-#' string, or a list of vectors.
+#' Like \code{mat}, but returns a data frame.
 #' 
 #' @param x A data vector, character string, or a list.
 #' @param ... Aditional optional arguments passed on to \code{mat}.
