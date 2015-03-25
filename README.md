@@ -8,23 +8,28 @@ Python, or Julia.
 
 The main function in this package is `mat`, an extention to the built-in matrix function. Many convenience functions are also available:
 
-  * `bmat` - creates a block matrix in a way similar to the character method of `mat`.
+  * `bmat` - like `mat`, but constructs a block matrix.
   * `dmat` - like `mat`, but returns a data frame instead of a matrix.
-  * `eye` - creates an identity matrix
+  * `eye` - construct an identity matrix
   * `hcat`/`vcat` - concatenate matrices
-  * `fill` - fills a matrix with a particular value
-  * `flatten` - flatten (i.e., collapse) a matrix to one dimension
-  * `inv` - calculates the inverse of a square matrix
-  * `linspace`/`logspace` - constructs a vector of linearly-spaced/logarithmically-spaced elements
-  * `ones`/`zeros` - creates a matrix of all ones/zeros
-  * `rand`/`randn` - creates a matrix of uniform/normally distributed random numbers
-  * `resize` - resize a given matrix
-  * `size` - returns the dimensions of a matrix
-  * `trues`/`falses` - creates a matrix of all `TRUE`s/`FALSE`s
+  * `fill` - fill a matrix or multi-way array with a particular value
+  * `flatten` - flatten (i.e., collapse) a matrix or multi-way array to one dimension
+  * `inv` - calculate the inverse of a square matrix
+  * `linspace`/`logspace` - construct a vector of linearly-spaced/logarithmically-spaced elements
+  * `ones`/`zeros` - construct a matrix or multi-way array of all ones/zeros
+  * `rand`/`randn` - construct a matrix or multi-way array of uniform/normally distributed random numbers
+  * `resize` - change the size and shape of a given matrix or multi-way array
+  * `size` - extract the dimensions of a matrix or multi-way array.
+  * `trues`/`falses` - construct a matrix or multi-way array of all `TRUE`s/`FALSE`s
   
 ## Installation
-`ramify` is not currently available on CRAN. In the mean time, download the development version from GitHub:
+You can install the latest release from CRAN:
 ```r
-## Assuming devtools is already installed
+install.packages*"ramify")
+```
+
+You can also download the development version from GitHub:
+```r
+# Assuming devtools is already installed
 devtools::install_github("w108bmg/ramify")
 ```
