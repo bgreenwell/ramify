@@ -25,7 +25,7 @@ The main function in this package is `mat`, an extention to the built-in matrix 
 ## Installation
 You can install the latest release from CRAN:
 ```r
-install.packages*"ramify")
+install.packages("ramify")
 ```
 
 The development version is hosted on GitHub at https://github.com/bgreenwell/ramify. You can download the development version using [`devtools`](https://github.com/hadley/devtools):
