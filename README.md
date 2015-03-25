@@ -28,8 +28,9 @@ You can install the latest release from CRAN:
 install.packages*"ramify")
 ```
 
-You can also download the development version from GitHub (requires the [`devtools`](https://github.com/hadley/devtools) package):
+The development version is hosted on GitHub at https://github.com/bgreenwell/ramify. You can download the development version using [`devtools`](https://github.com/hadley/devtools):
 ```r
 # Assuming devtools is already installed
-devtools::install_github("w108bmg/ramify")
+devtools::install_github("bgreenwell/ramify")
 ```
+Bug reports should be submitted to https://github.com/bgreenwell/ramify/issues.
