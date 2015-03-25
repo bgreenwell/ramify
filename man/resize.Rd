@@ -2,28 +2,32 @@
 % Please edit documentation in R/convenience.R
 \name{resize}
 \alias{resize}
-\title{Resize Matrix}
+\title{Resize Matrices and Arrays}
 \usage{
-resize(x, nrow, ncol, across = c("rows", "columns"), byrow = FALSE)
+resize(x, nrow, ncol, ..., across = c("rows", "columns"), byrow = FALSE)
 }
 \arguments{
-\item{x}{A \code{"matrix"} or \code{R} object.}
+\item{x}{A matrix or multi-way array.}
 
 \item{nrow}{The desired number of rows.}
 
 \item{ncol}{The desired number of columns.}
 
 \item{across}{Character string specifying whether to flatten the matrix
-across \code{"rows"} (default) or \code{"columns"}.}
+across \code{"rows"} (default) or \code{"columns"}. This option
+is ignored for multi-way arrays.}
 
 \item{byrow}{Logical. If FALSE (default) the new matrix is filled by columns,
-                      otherwise it is filled by rows.}
+                      otherwise it is filled by rows. This option is ignored
+                      for multi-way arrays.}
+
+\item{Further}{dimensions of the array.}
 }
 \value{
 A matrix of dimension \code{nrow}-by-\code{ncol}.
 }
 \description{
-Change shape and size of a matrix.
+Change shape and size of a matrix or array.
 }
 \examples{
 m <- 1:9

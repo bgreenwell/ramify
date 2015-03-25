@@ -4,7 +4,7 @@
 \alias{fill}
 \title{Fill a Matrix}
 \usage{
-fill(x, nrow = 1, ncol = 1)
+fill(x, nrow = 1, ncol = 1, ...)
 }
 \arguments{
 \item{x}{The (single) value to fill the matrix with.}
@@ -12,16 +12,22 @@ fill(x, nrow = 1, ncol = 1)
 \item{nrow}{The desired number of rows.}
 
 \item{ncol}{The desired number of columns.}
+
+\item{...}{Further dimensions of the array.}
+}
+\value{
+A matrix or array filled with the value \code{x}.
 }
 \description{
 Create a matrix filled with the value \code{x}.
 }
 \examples{
-fill(pi, 3, 5)
-mat(pi, 3, 5)  # same as 'matrix(pi, 3, 5)'
+fill(pi, 3, 5)  # 3-by-5 matrix filled with the value of pi
+fill(pi, 3, 5, 2, 2)  # 3-by-5-by-2-by-2 array filled with the value of pi
 pi * ones(3, 5)
 }
 \seealso{
-\code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}}, \code{\link{trues}}, \code{\link{mat}}, \code{\link{matrix}}.
+\code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}},
+  \code{\link{trues}}, \code{\link{mat}}, \code{\link{matrix}}.
 }
 

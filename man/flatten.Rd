@@ -2,7 +2,7 @@
 % Please edit documentation in R/convenience.R
 \name{flatten}
 \alias{flatten}
-\title{Flatten Matrices}
+\title{Flatten Matrices/Arrays}
 \usage{
 flatten(x, across = c("rows", "columns"))
 }
@@ -10,13 +10,14 @@ flatten(x, across = c("rows", "columns"))
 \item{x}{A matrix object.}
 
 \item{across}{Character string specifying whether to flatten the matrix
-  across \code{"rows"} (default) or \code{"columns"}.}
+  across \code{"rows"} (default) or \code{"columns"}. This option is ignored
+  for multi-way arrays.}
 }
 \value{
 A numeric vector.
 }
 \description{
-Flatten (i.e., collapse) a matrix to one dimension.
+Flatten (i.e., collapse) a matrix or array to one dimension.
 }
 \examples{
 m <- mat("2, 4, 6, 8; 10, 12, 14, 16")

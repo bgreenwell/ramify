@@ -3,22 +3,24 @@
 \name{ones}
 \alias{ones}
 \alias{zeros}
-\title{Matrix of Ones or Zeros}
+\title{Matrix/Array of Ones or Zeros}
 \usage{
-ones(nrow, ncol = 1)
+ones(x, nrow = 1, ncol = 1, ...)
 
-zeros(nrow, ncol = 1)
+zeros(x, nrow = 1, ncol = 1, ...)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
 
 \item{ncol}{The desired number of columns.}
+
+\item{...}{Further dimensions of the array.}
 }
 \value{
-An \code{nrow}-by-\code{ncol} matrix of ones or zeros.
+A matrix or array of ones or zeros.
 }
 \description{
-Construct a matrix of all ones or zeros.
+Construct a matrix or multi-way array of all ones or zeros.
 }
 \examples{
 ones(3)  # column matrix of ones

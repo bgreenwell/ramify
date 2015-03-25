@@ -112,7 +112,8 @@ fill <- function(x, nrow = 1, ncol = 1, ...) {
 #' 
 #' @param x A matrix object.
 #' @param across Character string specifying whether to flatten the matrix 
-#'   across \code{"rows"} (default) or \code{"columns"}.
+#'   across \code{"rows"} (default) or \code{"columns"}. This option is ignored
+#'   for multi-way arrays.
 #' 
 #' @return A numeric vector.
 #' 
@@ -254,7 +255,7 @@ logspace <- function(a, b, n = 50, base = 10) {
 #' fill(1, 3)
 #' zeros(3, 5)  # 3-by-5 matrix of zeros
 #' fill(0, 3, 5)
-ones <- function(x, nrow = 1, ncol = 1, ...) {
+ones <- function(nrow = 1, ncol = 1, ...) {
   if (length(list(...)) == 0) {
     matrix(1, nrow = nrow, ncol = ncol)
   } else {
@@ -265,7 +266,7 @@ ones <- function(x, nrow = 1, ncol = 1, ...) {
 
 #' @rdname ones
 #' @export
-zeros <- function(x, nrow = 1, ncol = 1, ...) {
+zeros <- function(nrow = 1, ncol = 1, ...) {
   if (length(list(...)) == 0) {
     matrix(0, nrow = nrow, ncol = ncol)
   } else {
@@ -324,13 +325,16 @@ randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
 #' 
 #' Change shape and size of a matrix or array.
 #' 
-#' @param x A \code{"matrix"} or \code{R} object.
+#' @param x A matrix or multi-way array.
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
+#' @param Further dimensions of the array.
 #' @param across Character string specifying whether to flatten the matrix 
-#'               across \code{"rows"} (default) or \code{"columns"}.
+#'               across \code{"rows"} (default) or \code{"columns"}. This option
+#'               is ignored for multi-way arrays.
 #' @param byrow Logical. If FALSE (default) the new matrix is filled by columns, 
-#'                       otherwise it is filled by rows.
+#'                       otherwise it is filled by rows. This option is ignored
+#'                       for multi-way arrays.
 #'              
 #' @return A matrix of dimension \code{nrow}-by-\code{ncol}.
 #' 
@@ -352,8 +356,13 @@ resize <- function(x, nrow, ncol, ..., across = c("rows", "columns"),
   
   # Flatten and reshape/resize matrix.
   across <- match.arg(across)
-  matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, byrow = byrow)
-  
+  if (length(list(...)) == 0) {
+    matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, byrow = byrow)
+  } else {
+    dim(x) <- c(nrow, ncol, unlist(list(...)))
+  }
+  x
+
 }
 
 

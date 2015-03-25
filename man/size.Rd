@@ -2,18 +2,18 @@
 % Please edit documentation in R/convenience.R
 \name{size}
 \alias{size}
-\title{Dimensions of a Matrix}
+\title{Dimensions of a Matrix/Array}
 \usage{
 size(x)
 }
 \arguments{
-\item{x}{A matrix or data frame.}
+\item{x}{A matrix, array, or data frame.}
 }
 \value{
-The dimensions of a matrix.
+The dimensions of the object.
 }
 \description{
-Retrieve the dimensions of a matrix.
+Retrieve the dimensions of a matrix or array.
 }
 \seealso{
 \code{\link{dim}}.

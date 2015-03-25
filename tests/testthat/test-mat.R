@@ -69,5 +69,21 @@ test_that("convenience functions work as expected", {
   expect_that(inv(m1), is_identical_to(solve(m1)))
   expect_that(inv(3 * eye(3)), is_identical_to(eye(3) / 3))
   
+  # Arrays
+  a1 <- fill(pi, 2, 2, 2)
+  a2 <- pi * ones(2, 2, 2)
+  a3 <- array(pi, dim = c(2, 2, 2))
+  
+  expect_that(a1, is_identical_to(a2))
+  expect_that(a1, is_identical_to(a3))  
+  expect_that(size(a1), equals(c(2, 2, 2)))  
+  expect_that(size(a2), equals(c(2, 2, 2)))  
+  
+  # Resize a vector into an array
+  x <- 1:8
+  a <- resize(1:8, 2, 2, 2)
+  expect_that(a, is_a("array"))
+  expect_that(flatten(a), is_identical_to(x))
+  
 })
 
