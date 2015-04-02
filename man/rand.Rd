@@ -2,10 +2,13 @@
 % Please edit documentation in R/convenience.R
 \name{rand}
 \alias{rand}
+\alias{randi}
 \alias{randn}
 \title{Matrix/Array of Random Numbers}
 \usage{
 rand(nrow = 1, ncol = 1, ..., min = 0, max = 1)
+
+randi(imax, nrow, ncol = 1, ...)
 
 randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1)
 }
@@ -15,6 +18,8 @@ randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1)
 \item{ncol}{The desired number of columns.}
 
 \item{...}{Further dimensions of the array.}
+
+\item{imax}{A positive integer.}
 
 \item{min/max}{Lower and upper limits of the distribution. Must be finite. (
 \code{rand} only).}
@@ -28,8 +33,9 @@ A  matrix or array of pseudorandom numbers.
 Construct a matrix or multi-way array of random deviates.
 }
 \details{
-\code{rand} generates a matrix or array of uniform random deviates
-  while \code{randn} generates a matrix or array of normal random deviates.
+\code{rand} generates a matrix or array of uniform random deviates,
+  \code{randi} generates a matrix or array of uniform random integers, and
+  \code{randn} generates a matrix or array of normal random deviates.
 }
 \examples{
 rand(2, 3)  # 2-by-3 matrix of uniform random numbers

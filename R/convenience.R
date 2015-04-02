@@ -18,6 +18,36 @@
 ##}
 
 
+#' Row/Column Max/Min Indices
+#'
+#' Returns the indices of the maximum or minimum values along an axis.
+#' 
+#' @param x A matrix.
+#' @param rows If \code{TRUE} (the default) the indices of each row max/min is
+#'             returned. 
+#' @return A vector of indices.
+#' 
+#' @examples
+#' m <- mat("94, 20, 44; 40, 92, 51; 27, 69, 74")
+#' argmax(m)
+#' argmin(m)
+argmax <- function(x, rows = TRUE) {
+  if (rows) {
+    apply(x, MARGIN = 1, which.max)
+  } else {
+    apply(x, MARGIN = 2, which.max)
+  }
+}
+
+argmin <- function(x, rows = TRUE) {
+  if (rows) {
+    apply(x, MARGIN = 1, which.min)
+  } else {
+    apply(x, MARGIN = 2, which.min)
+  }
+}
+
+
 #' Identity Matrix
 #' 
 #' Creates an \code{nrow}-by-\code{ncol} identity matrix.
@@ -279,6 +309,7 @@ zeros <- function(nrow = 1, ncol = 1, ...) {
 #' 
 #' Construct a matrix or multi-way array of random deviates.
 #' 
+#' @param imax A positive integer.
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
@@ -288,8 +319,9 @@ zeros <- function(nrow = 1, ncol = 1, ...) {
 #' 
 #' @return A  matrix or array of pseudorandom numbers.
 #' 
-#' @details \code{rand} generates a matrix or array of uniform random deviates 
-#'   while \code{randn} generates a matrix or array of normal random deviates.
+#' @details \code{rand} generates a matrix or array of uniform random deviates,
+#'   \code{randi} generates a matrix or array of uniform random integers, and 
+#'   \code{randn} generates a matrix or array of normal random deviates.
 #' 
 #' @export
 #' @seealso \code{\link{runif}}, \code{\link{rnorm}}.
@@ -308,6 +340,20 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
   }
 }
 
+#' @rdname rand
+#' @export
+randi <- function(imax, nrow, ncol = 1, ...) {
+  if (!is.integer(imax) || imax < 1)  {# make sure imax is a positive integer
+    stop("imax must be a positive integer.") 
+  }
+  if (length(list(...)) == 0) {
+    matrix(sample(imax, size = nrow * ncol, replace = TRUE), nrow = nrow, 
+           ncol = ncol)
+  } else {
+    array(sample(imax, size = nrow * ncol * prod(unlist(list(...))), 
+                 replace = TRUE), dim = c(nrow, ncol, unlist(list(...))))
+  }
+}
 
 #' @rdname rand
 #' @export

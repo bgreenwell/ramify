@@ -5,9 +5,9 @@
 \alias{zeros}
 \title{Matrix/Array of Ones or Zeros}
 \usage{
-ones(x, nrow = 1, ncol = 1, ...)
+ones(nrow = 1, ncol = 1, ...)
 
-zeros(x, nrow = 1, ncol = 1, ...)
+zeros(nrow = 1, ncol = 1, ...)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
