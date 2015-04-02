@@ -10,7 +10,7 @@ The main function in this package is `mat`, an extention to the built-in matrix 
 
   * `bmat` - like `mat`, but constructs a block matrix.
   * `dmat` - like `mat`, but returns a data frame instead of a matrix.
-  * `argmax`/`argmin` - find the position of the max/min in each row or column
+  * `argmax`/`argmin` - find the position of the max/min in each row or column of a matrix
   * `eye` - construct an identity matrix
   * `hcat`/`vcat` - concatenate matrices
   * `fill` - fill a matrix or array with a particular value
