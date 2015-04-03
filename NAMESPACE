@@ -1,7 +1,7 @@
 export(
-  mat,
-  bmat,
-  dmat,
+  mat,  # main function
+  bmat,  # main function
+  dmat,  # main function
   argmax,
   argmin,
   eye,

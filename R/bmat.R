@@ -1,4 +1,4 @@
-#' Matrices
+#' Block Matrices
 #'
 #' Construct a block matrix using a character string initializer.
 #' 

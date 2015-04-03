@@ -2,7 +2,7 @@
 % Please edit documentation in R/bmat.R
 \name{bmat}
 \alias{bmat}
-\title{Matrices}
+\title{Block Matrices}
 \usage{
 bmat(x, rows = TRUE, sep = ",", ...)
 }
