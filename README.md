@@ -6,7 +6,7 @@ matrices to be initialized from character strings and lists. A number of
 convenience functions have also been added for users more familiar with MATLAB,
 Python, or Julia.
 
-The main function in this package is `mat`, an extention to the built-in matrix function. Many convenience functions are also available:
+The main function in this package is `mat`, an extention to the built-in matrix function. Many convenience functions are also available, for example:
 
   * `bmat` - like `mat`, but constructs a block matrix.
   * `dmat` - like `mat`, but returns a data frame instead of a matrix.

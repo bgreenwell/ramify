@@ -70,44 +70,6 @@ eye <- function(nrow = 1, ncol = nrow) {
 }
 
 
-#' Matrix/Array of Logical Values
-#' 
-#' Construct a matrix or multi-way array of logical values.
-#' 
-#' @param nrow The desired number of rows.
-#' @param ncol The desired number of columns.
-#' @param ... Further dimensions of the array.
-#' 
-#' @return A matrix or array of logical values.
-#' 
-#' @export
-#' @seealso \code{\link{fill}}, \code{\link{ones}}, \code{\link{zeros}}.
-#' 
-#' @examples
-#' falses(3)  # column vector of FALSEs
-#' falses(2, 3)  # 2-by-3 matrix of FALSEs
-#' falses(2, 3, 2)  # 2-by-3-by-2 array of FALSEs
-#' fill(FALSE, 2, 2, 2)
-falses <- function(nrow = 1, ncol = 1, ...) {
-  if (length(list(...)) == 0) {
-    matrix(FALSE, nrow = nrow, ncol = ncol)
-  } else {
-    array(FALSE, dim = c(nrow, ncol, unlist(list(...))))
-  }
-}
-
-
-#' @rdname falses
-#' @export
-trues <- function(nrow = 1, ncol = 1, ...) {
-  if (length(list(...)) == 0) {
-    matrix(TRUE, nrow = nrow, ncol = ncol)
-  } else {
-    array(TRUE, dim = c(nrow, ncol, unlist(list(...))))
-  }
-}
-
-
 #' Fill a Matrix
 #'
 #' Create a matrix filled with the value \code{x}.
@@ -133,6 +95,31 @@ fill <- function(x, nrow = 1, ncol = 1, ...) {
   } else {
     array(x, dim = c(nrow, ncol, unlist(list(...))))
   }
+}
+
+
+#' @rdname fill
+#' @export
+falses <- function(nrow = 1, ncol = 1, ...) {
+  fill(FALSE, nrow = nrow, ncol = ncol, ...)
+}
+
+#' @rdname fill
+#' @export
+trues <- function(nrow = 1, ncol = 1, ...) {
+  fill(TRUE, nrow = nrow, ncol = ncol, ...)
+}
+
+#' @rdname fill
+#' @export
+ones <- function(nrow = 1, ncol = 1, ...) {
+  fill(1, nrow = nrow, ncol = ncol, ...)
+}
+
+#' @rdname fill
+#' @export
+zeros <- function(nrow = 1, ncol = 1, ...) {
+  fill(0, nrow = nrow, ncol = ncol, ...)
 }
 
 
@@ -264,44 +251,6 @@ logspace <- function(a, b, n = 50, base = 10) {
     b <- log(b, base = base)
   }
   base ^ seq(from = a, to = b, length.out = n)
-}
-
-
-#' Matrix/Array of Ones or Zeros
-#' 
-#' Construct a matrix or multi-way array of all ones or zeros.
-#' 
-#' @param nrow The desired number of rows.
-#' @param ncol The desired number of columns.
-#' @param ... Further dimensions of the array.
-#'
-#' @return A matrix or array of ones or zeros.
-#' 
-#' @export
-#' @seealso \code{\link{fill}}, \code{\link{falses}}, \code{\link{trues}}.
-#' 
-#' @examples 
-#' ones(3)  # column matrix of ones
-#' fill(1, 3)
-#' zeros(3, 5)  # 3-by-5 matrix of zeros
-#' fill(0, 3, 5)
-ones <- function(nrow = 1, ncol = 1, ...) {
-  if (length(list(...)) == 0) {
-    matrix(1, nrow = nrow, ncol = ncol)
-  } else {
-    array(1, dim = c(nrow, ncol, unlist(list(...))))
-  }
-}
-
-
-#' @rdname ones
-#' @export
-zeros <- function(nrow = 1, ncol = 1, ...) {
-  if (length(list(...)) == 0) {
-    matrix(0, nrow = nrow, ncol = ncol)
-  } else {
-    array(0, dim = c(nrow, ncol, unlist(list(...))))
-  }
 }
 
 
