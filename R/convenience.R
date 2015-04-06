@@ -66,7 +66,9 @@ argmin <- function(x, rows = TRUE) {
 #' eye(3, 5)  # 3-by-5 identity matrix
 #' eye(5, 3)  # 5-by-3 identity matrix
 eye <- function(nrow = 1, ncol = nrow) {
-  diag(1, nrow, ncol)
+  m <- diag(1L, nrow, ncol)
+  class(m) <- c("matrix", "mat")
+  m
 }
 
 
@@ -91,7 +93,9 @@ eye <- function(nrow = 1, ncol = nrow) {
 #' pi * ones(3, 5)
 fill <- function(x, nrow = 1, ncol = 1, ...) {
   if (length(list(...)) == 0) {
-    matrix(x, nrow = nrow, ncol = ncol)
+    m <- matrix(x, nrow = nrow, ncol = ncol)
+    class(m) <- c("matrix", "mat")
+    m
   } else {
     array(x, dim = c(nrow, ncol, unlist(list(...))))
   }
@@ -113,13 +117,13 @@ trues <- function(nrow = 1, ncol = 1, ...) {
 #' @rdname fill
 #' @export
 ones <- function(nrow = 1, ncol = 1, ...) {
-  fill(1, nrow = nrow, ncol = ncol, ...)
+  fill(1L, nrow = nrow, ncol = ncol, ...)
 }
 
 #' @rdname fill
 #' @export
 zeros <- function(nrow = 1, ncol = 1, ...) {
-  fill(0, nrow = nrow, ncol = ncol, ...)
+  fill(0L, nrow = nrow, ncol = ncol, ...)
 }
 
 
@@ -173,7 +177,9 @@ inv <- function(x, ...) {
   }
   b <- diag(1, nrow(x))
   colnames(b) <- rownames(x)
-  solve(x, b, ...)
+  m <- solve(x, b, ...)
+  class(m) <- c("matrix", "mat")
+  m
 }
 
 
@@ -192,13 +198,17 @@ inv <- function(x, ...) {
 #' hcat(m1, m2)  # same as 'bmat("m1, m2")'
 #' vcat(m1, m2)  # same as 'bmat("m1; m2")'
 hcat <- function(...) {
-  do.call(cbind, list(...))
+  m <- do.call(cbind, list(...))
+  class(m) <- c("matrix", "mat")
+  m
 }
 
 #' @rdname hcat
 #' @export
 vcat <- function(...) {
-  do.call(rbind, list(...))
+  m <- do.call(rbind, list(...))
+  class(m) <- c("matrix", "mat")
+  m
 }
 
 
@@ -282,11 +292,15 @@ logspace <- function(a, b, n = 50, base = 10) {
 #' randn(2, 3, mean = 10, sd = 0.1)
 rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
   if (length(list(...)) == 0) {
-    matrix(runif(nrow * ncol, min = min, max = max), nrow = nrow, ncol = ncol)
+    m <- matrix(runif(nrow * ncol, min = min, max = max), nrow = nrow, 
+                ncol = ncol)
+    class(m) <- c("matrix", "mat")
+    m
   } else {
     array(runif(nrow * ncol * prod(unlist(list(...))), min = min, max = max), 
           dim = c(nrow, ncol, unlist(list(...))))
   }
+  
 }
 
 #' @rdname rand
@@ -296,8 +310,10 @@ randi <- function(imax, nrow, ncol = 1, ...) {
     stop("imax must be a positive integer.") 
   }
   if (length(list(...)) == 0) {
-    matrix(sample(imax, size = nrow * ncol, replace = TRUE), nrow = nrow, 
-           ncol = ncol)
+    m <- matrix(sample(imax, size = nrow * ncol, replace = TRUE), nrow = nrow, 
+                ncol = ncol)
+    class(m) <- c("matrix", "mat")
+    m
   } else {
     array(sample(imax, size = nrow * ncol * prod(unlist(list(...))), 
                  replace = TRUE), dim = c(nrow, ncol, unlist(list(...))))
@@ -308,7 +324,10 @@ randi <- function(imax, nrow, ncol = 1, ...) {
 #' @export
 randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
   if (length(list(...)) == 0) {
-    matrix(rnorm(nrow * ncol, mean = mean, sd = sd), nrow = nrow, ncol = ncol)
+    m <- matrix(rnorm(nrow * ncol, mean = mean, sd = sd), nrow = nrow, 
+                ncol = ncol)
+    class(m) <- c("matrix", "mat")
+    m
   } else {
     array(rnorm(nrow * ncol * prod(unlist(list(...))), mean = mean, sd = sd), 
           dim = c(nrow, ncol, unlist(list(...))))
@@ -352,7 +371,10 @@ resize <- function(x, nrow, ncol, ..., across = c("rows", "columns"),
   # Flatten and reshape/resize matrix.
   across <- match.arg(across)
   if (length(list(...)) == 0) {
-    matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, byrow = byrow)
+    m <- matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, 
+                byrow = byrow)
+    class(m) <- c("matrix", "mat")
+    m
   } else {
     dim(x) <- c(nrow, ncol, unlist(list(...)))
   }

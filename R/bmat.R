@@ -37,6 +37,8 @@ bmat <- function(x, rows = TRUE, sep = ",", ...) {
     do.call(bind1, lapply(strsplit(x, split = sep)[[1]], 
                           function(y) eval(parse(text = y))))
   })
-  do.call(bind2, combined) 
+  m <- do.call(bind2, combined) 
+  class(m) <- c("matrix", "mat")
+  m
   
 }

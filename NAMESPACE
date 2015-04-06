@@ -2,6 +2,7 @@ export(
   mat,  # main function
   bmat,  # main function
   dmat,  # main function
+  print.mat,
   argmax,
   argmin,
   eye,
