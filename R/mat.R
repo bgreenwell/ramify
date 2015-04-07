@@ -97,7 +97,7 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' m <- randn(100, 100)
 #' m
 #' print(m, dot.row = 5, dot.col = 5, digits = 2)
-print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
+print.mat <- function(x, dot.row = 4, dot.col = 4, digits) {
   
   # Row labels
   row_labels <- if (is.null(rownames(x))) {
@@ -141,7 +141,7 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
     col_labels <- add_dots(col_labels, pos = dot.col)
   }
   
-  # Case 4: rows and columns do not have dots
+  # Case 4: rows and columns have dots
   if (nrow(x) > dot.row + 1 && ncol(x) > dot.col + 1) {
     # Add first dot.row-1 rows
     smallx <- t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
@@ -171,7 +171,7 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
 #'
 #' @export
 as.mat <- function(x, ...) {
-  UseMethod("mat")
+  UseMethod("as.mat")
 }
 
 
