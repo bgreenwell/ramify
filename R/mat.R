@@ -88,7 +88,7 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' 
 #' @keywords internal
 add_dots <- function(x, pos = 3) {
-  if (length(x) >= pos + 1) {
+  if (length(x) >= pos + 2) {
     c(x[1:(pos-1)], "...", x[length(x)])
   } else {
     x
@@ -117,6 +117,7 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
   cat(paste(dim(x), collapse = " by "), " matrix of ", paste0(typeof(x), "s"), 
       "\n", sep = "")
   
+  # Convert to character matrix (after rounding, if appropriate)
   charx <- if (typeof(x) %in% c("integer", "logical")) {
     as.character(x)
   } else {
@@ -125,21 +126,39 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
   }
   dim(charx) <- dim(x)
   
-  cols <- c(seq_len(dot.col - 1), ncol(x))
-  rows <- seq_len(dot.row - 1)
+  # Special cases
+  if (ncol(x) <= dot.col + 1 && nrow(x) <= dot.row + 1) {
+    res <- x  # print x
+  }
+  if (nrow(x) == 1 && ncol(x) > 1) {
+    res <- t(apply(charx, 2, add_dots, pos = dot.col))
+  } 
+  if (ncol(x) == 1 && nrow(x) > 1) {
+    res <- apply(charx, 2, add_dots, pos = dot.col)
+  } 
   
-  # Add first dot.row-1 rows
-  smallx <- t(apply(charx[rows, ], 1, add_dots, pos = dot.col))
-  
-  # Only add row dots if matrix has sufficient number of rows
-  smallx2 <- if (nrow(x) >= dot.row + 1) {
-    rbind(smallx, rep("...", ncol(smallx)))
+  if (nrow(x) <= dot.row + 1) {
+    res <- t(apply(charx, 1, add_dots, pos = dot.col))
   } else {
-    rbind(smallx, NULL)  }
-  
-  # Add last row
-  smallx3 <- rbind(smallx2, add_dots(charx[nrow(charx), ], pos = dot.col))
-
+#     cols <- c(seq_len(dot.col - 1), ncol(x))
+    rows <- seq_len(dot.row - 1)
+    
+    # Add first dot.row-1 rows
+    smallx <- t(apply(charx[rows, ], 1, add_dots, pos = dot.col))
+    
+    # Only add row dots if matrix has sufficient number of rows
+    smallx2 <- if (nrow(x) >= dot.row + 1) {
+      rbind(smallx, rep("...", ncol(smallx)))
+    } else {
+      rbind(smallx, NULL)  }
+    
+    # Add last row
+    res <- if (nrow(x) >= dot.row) {
+      rbind(smallx2, add_dots(charx[nrow(charx), ], pos = dot.col))
+    } else {
+      rbind(smallx2, NULL)
+    }
+  }
   
   # Row labels
   row_labels <- rep("", nrow(smallx3))
@@ -154,7 +173,7 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
 #                   paste0("[,", ncol(charx), "]"))  
   
   # Print matrix
-  prmatrix(smallx3, rowlab = row_labels, collab = col_labels, quote = FALSE, 
+  prmatrix(res, rowlab = row_labels, collab = col_labels, quote = FALSE, 
            right = TRUE)
   
 }
