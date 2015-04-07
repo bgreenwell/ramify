@@ -126,53 +126,51 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
   }
   dim(charx) <- dim(x)
   
-  # Special cases
-  if (ncol(x) <= dot.col + 1 && nrow(x) <= dot.row + 1) {
-    newx <- x  # print x
+  # Case 1: rows and columns do not have dots
+  if (nrow(x) <= dot.row + 1 && ncol(x) <= dot.col + 1) {
+    newx <- x  
+    row_labels <- paste0("[", seq_len(nrow(charx)), ",]")
+    col_labels <- paste0("[,", seq_len(ncol(charx)), "]")
   }
-  if (nrow(x) == 1 && ncol(x) > 1) {
-    newx <- t(apply(charx, 2, add_dots, pos = dot.col))
-  } 
-  if (ncol(x) == 1 && nrow(x) > 1) {
-    newx <- apply(charx, 2, add_dots, pos = dot.col)
-  } 
   
-  if (nrow(x) <= dot.row + 1) {
-    newx <- t(apply(charx, 1, add_dots, pos = dot.col))
-  } else {
-    
+  # Case 2: rows have dots, columns do not
+  if (nrow(x) > dot.row + 1 && ncol(x) <= dot.col + 1) {
+    res <- rbind(as.matrix(charx[seq_len(dot.row - 1), ]), 
+                 rep("...", ncol(charx)),
+                 charx[nrow(charx), ])
+    row_labels <- c(paste0("[", seq_len(dot.row - 1), ",]"),
+                    "",
+                    paste0("[", nrow(charx), ",]")) 
+    col_labels <- paste0("[,", seq_len(ncol(charx)), "]")
+  }
+  
+  # Case 3: rows do not have dots, columns have dots
+  if (nrow(x) <= dot.row + 1 && ncol(x) > dot.col + 1) {
+    res <- t(apply(charx, 1, add_dots, pos = dot.col))
+    row_labels <- paste0("[", seq_len(nrow(charx)), ",]")
+    col_labels <- c(paste0("[,", seq_len(dot.col - 1), "]"),
+                    "",
+                    paste0("[,", ncol(charx), "]")) 
+  }
+  
+  # Case 4: rows and columns do not have dots
+  if (nrow(x) > dot.row + 1 && ncol(x) > dot.col + 1) {
     # Add first dot.row-1 rows
-    smallx <- t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
-                      pos = dot.col))
-    
-    # Only add row dots if matrix has sufficient number of rows
-    smallx <- if (nrow(x) >= dot.row + 1) {
-      rbind(smallx, rep("...", ncol(smallx)))
-    } else {
-      rbind(smallx, NULL)  }
-    
-    # Add last row
-    newx <- if (nrow(x) >= dot.row) {
-      rbind(smallx, add_dots(charx[nrow(charx), ], pos = dot.col))
-    } else {
-      rbind(smallx, NULL)
-    }
-  }
+    res <- rbind(t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
+                          pos = dot.col)), 
+                 rep("...", ncol(smallx)),
+                 add_dots(charx[nrow(charx), ], pos = dot.col))
+
+    row_labels <- c(paste0("[", seq_len(dot.row - 1), ",]"),
+                    "",
+                    paste0("[", nrow(charx), ",]")) 
+    col_labels <- c(paste0("[,", seq_len(dot.col - 1), "]"),
+                    "",
+                    paste0("[,", ncol(charx), "]")) 
+  } 
   
-  # Row labels
-  row_labels <- rep("", nrow(newx))
-#   row_labels <- c(paste0("[", seq_len(dot.row - 1), ",]"),
-#                   "",
-#                   paste0("[", nrow(charx), ",]"))
-  
-  # Column labels
-  col_labels <- rep("", ncol(newx))
-#   col_labels <- c(paste0("[,", seq_len(dot.col - 1), "]"),
-#                   "",
-#                   paste0("[,", ncol(charx), "]"))  
-  
-  # Print matrix
-  prmatrix(newx, rowlab = row_labels, collab = col_labels, quote = FALSE, 
+  # Print "pretty" matrix
+  prmatrix(res, rowlab = row_labels, collab = col_labels, quote = FALSE, 
            right = TRUE)
   
 }
