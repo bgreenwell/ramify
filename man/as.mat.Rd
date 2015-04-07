@@ -2,11 +2,26 @@
 % Please edit documentation in R/mat.R
 \name{as.mat}
 \alias{as.mat}
+\alias{as.mat.data.frame}
+\alias{as.mat.matrix}
+\alias{is.mat}
 \title{Coerce to a \code{"mat"} Object}
 \usage{
 as.mat(x, ...)
+
+\method{as.mat}{matrix}(x, ...)
+
+\method{as.mat}{data.frame}(x, ...)
+
+is.mat(x)
+}
+\arguments{
+\item{x}{A matrix or data frame.}
+
+\item{...}{Additional optional arguments.}
 }
 \description{
-Coerce a matrix or data frame to an object of class \code{"mat"}.
+Functions to check if an object is of class \code{"mat"}, or coerce it if
+possible.
 }
 

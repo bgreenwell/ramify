@@ -2,9 +2,12 @@
 % Please edit documentation in R/convenience.R
 \name{argmax}
 \alias{argmax}
+\alias{argmin}
 \title{Row/Column Max/Min Indices}
 \usage{
 argmax(x, rows = TRUE)
+
+argmin(x, rows = TRUE)
 }
 \arguments{
 \item{x}{A matrix.}

@@ -27,6 +27,8 @@
 #'             returned. 
 #' @return A vector of indices.
 #' 
+#' @export
+#' 
 #' @examples
 #' m <- mat("94, 20, 44; 40, 92, 51; 27, 69, 74")
 #' argmax(m)
@@ -39,6 +41,8 @@ argmax <- function(x, rows = TRUE) {
   }
 }
 
+#' @rdname argmax
+#' @export
 argmin <- function(x, rows = TRUE) {
   if (rows) {
     apply(x, MARGIN = 1, which.min)
@@ -265,32 +269,26 @@ logspace <- function(a, b, n = 50, base = 10) {
 }
 
 
-#' Matrix/Array of Random Numbers
+#' Matrix/Array of Uniform Random Numbers
 #' 
-#' Construct a matrix or multi-way array of random deviates.
+#' Construct a matrix or multi-way array of uniform random deviates.
 #' 
-#' @param imax A positive integer.
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
-#' @param min/max Lower and upper limits of the distribution. Must be finite. (
-#'   \code{rand} only).
-#' @param mean/sd Parameters of the normal distribution. (\code{randn} only).
-#' 
+#' @param min Lower limit for the uniform distribution. Must be finite. 
+#'   (\code{rand} only).
+#' @param max Upper limit for the uniform distribution. Must be finite. 
+#'   (\code{rand} only).
+#'   
 #' @return A  matrix or array of pseudorandom numbers.
 #' 
-#' @details \code{rand} generates a matrix or array of uniform random deviates,
-#'   \code{randi} generates a matrix or array of uniform random integers, and 
-#'   \code{randn} generates a matrix or array of normal random deviates.
-#' 
 #' @export
-#' @seealso \code{\link{runif}}, \code{\link{rnorm}}.
+#' @seealso \code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
 #' 
 #' @examples
-#' rand(2, 3)  # 2-by-3 matrix of uniform random numbers
+#' rand(100, 100)  # 100 by 100 matrix of uniform random numbers
 #' rand(2, 3, min = 100, max = 200)  
-#' randn(2, 3)  # 2-by-3 matrix of standard normal random variates
-#' randn(2, 3, mean = 10, sd = 0.1)
 rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
   if (length(list(...)) == 0) {
     m <- matrix(runif(nrow * ncol, min = min, max = max), nrow = nrow, 
@@ -304,10 +302,27 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
   
 }
 
-#' @rdname rand
+
+
+#' Matrix/Array of Uniform Random Integers
+#' 
+#' Construct a matrix or multi-way array of uniform random integers.
+#' 
+#' @param imax A positive integer.
+#' @param nrow The desired number of rows.
+#' @param ncol The desired number of columns.
+#' @param ... Further dimensions of the array.
+#' 
+#' @return A  matrix or array of pseudorandom numbers.
+#' 
 #' @export
+#' @seealso \code{\link{rand}}, \code{\link{randn}}, \code{\link{sample}}.
+#' 
+#' @examples
+#' randi(2, 5, 5)
 randi <- function(imax, nrow, ncol = 1, ...) {
-  if (!is.integer(imax) || imax < 1)  {# make sure imax is a positive integer
+  if (!is.integer(imax)) imax <- as.integer(imax)
+  if (imax < 1)  {  # make sure imax is a positive integer
     stop("imax must be a positive integer.") 
   }
   if (length(list(...)) == 0) {
@@ -321,8 +336,26 @@ randi <- function(imax, nrow, ncol = 1, ...) {
   }
 }
 
-#' @rdname rand
+
+#' Matrix/Array of Normal Random Numbers
+#' 
+#' Construct a matrix or multi-way array of normal random deviates.
+#' 
+#' @param nrow The desired number of rows.
+#' @param ncol The desired number of columns.
+#' @param ... Further dimensions of the array.
+#' @param mean Mean for the normal distribution. (\code{randn} only).
+#' @param sd Standard deviation for the normal distribution. 
+#'   (\code{randn} only).
+#' 
+#' @return A  matrix or array of pseudorandom numbers.
+#' 
 #' @export
+#' @seealso \code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
+#' 
+#' @examples
+#' randn(100, 100)  # 100 by 100 matrix of standard normal random variates
+#' randn(2, 3, mean = 10, sd = 0.1)
 randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
   if (length(list(...)) == 0) {
     m <- matrix(rnorm(nrow * ncol, mean = mean, sd = sd), nrow = nrow, 
@@ -343,7 +376,7 @@ randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
 #' @param x A matrix or multi-way array.
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
-#' @param Further dimensions of the array.
+#' @param ... Further dimensions of the array.
 #' @param across Character string specifying whether to flatten the matrix 
 #'               across \code{"rows"} (default) or \code{"columns"}. This option
 #'               is ignored for multi-way arrays.

@@ -90,14 +90,16 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' @param dot.row Integer indicating which row to replace with \code{...}.
 #' @param dot.col Integer indicating which column to replace with \code{...}.
 #' @param digits Minimal number of significant digits.
+#' @param ... Additional optional arguments.
 #' 
 #' @export
 #' 
+#' @method print mat
 #' @examples
 #' m <- randn(100, 100)
 #' m
 #' print(m, dot.row = 5, dot.col = 5, digits = 2)
-print.mat <- function(x, dot.row = 4, dot.col = 4, digits) {
+print.mat <- function(x, dot.row = 4, dot.col = 4, digits, ...) {
   
   # Row labels
   row_labels <- if (is.null(rownames(x))) {
@@ -167,7 +169,11 @@ print.mat <- function(x, dot.row = 4, dot.col = 4, digits) {
 
 #' Coerce to a \code{"mat"} Object
 #' 
-#' Coerce a matrix or data frame to an object of class \code{"mat"}.
+#' Functions to check if an object is of class \code{"mat"}, or coerce it if 
+#' possible.
+#'
+#' @param x A matrix or data frame.
+#' @param ... Additional optional arguments.
 #'
 #' @export
 as.mat <- function(x, ...) {
@@ -175,13 +181,17 @@ as.mat <- function(x, ...) {
 }
 
 
+#' @rdname as.mat
+#' @method as.mat matrix
 #' @export
-as.mat.matrix <- function(x) {
+as.mat.matrix <- function(x, ...) {
   class(x) <- c("matrix", "mat")
   x
 }
 
 
+#' @rdname as.mat
+#' @method as.mat data.frame
 #' @export
 as.mat.data.frame <- function(x, ...) {
   m <- data.matrix(x, ...)
@@ -190,6 +200,7 @@ as.mat.data.frame <- function(x, ...) {
 }
 
 
+#' @rdname as.mat
 #' @export
 is.mat <- function(x) {
   inherits(x, "mat")

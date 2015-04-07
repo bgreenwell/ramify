@@ -13,6 +13,8 @@ resize(x, nrow, ncol, ..., across = c("rows", "columns"), byrow = FALSE)
 
 \item{ncol}{The desired number of columns.}
 
+\item{...}{Further dimensions of the array.}
+
 \item{across}{Character string specifying whether to flatten the matrix
 across \code{"rows"} (default) or \code{"columns"}. This option
 is ignored for multi-way arrays.}
@@ -20,8 +22,6 @@ is ignored for multi-way arrays.}
 \item{byrow}{Logical. If FALSE (default) the new matrix is filled by columns,
                       otherwise it is filled by rows. This option is ignored
                       for multi-way arrays.}
-
-\item{Further}{dimensions of the array.}
 }
 \value{
 A matrix of dimension \code{nrow}-by-\code{ncol}.

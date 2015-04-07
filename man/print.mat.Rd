@@ -4,7 +4,7 @@
 \alias{print.mat}
 \title{Print Matrices, New-Style}
 \usage{
-\method{print}{mat}(x, dot.row = 4, dot.col = 4, digits)
+\method{print}{mat}(x, dot.row = 4, dot.col = 4, digits, ...)
 }
 \arguments{
 \item{x}{A matrix.}
@@ -14,6 +14,8 @@
 \item{dot.col}{Integer indicating which column to replace with \code{...}.}
 
 \item{digits}{Minimal number of significant digits.}
+
+\item{...}{Additional optional arguments.}
 }
 \description{
 A new method for printing matrices.
