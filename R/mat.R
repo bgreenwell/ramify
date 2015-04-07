@@ -188,3 +188,9 @@ as.mat.data.frame <- function(x, ...) {
   class(m) <- c("matrix", "mat")
   m
 }
+
+
+#' @export
+is.mat <- function(x) {
+  inherits(x, "mat")
+}

@@ -147,6 +147,7 @@ zeros <- function(nrow = 1, ncol = 1, ...) {
 #' flatten(m, across = "columns")
 flatten <- function(x, across = c("rows", "columns")) {
   if (is.matrix(x)) {
+    if (is.mat(x)) class(x) <- "matrix"  # remove "mat" class
     across <- match.arg(across)
     if (across == "rows") x <- t(x)
   } 

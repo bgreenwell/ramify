@@ -4,7 +4,7 @@
 \alias{print.mat}
 \title{Print Matrices, New-Style}
 \usage{
-\method{print}{mat}(x, dot.row = 3, dot.col = 3, digits = 4)
+\method{print}{mat}(x, dot.row = 4, dot.col = 4, digits)
 }
 \arguments{
 \item{x}{A matrix.}
