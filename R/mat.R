@@ -82,20 +82,6 @@ mat.list <- function(x, rows = TRUE, ...) {
 }
 
 
-#' Replace with Dots
-#' 
-#' Replace elements of a vector with \code{...}
-#' 
-#' @keywords internal
-add_dots <- function(x, pos = 3) {
-  if (length(x) >= pos + 2) {
-    c(x[1:(pos-1)], "...", x[length(x)])
-  } else {
-    x
-  }
-}
-
-
 #' Print Matrices, New-Style
 #' 
 #' A new method for printing matrices.
@@ -113,9 +99,19 @@ add_dots <- function(x, pos = 3) {
 #' print(m, dot.row = 5, dot.col = 5, digits = 2)
 print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
   
-  cat("\n")
-  cat(paste(dim(x), collapse = " by "), " matrix of ", paste0(typeof(x), "s"), 
-      "\n", sep = "")
+  # Row labels
+  row_labels <- if (is.null(rownames(x))) {
+    paste0("[", seq_len(nrow(x)), ",]")
+  } else {
+    rownames(x)
+  }
+  
+  # Columns labels
+  col_labels <- if (is.null(colnames(x))) {
+    paste0("[,", seq_len(ncol(x)), "]")
+  } else {
+    colnames(x)
+  }
   
   # Convert to character matrix (after rounding, if appropriate)
   charx <- if (typeof(x) %in% c("integer", "logical")) {
@@ -128,9 +124,7 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
   
   # Case 1: rows and columns do not have dots
   if (nrow(x) <= dot.row + 1 && ncol(x) <= dot.col + 1) {
-    newx <- x  
-    row_labels <- paste0("[", seq_len(nrow(charx)), ",]")
-    col_labels <- paste0("[,", seq_len(ncol(charx)), "]")
+    res <- x  
   }
   
   # Case 2: rows have dots, columns do not
@@ -138,39 +132,59 @@ print.mat <- function(x, dot.row = 3, dot.col = 3, digits) {
     res <- rbind(as.matrix(charx[seq_len(dot.row - 1), ]), 
                  rep("...", ncol(charx)),
                  charx[nrow(charx), ])
-    row_labels <- c(paste0("[", seq_len(dot.row - 1), ",]"),
-                    "",
-                    paste0("[", nrow(charx), ",]")) 
-    col_labels <- paste0("[,", seq_len(ncol(charx)), "]")
+    row_labels <- add_dots(row_labels, pos = dot.row) 
   }
   
   # Case 3: rows do not have dots, columns have dots
   if (nrow(x) <= dot.row + 1 && ncol(x) > dot.col + 1) {
     res <- t(apply(charx, 1, add_dots, pos = dot.col))
-    row_labels <- paste0("[", seq_len(nrow(charx)), ",]")
-    col_labels <- c(paste0("[,", seq_len(dot.col - 1), "]"),
-                    "",
-                    paste0("[,", ncol(charx), "]")) 
+    col_labels <- add_dots(col_labels, pos = dot.col)
   }
   
   # Case 4: rows and columns do not have dots
   if (nrow(x) > dot.row + 1 && ncol(x) > dot.col + 1) {
     # Add first dot.row-1 rows
-    res <- rbind(t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
-                          pos = dot.col)), 
+    smallx <- t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
+                      pos = dot.col))
+    res <- rbind(smallx, 
                  rep("...", ncol(smallx)),
                  add_dots(charx[nrow(charx), ], pos = dot.col))
-
-    row_labels <- c(paste0("[", seq_len(dot.row - 1), ",]"),
-                    "",
-                    paste0("[", nrow(charx), ",]")) 
-    col_labels <- c(paste0("[,", seq_len(dot.col - 1), "]"),
-                    "",
-                    paste0("[,", ncol(charx), "]")) 
+    row_labels <- add_dots(row_labels, pos = dot.row)
+    col_labels <- add_dots(col_labels, pos = dot.col)
   } 
   
   # Print "pretty" matrix
+  cat(desc_mat(x), "\n")
+  cat("\n")
   prmatrix(res, rowlab = row_labels, collab = col_labels, quote = FALSE, 
            right = TRUE)
   
+  # Return a (temporarily) invisible copy of x
+  invisible(x)
+  
+}
+
+
+#' Coerce to a \code{"mat"} Object
+#' 
+#' Coerce a matrix or data frame to an object of class \code{"mat"}.
+#'
+#' @export
+as.mat <- function(x, ...) {
+  UseMethod("mat")
+}
+
+
+#' @export
+as.mat.matrix <- function(x) {
+  class(x) <- c("matrix", "mat")
+  x
+}
+
+
+#' @export
+as.mat.data.frame <- function(x, ...) {
+  m <- data.matrix(x, ...)
+  class(m) <- c("matrix", "mat")
+  m
 }

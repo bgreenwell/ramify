@@ -2,6 +2,9 @@ export(
   mat,  # main function
   bmat,  # main function
   dmat,  # main function
+  as.mat,
+  as.mat.data.frame,
+  as.mat.matrix,
   print.mat,
   argmax,
   argmin,
