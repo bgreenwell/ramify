@@ -1,6 +1,6 @@
-#' Replace with Dots
+#' Shorten a Vector
 #' 
-#' Replace elements of a vector with \code{...}
+#' Shorten a vector using \code{...} notation.
 #' 
 #' @keywords internal
 add_dots <- function(x, pos = 3) {
