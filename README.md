@@ -35,6 +35,16 @@ Matrices created using the `ramify` package carry an additional class: `"mat"`. 
 # [3,]  -1.0831 -1.1032  0.0738 ... -1.2023
 # ...       ...     ...     ... ...     ...
 # [10,] -0.1007 -0.4649 -0.9833 ... -0.6580
+
+> as.mat(mtcars)
+# 32 by 11 matrix of doubles 
+# 
+#                   mpg    cyl     disp ...   carb
+# Mazda RX4     21.0000 6.0000 160.0000 ... 4.0000
+# Mazda RX4 Wag 21.0000 6.0000 160.0000 ... 4.0000
+# Datsun 710    22.8000 4.0000 108.0000 ... 1.0000
+# ...               ...    ...      ... ...    ...
+# Volvo 142E    21.4000 4.0000 121.0000 ... 2.0000
 ```
 This printing behavior was partially inspired by the `"tbl_df"` class for data frames provided by the `dplyr` package.
 
