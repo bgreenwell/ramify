@@ -11,6 +11,9 @@
 \arguments{
 \item{x}{A matrix.}
 
+\item{pretty.print}{Logical indicating whether to print a "prettier" version
+of the matrix.}
+
 \item{dot.row}{Integer indicating which row to replace with \code{...}.}
 
 \item{dot.col}{Integer indicating which column to replace with \code{...}.}

@@ -3,9 +3,6 @@ export(
   bmat,  # main function
   dmat,  # main function
   as.mat,
-  as.mat.data.frame,
-  as.mat.matrix,
-  print.mat,
   argmax,
   argmin,
   eye,
@@ -31,3 +28,7 @@ export(
 S3method(mat, default)    
 S3method(mat, character)
 S3method(mat, list)  
+S3method(print, mat)
+S3method(as.mat, default)
+S3method(as.mat, data.frame)
+S3method(as.mat, matrix)

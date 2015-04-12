@@ -87,6 +87,8 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' A new method for printing matrices.
 #' 
 #' @param x A matrix.
+#' @param pretty.print Logical indicating whether to print a "prettier" version
+#'        of the matrix.
 #' @param dot.row Integer indicating which row to replace with \code{...}.
 #' @param dot.col Integer indicating which column to replace with \code{...}.
 #' @param digits Minimal number of significant digits.
@@ -121,7 +123,9 @@ print.mat <- function(x,
     }
     
     # Convert to character matrix (after rounding, if appropriate)
-    charx <- if (typeof(x) %in% c("integer", "logical")) {
+    charx <- if (typeof(x) == "character") {
+      x
+    } else if (typeof(x) %in% c("integer", "logical")) {
       as.character(x)
     } else {
       if (missing(digits)) digits <- 4
@@ -191,6 +195,14 @@ print.mat <- function(x,
 #' @export
 as.mat <- function(x, ...) {
   UseMethod("as.mat")
+}
+
+
+#' @rdname as.mat
+#' @method as.mat default
+#' @export
+as.mat.default <- function (x, ...) {
+  as.mat(as.matrix(x, ...))
 }
 
 

@@ -3,11 +3,14 @@
 \name{as.mat}
 \alias{as.mat}
 \alias{as.mat.data.frame}
+\alias{as.mat.default}
 \alias{as.mat.matrix}
 \alias{is.mat}
 \title{Coerce to a \code{"mat"} Object}
 \usage{
 as.mat(x, ...)
+
+\method{as.mat}{default}(x, ...)
 
 \method{as.mat}{matrix}(x, ...)
 

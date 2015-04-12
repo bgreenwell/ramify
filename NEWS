@@ -10,3 +10,4 @@ Changes for version 0.2.0
 * New functions argmax, argmin, and randi.
 * Most functions can also construct multi-way arrays.
 * New class "mat" introduced for better printing of large matrices.
+* New global options to control default printing of "mat" matrices.
