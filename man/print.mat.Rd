@@ -4,7 +4,9 @@
 \alias{print.mat}
 \title{Print Matrices, New-Style}
 \usage{
-\method{print}{mat}(x, dot.row = 4, dot.col = 4, digits, ...)
+\method{print}{mat}(x, pretty.print = getOption("mat.pretty.print"),
+  dot.row = getOption("mat.dot.row"), dot.col = getOption("mat.dot.col"),
+  digits, ...)
 }
 \arguments{
 \item{x}{A matrix.}
@@ -15,8 +17,7 @@
 
 \item{digits}{Minimal number of significant digits.}
 
-\item{...}{Additional optional arguments. At present, no optional arguments
-           are used.}
+\item{...}{Additional optional arguments passed onto \code{prmatrix}.}
 }
 \description{
 A new method for printing matrices.
