@@ -4,13 +4,14 @@
 \name{ramify}
 \alias{ramify}
 \alias{ramify-package}
-\title{ramify: additional matrix functionality}
+\title{ramify: Additional MatrIx FunctionalitY}
 \description{
-Additional matrix functionality for R. Includes a new wrapper for
-the built-in matrix function that extends its functionality by allowing
-matrices to be created from character strings and lists. A number of
-convenience functions have also been added for users more familiar with
-MATLAB or Julia.
+Additional MatrIx FunctionalitY for R including: (1) wrappers
+for the base matrix function that allows matrices to be created from
+character strings and lists (the former is especially useful for creating
+block matrices), (ii) better default printing of large matrices, and (iii) a
+number of convenience functions for users more familiar with other scientific
+languages like Julia, MATLAB/Octave, or Python.
 }
 \details{
 The main functions in this package are:
@@ -18,18 +19,26 @@ The main functions in this package are:
     \item \code{mat} - matrix wrapper function
     \item \code{bmat} - like the character method of \code{mat}, but for
       block matrices
-    \item \code{dmat} - like \code{mat}, but instead returns a data frame
-    \item \code{eye} - creates an identity matrix
+    \item \code{dmat} - like \code{mat}, but returns a data frame instead
+    \item \code{argmax}/\code{argmin} - find the position of the max/min in
+          each row or column of a matrix
+    \item \code{eye} - construct an identity matrix
     \item \code{hcat}/\code{vcat} - concatenate matrices
-    \item \code{fill} - fills a matrix with a particular value
-    \item \code{flatten} - flatten (i.e., collapse) a matrix to one dimension
-    \item \code{inv} - calculates the inverse of a square matrix
-    \item \code{linspace}/\code{logspace} - constructs a vector of linearly-spaced/logarithmically-spaced elements
-    \item \code{ones}/\code{zeros} - creates a matrix of all ones/zeros
-    \item \code{rand}/\code{randn} - creates a matrix of uniform/normally distributed random numbers
-    \item \code{resize} - resize a given matrix
-    \item \code{size} - returns the dimensions of the matrix
-    \item \code{trues}/\code{falses} - creates a matrix of all \code{TRUE}s/\code{FALSE}s
+    \item \code{fill} - fill a matrix or array with a particular value
+    \item \code{flatten} - flatten (i.e., collapse) a matrix or array to one
+          dimension
+    \item \code{inv} - calculate the inverse of a square matrix
+    \item \code{linspace}/\code{logspace} - construct a vector of linearly-
+          spaced/logarithmically-spaced elements
+    \item \code{ones}/\code{zeros} - construct a matrix or array of all
+          ones/zeros
+    \item \code{rand}/\code{randi}/\code{randn} - construct a matrix or array
+          of uniformly/normally distributed random numbers
+    \item \code{resize} - change the size and shape of a given matrix or
+          array
+    \item \code{size} - extract the dimensions of a matrix or array.
+    \item \code{trues}/\code{falses} - construct a matrix or array of all
+          \code{TRUE}s/\code{FALSE}s
   }
 }
 

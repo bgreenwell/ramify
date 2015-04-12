@@ -18,7 +18,7 @@ is.mat(x)
 \arguments{
 \item{x}{A matrix or data frame.}
 
-\item{...}{Additional optional arguments.}
+\item{...}{Additional arguments to be passed to or from methods.}
 }
 \description{
 Functions to check if an object is of class \code{"mat"}, or coerce it if

@@ -90,7 +90,8 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' @param dot.row Integer indicating which row to replace with \code{...}.
 #' @param dot.col Integer indicating which column to replace with \code{...}.
 #' @param digits Minimal number of significant digits.
-#' @param ... Additional optional arguments.
+#' @param ... Additional optional arguments. At present, no optional arguments 
+#'            are used.
 #' 
 #' @export
 #' 
@@ -173,7 +174,7 @@ print.mat <- function(x, dot.row = 4, dot.col = 4, digits, ...) {
 #' possible.
 #'
 #' @param x A matrix or data frame.
-#' @param ... Additional optional arguments.
+#' @param ... Additional arguments to be passed to or from methods.
 #'
 #' @export
 as.mat <- function(x, ...) {

@@ -47,7 +47,7 @@ Matrices created using the `ramify` package carry an additional class: `"mat"`. 
 # ...    ...     ...     ... ...     ...
 # 506 0.0474  0.0000 11.9300 ... 11.9000
 ```
-This printing behavior was partially inspired by the `"tbl_df"` class for data frames provided by the `dplyr` package.
+This printing behavior was partially inspired by the `"tbl_df"` class for data frames provided by the [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html) package.
 
 ## Installation
 You can install the latest release from CRAN:

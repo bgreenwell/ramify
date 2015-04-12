@@ -15,7 +15,8 @@
 
 \item{digits}{Minimal number of significant digits.}
 
-\item{...}{Additional optional arguments.}
+\item{...}{Additional optional arguments. At present, no optional arguments
+           are used.}
 }
 \description{
 A new method for printing matrices.
