@@ -1,7 +1,7 @@
 Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
-Version: 0.2.0.9999
+Version: 0.2.1.9999
 Date: 2015-04-12
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))

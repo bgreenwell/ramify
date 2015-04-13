@@ -11,3 +11,7 @@ Changes for version 0.2.0
 * Most functions can also construct multi-way arrays.
 * New class "mat" introduced for better printing of large matrices.
 * New global options to control default printing of "mat" matrices.
+
+Changes for version 0.2.1
+=========================
+* Retains "mat" class when extracting or replacing parts

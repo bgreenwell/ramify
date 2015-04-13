@@ -184,6 +184,40 @@ print.mat <- function(x,
 }
 
 
+#' @export
+`[.mat` <- function(x, i, j, drop = FALSE) {
+  
+  # Sanity check
+  if (missing(i) && missing(j)) return(x)
+  if (drop) warning("drop ignored", call. = FALSE)
+  
+  # Subset rows only
+  if (!missing(i) && missing(j)) {
+    x <- .subset(x, i, seq_len(ncol(x)))
+  }
+  
+  # Subset columns only
+  if (missing(i) && !missing(j)) {
+    x <- .subset(x, seq_len(nrow(x)), j)
+  }
+  
+  # Subset rows and columns
+  if (!missing(i) && !missing(j)) {
+    x <- .subset(x, i, j)
+  }
+  
+  # Assign class and return object 
+  dimx <- dim(x)
+  if (is.null(dimx) || 1 %in% dimx) {
+    class(x) <- typeof(x)
+  } else {
+    class(x) <- c("matrix", "mat")
+  }
+  x
+  
+}
+
+
 #' Coerce to a \code{"mat"} Object
 #' 
 #' Functions to check if an object is of class \code{"mat"}, or coerce it if 
