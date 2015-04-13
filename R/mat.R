@@ -12,7 +12,7 @@
 #' @param ... Aditional optional arguments.
 #' 
 #' @seealso \code{\link{bmat}}, \code{\link{dmat}}, \code{\link{matrix}}.
-#' 
+#' @export
 #' @examples
 #' ## Using character vectors
 #' mat('1, 2, 3, 4; 5, 6, 7, 8')  # ";" separates rows
@@ -167,8 +167,6 @@ print.mat <- function(x,
     # Print "pretty" matrix
     cat(desc_mat(x), "\n")
     cat("\n")
-#     dimnames(x) <- list(row_labels, col_labels)
-#     print(res, ...)
     prmatrix(res, rowlab = row_labels, collab = col_labels, quote = FALSE, 
              right = TRUE)
     

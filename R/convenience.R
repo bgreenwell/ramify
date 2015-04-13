@@ -303,7 +303,6 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
 }
 
 
-
 #' Matrix/Array of Uniform Random Integers
 #' 
 #' Construct a matrix or multi-way array of uniform random integers.
