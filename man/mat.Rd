@@ -26,6 +26,9 @@ otherwise the matrix is filled by columns.}
 \item{sep}{Separator string. Values within each row/column of x are
 separated by this string. Default is \code{","}.}
 }
+\value{
+A matrix of class \code{c("matrix", "mat")}.
+}
 \description{
 Like \code{matrix}, \code{mat} creates a matrix from the given set of
 values. However, these values can also be represented by a character string,
@@ -33,9 +36,9 @@ or a list of vectors.
 }
 \examples{
 ## Using character vectors
-mat('1, 2, 3, 4; 5, 6, 7, 8')  # ";" separates rows
-mat('1, 2, 3, 4; 5, 6, 7, 8', rows = FALSE)  # ";" separates columns
-mat("1 2 3 4; 5 6 7 8", sep = " ")  # use spaces instead of commas
+mat("1, 2, 3, 4; 5, 6, 7, 8")  # ";" separates rows
+mat("1, 2, 3, 4; 5, 6, 7, 8", rows = FALSE)  # ";" separates columns
+mat("1 2 3 4; 5 6 7 8", sep = "")  # use spaces instead of commas
 mat(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)  # works like matrix too
 
 ## Using a list

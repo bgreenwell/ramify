@@ -16,10 +16,11 @@ randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1)
 \item{mean}{Mean for the normal distribution. (\code{randn} only).}
 
 \item{sd}{Standard deviation for the normal distribution.
-  (\code{randn} only).}
+(\code{randn} only).}
 }
 \value{
-A  matrix or array of pseudorandom numbers.
+A  matrix or array of pseudorandom numbers. If the result is a
+        matrix, it will have class \code{c("matrix", "mat")}.
 }
 \description{
 Construct a matrix or multi-way array of normal random deviates.

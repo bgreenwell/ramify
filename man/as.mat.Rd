@@ -27,4 +27,8 @@ is.mat(x)
 Functions to check if an object is of class \code{"mat"}, or coerce it if
 possible.
 }
+\examples{
+m <- matrix(rnorm(600), 20, 30)
+as.mat(m)
+}
 

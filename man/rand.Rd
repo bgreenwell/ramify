@@ -17,10 +17,11 @@ rand(nrow = 1, ncol = 1, ..., min = 0, max = 1)
 (\code{rand} only).}
 
 \item{max}{Upper limit for the uniform distribution. Must be finite.
-  (\code{rand} only).}
+(\code{rand} only).}
 }
 \value{
-A  matrix or array of pseudorandom numbers.
+A  matrix or array of pseudorandom numbers. If the result is a
+        matrix, it will have class \code{c("matrix", "mat")}.
 }
 \description{
 Construct a matrix or multi-way array of uniform random deviates.

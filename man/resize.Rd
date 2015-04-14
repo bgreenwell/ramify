@@ -24,7 +24,8 @@ is ignored for multi-way arrays.}
                       for multi-way arrays.}
 }
 \value{
-A matrix of dimension \code{nrow}-by-\code{ncol}.
+A matrix of class \code{c("matrix", "mat")} with dimension
+        \code{nrow}-by-\code{ncol}.
 }
 \description{
 Change shape and size of a matrix or array.

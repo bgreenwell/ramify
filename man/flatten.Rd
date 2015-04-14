@@ -10,8 +10,8 @@ flatten(x, across = c("rows", "columns"))
 \item{x}{A matrix object.}
 
 \item{across}{Character string specifying whether to flatten the matrix
-  across \code{"rows"} (default) or \code{"columns"}. This option is ignored
-  for multi-way arrays.}
+across \code{"rows"} (default) or \code{"columns"}. This option is ignored
+for multi-way arrays.}
 }
 \value{
 A numeric vector.

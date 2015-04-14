@@ -8,17 +8,9 @@
 #' @param sep Separator string. Values within each row/column of x are 
 #'            separated by this string. Default is \code{","}.
 #' @param ... Aditional optional arguments.
-#' 
-#' @export
+#' @return A matrix of class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{mat}}, \code{\link{dmat}}.
-#'
-#' @details
-#' Be careful when using \code{R} functions within character strings in the 
-#' call to \code{bmat}. The character string is split according to ';' and then
-#' ','. For example, \code{mat('rnorm(10)')} will work, but 
-#' \code{mat('rnorm(10, mean = 3)')} will result in an error. A work around 
-#' would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
-#' 
+#' @export
 #' @examples
 #' # Construct a block matrix from matrices A1, A2, and A3
 #' A1 <- mat('1, 1; 1, 1')

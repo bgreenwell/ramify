@@ -10,14 +10,14 @@
 #' @param sep Separator string. Values within each row/column of x are 
 #'            separated by this string. Default is \code{","}.
 #' @param ... Aditional optional arguments.
-#' 
+#' @return A matrix of class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{bmat}}, \code{\link{dmat}}, \code{\link{matrix}}.
 #' @export
 #' @examples
 #' ## Using character vectors
-#' mat('1, 2, 3, 4; 5, 6, 7, 8')  # ";" separates rows
-#' mat('1, 2, 3, 4; 5, 6, 7, 8', rows = FALSE)  # ";" separates columns
-#' mat("1 2 3 4; 5 6 7 8", sep = " ")  # use spaces instead of commas
+#' mat("1, 2, 3, 4; 5, 6, 7, 8")  # ";" separates rows
+#' mat("1, 2, 3, 4; 5, 6, 7, 8", rows = FALSE)  # ";" separates columns
+#' mat("1 2 3 4; 5 6 7 8", sep = "")  # use spaces instead of commas
 #' mat(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)  # works like matrix too
 #'
 #' ## Using a list
@@ -31,16 +31,16 @@ mat <- function(x, ...) {
 }
 
 #' @rdname mat
-#' @export
 #' @method mat default
+#' @export
 mat.default <- function(x, ...) {
   m <- matrix(x, ...)  # default to base matrix function
   class(m) <- c("matrix", "mat")
 }
 
 #' @rdname mat
-#' @export
 #' @method mat character
+#' @export
 mat.character <- function(x, rows = TRUE, sep = ",", ...) {
   
   ## Gather rows and individual values
@@ -60,8 +60,8 @@ mat.character <- function(x, rows = TRUE, sep = ",", ...) {
 }
 
 #' @rdname mat
-#' @export
 #' @method mat list
+#' @export
 mat.list <- function(x, rows = TRUE, ...) {
   
   ## Check element types
@@ -93,10 +93,8 @@ mat.list <- function(x, rows = TRUE, ...) {
 #' @param dot.col Integer indicating which column to replace with \code{...}.
 #' @param digits Minimal number of significant digits.
 #' @param ... Additional optional arguments passed onto \code{prmatrix}.
-#' 
-#' @export
-#' 
 #' @method print mat
+#' @export
 #' @examples
 #' m <- randn(100, 100)
 #' m
@@ -223,8 +221,10 @@ print.mat <- function(x,
 #'
 #' @param x A matrix or data frame.
 #' @param ... Additional arguments to be passed to or from methods.
-#'
 #' @export
+#' @examples
+#' m <- matrix(rnorm(600), 20, 30)
+#' as.mat(m)
 as.mat <- function(x, ...) {
   UseMethod("as.mat")
 }

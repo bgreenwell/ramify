@@ -1,23 +1,3 @@
-## Solve a System of Equations
-## 
-## Binary operator that solves the equation A %*% x = b for x, where b can be 
-## either a vector or a matrix.
-## 
-## @param A A square numeric or complex matrix containing the coefficients of 
-##          the linear system. Logical matrices are coerced to numeric.
-## @param b A numeric or complex vector or matrix giving the right-hand side(s) 
-##          of the linear system. If missing, \code{b} is taken to be an 
-##          identity matrix and solve will return the inverse of \code{A}.
-## @export
-## @examples
-## A <- matrix(rnorm(4), 2, 2)
-## b <- c(1, 2)
-## A %\% b  
-##`%\\%` <- function(A, b) {
-##  solve(A, b)
-##}
-
-
 #' Row/Column Max/Min Indices
 #'
 #' Returns the indices of the maximum or minimum values along an axis.
@@ -26,9 +6,7 @@
 #' @param rows If \code{TRUE} (the default) the indices of each row max/min is
 #'             returned. 
 #' @return A vector of indices.
-#' 
 #' @export
-#' 
 #' @examples
 #' m <- mat("94, 20, 44; 40, 92, 51; 27, 69, 74")
 #' argmax(m)
@@ -58,12 +36,10 @@ argmin <- function(x, rows = TRUE) {
 #' 
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
-#' 
-#' @return A \code{nrow}-by-\code{ncol} identity matrix.
-#' 
+#' @return A \code{nrow}-by-\code{ncol} identity matrix of class 
+#'         \code{c("matrix", "mat")}.
 #' @seealso \code{\link{diag}}.
 #' @export
-#' 
 #' @examples
 #' eye(4)  # 4-by-4 identity matrix
 #' eye(4, 4)  # 4-by-4 identity matrix
@@ -84,13 +60,11 @@ eye <- function(nrow = 1, ncol = nrow) {
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
-#' 
-#' @return A matrix or array filled with the value \code{x}.
-#' 
-#' @export
+#' @return A matrix or array filled with the value \code{x}. If the result is a
+#'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}}, 
 #'   \code{\link{trues}}, \code{\link{mat}}, \code{\link{matrix}}.
-#' 
+#' @export
 #' @examples
 #' fill(pi, 3, 5)  # 3-by-5 matrix filled with the value of pi
 #' fill(pi, 3, 5, 2, 2)  # 3-by-5-by-2-by-2 array filled with the value of pi
@@ -139,12 +113,9 @@ zeros <- function(nrow = 1, ncol = 1, ...) {
 #' @param across Character string specifying whether to flatten the matrix 
 #'   across \code{"rows"} (default) or \code{"columns"}. This option is ignored
 #'   for multi-way arrays.
-#' 
 #' @return A numeric vector.
-#' 
-#' @export
 #' @seealso \code{\link{mat}}.
-#' 
+#' @export
 #' @examples
 #' m <- mat("2, 4, 6, 8; 10, 12, 14, 16")
 #' flatten(m)
@@ -166,10 +137,10 @@ flatten <- function(x, across = c("rows", "columns")) {
 #' 
 #' @param x A square numeric or complex matrix
 #' @param ... Additional optional arguments.
-#' 
-#' @export
 #' @seealso \code{\link{solve}}.
-#' 
+#' @details See the documentation for the \code{base} function 
+#'         \code{\link{solve}}.
+#' @export
 #' @examples
 #' m <- 3 * eye(5)
 #' inv(m)
@@ -193,10 +164,11 @@ inv <- function(x, ...) {
 #' Concatenate matrices along the first or second dimension.
 #' 
 #' @param ... Vectors or matrices.
-#' 
-#' @export
+#' @return A matrix of class \code{c("matrix", "mat")} formed by combining the
+#'          \code{...} arguments column-wise (\code{hcat}) or row-wise 
+#'          (\code{vcat}).
 #' @seealso \code{\link{bmat}}, \code{\link{cbind}}, \code{\link{rbind}}.
-#' 
+#' @export
 #' @examples
 #' m1 <- mat("1, 2, 3; 4, 5, 6")
 #' m2 <- mat("7, 8, 9; 10, 11, 12")
@@ -225,12 +197,9 @@ vcat <- function(...) {
 #' @param a The starting value of the sequence.
 #' @param b The final value of the sequence.
 #' @param n The number of samples to generate. Default is 50.
-#' 
 #' @return A vector of linearly-spaced elements.
-#' 
-#' @export
 #' @seealso \code{\link{logspace}}, \code{\link{seq}}.
-#' 
+#' @export
 #' @examples
 #' linspace(0, 1)
 #' linspace(1, 5, 5)
@@ -250,16 +219,12 @@ linspace <- function(a, b, n = 50) {
 #' @param b \code{base^b} is the final value of the sequence.
 #' @param n The number of samples to generate. Default is 50.
 #' @param base The base of the log space.
-#' 
+#' @return A vector of logarithmically-spaced elements.
 #' @note
 #' If \code{b = pi} and \code{base = 10}, the points are between 
 #' \code{10^a} and \code{pi}, not \code{10^a} and \code{10^pi}, for 
 #' compatibility with the corresponding MATLAB/Octave, and NumPy functions.
-#' 
-#' @return A vector of logarithmically-spaced elements.
-#' 
 #' @seealso \code{\link{linspace}}, \code{\link{seq}}.
-#' 
 #' @export
 logspace <- function(a, b, n = 50, base = 10) {
   if (b == pi && base == 10)  {
@@ -280,12 +245,10 @@ logspace <- function(a, b, n = 50, base = 10) {
 #'   (\code{rand} only).
 #' @param max Upper limit for the uniform distribution. Must be finite. 
 #'   (\code{rand} only).
-#'   
-#' @return A  matrix or array of pseudorandom numbers.
-#' 
-#' @export
+#' @return A  matrix or array of pseudorandom numbers. If the result is a
+#'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
-#' 
+#' @export
 #' @examples
 #' rand(100, 100)  # 100 by 100 matrix of uniform random numbers
 #' rand(2, 3, min = 100, max = 200)  
@@ -311,12 +274,10 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
-#' 
-#' @return A  matrix or array of pseudorandom numbers.
-#' 
-#' @export
+#' @return A matrix or array of pseudorandom numbers. If the result is a matrix, 
+#'         it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{rand}}, \code{\link{randn}}, \code{\link{sample}}.
-#' 
+#' @export
 #' @examples
 #' randi(2, 5, 5)
 randi <- function(imax, nrow, ncol = 1, ...) {
@@ -346,12 +307,10 @@ randi <- function(imax, nrow, ncol = 1, ...) {
 #' @param mean Mean for the normal distribution. (\code{randn} only).
 #' @param sd Standard deviation for the normal distribution. 
 #'   (\code{randn} only).
-#' 
-#' @return A  matrix or array of pseudorandom numbers.
-#' 
-#' @export
+#' @return A  matrix or array of pseudorandom numbers. If the result is a 
+#'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
-#' 
+#' @export
 #' @examples
 #' randn(100, 100)  # 100 by 100 matrix of standard normal random variates
 #' randn(2, 3, mean = 10, sd = 0.1)
@@ -383,11 +342,10 @@ randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
 #'                       otherwise it is filled by rows. This option is ignored
 #'                       for multi-way arrays.
 #'              
-#' @return A matrix of dimension \code{nrow}-by-\code{ncol}.
-#' 
-#' @export
+#' @return A matrix of class \code{c("matrix", "mat")} with dimension 
+#'         \code{nrow}-by-\code{ncol}.
 #' @seealso \code{\link{flatten}}, \code{\link{mat}}, \code{\link{matrix}}.
-#' 
+#' @export
 #' @examples
 #' m <- 1:9
 #' resize(m)
@@ -421,12 +379,10 @@ resize <- function(x, nrow, ncol, ..., across = c("rows", "columns"),
 #' Retrieve the dimensions of a matrix or array.
 #' 
 #' @param x A matrix, array, or data frame.
-#' 
 #' @return The dimensions of the object.
-#' 
 #' @export
 #' @seealso \code{\link{dim}}.
-#'
+#' @examples
 #' m <- mat("1, 3, 5; 7, 9, 11")
 #' size(m)
 size <- function(x) {

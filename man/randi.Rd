@@ -16,7 +16,8 @@ randi(imax, nrow, ncol = 1, ...)
 \item{...}{Further dimensions of the array.}
 }
 \value{
-A  matrix or array of pseudorandom numbers.
+A matrix or array of pseudorandom numbers. If the result is a matrix,
+        it will have class \code{c("matrix", "mat")}.
 }
 \description{
 Construct a matrix or multi-way array of uniform random integers.

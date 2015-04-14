@@ -28,7 +28,8 @@ zeros(nrow = 1, ncol = 1, ...)
 \item{...}{Further dimensions of the array.}
 }
 \value{
-A matrix or array filled with the value \code{x}.
+A matrix or array filled with the value \code{x}. If the result is a
+        matrix, it will have class \code{c("matrix", "mat")}.
 }
 \description{
 Create a matrix filled with the value \code{x}.

@@ -15,10 +15,11 @@ The dimensions of the object.
 \description{
 Retrieve the dimensions of a matrix or array.
 }
-\seealso{
-\code{\link{dim}}.
-
+\examples{
 m <- mat("1, 3, 5; 7, 9, 11")
 size(m)
+}
+\seealso{
+\code{\link{dim}}.
 }
 

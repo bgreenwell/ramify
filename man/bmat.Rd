@@ -17,15 +17,11 @@ separated by this string. Default is \code{","}.}
 
 \item{...}{Aditional optional arguments.}
 }
+\value{
+A matrix of class \code{c("matrix", "mat")}.
+}
 \description{
 Construct a block matrix using a character string initializer.
-}
-\details{
-Be careful when using \code{R} functions within character strings in the
-call to \code{bmat}. The character string is split according to ';' and then
-','. For example, \code{mat('rnorm(10)')} will work, but
-\code{mat('rnorm(10, mean = 3)')} will result in an error. A work around
-would be to use \code{mat('3 + rnorm(10, mean = 3)')}.
 }
 \examples{
 # Construct a block matrix from matrices A1, A2, and A3
