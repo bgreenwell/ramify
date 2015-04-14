@@ -47,12 +47,11 @@ Matrices created using the `ramify` package carry an additional class: `"mat"`. 
 This printing behavior was partially inspired by the `"tbl_df"` class for data frames provided by the [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html) package.
 
 ## Installation
-You can install the latest release from CRAN:
+You can install the latest stable release from CRAN:
 ```r
 install.packages("ramify")
 ```
-
-The development version is hosted on GitHub at https://github.com/bgreenwell/ramify. You can download the development version using [`devtools`](https://github.com/hadley/devtools):
+The development version is hosted on GitHub at https://github.com/bgreenwell/ramify and can be downloaded using [`devtools`](https://github.com/hadley/devtools):
 ```r
 # Assuming devtools is already installed
 devtools::install_github("bgreenwell/ramify")
