@@ -30,6 +30,7 @@ The main functions in this package are:
     \item \code{inv} - calculate the inverse of a square matrix
     \item \code{linspace}/\code{logspace} - construct a vector of linearly-
           spaced/logarithmically-spaced elements
+    \item \code{meshgrid} -
     \item \code{ones}/\code{zeros} - construct a matrix or array of all
           ones/zeros
     \item \code{rand}/\code{randi}/\code{randn} - construct a matrix or array

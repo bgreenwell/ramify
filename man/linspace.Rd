@@ -2,7 +2,7 @@
 % Please edit documentation in R/convenience.R
 \name{linspace}
 \alias{linspace}
-\title{linearly-spaced Elements}
+\title{Linearly-spaced Elements}
 \usage{
 linspace(a, b, n = 50)
 }

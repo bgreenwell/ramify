@@ -1,3 +1,31 @@
+#' Rectangular 2-D Grid
+#' 
+#' Creates matrices for vectorized evaluations of 2-D scalar/vector fields over 
+#' 2-D grids.
+#' 
+#' @param x Numeric vector representing the first coordinate of the grid.
+#' @param y Numeric vector representing the second coordinate of the grid.
+#' @return a list of matrices, each having class \code{c("matrix", "mat")}.
+#' @seealso \code{\link{expand.grid}}, \code{\link{contour}}.
+#' @export
+#' @examples
+#' x <- seq(-5, 5, by = 0.1)
+#' y <- seq(-5, 5, by = 0.1)
+#' mg <- meshgrid(x, y)
+#' z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
+#' z2 <- mg[[1]] * exp(-mg[[1]]^2 - mg[[2]]^2)
+#' contour(x, y, z1)
+#' filled.contour(x, y, z2, xlim = c(-2, 2), ylim = c(-2, 2))
+meshgrid <- function(x, y = x) {
+  lenx <- length(x)
+  leny <- length(y)
+  list(matrix(rep(x, each = leny), nrow = leny, ncol = lenx),
+       matrix(rep(y, times = lenx), nrow = leny, ncol = lenx))
+#   list(as.mat(matrix(rep(x, each = leny), nrow = leny, ncol = lenx)),
+#        as.mat(matrix(rep(y, times = lenx), nrow = leny, ncol = lenx)))
+}
+
+
 #' Row/Column Max/Min Indices
 #'
 #' Returns the indices of the maximum or minimum values along an axis.
@@ -189,7 +217,7 @@ vcat <- function(...) {
 }
 
 
-#' linearly-spaced Elements
+#' Linearly-spaced Elements
 #' 
 #' Construct a vector of \code{n} linearly-spaced elements from \code{a} 
 #' to \code{b}. 

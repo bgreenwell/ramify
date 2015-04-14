@@ -14,6 +14,7 @@ The main function in this package is `mat`, an extention to the built-in matrix 
   * `flatten` - flatten (i.e., collapse) a matrix or array to one dimension
   * `inv` - calculate the inverse of a square matrix
   * `linspace`/`logspace` - construct a vector of linearly-spaced/logarithmically-spaced elements
+  * `meshgrid` - 
   * `ones`/`zeros` - construct a matrix or array of all ones/zeros
   * `rand`/`randi`/`randn` - construct a matrix or array of uniformly/normally distributed random numbers
   * `resize` - change the size and shape of a given matrix or array
