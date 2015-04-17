@@ -1,31 +1,3 @@
-#' Rectangular 2-D Grid
-#' 
-#' Creates matrices for vectorized evaluations of 2-D scalar/vector fields over 
-#' 2-D grids.
-#' 
-#' @param x Numeric vector representing the first coordinate of the grid.
-#' @param y Numeric vector representing the second coordinate of the grid.
-#' @return a list of matrices, each having class \code{c("matrix", "mat")}.
-#' @seealso \code{\link{expand.grid}}, \code{\link{contour}}.
-#' @export
-#' @examples
-#' x <- seq(-5, 5, by = 0.1)
-#' y <- seq(-5, 5, by = 0.1)
-#' mg <- meshgrid(x, y)
-#' z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
-#' z2 <- mg[[1]] * exp(-mg[[1]]^2 - mg[[2]]^2)
-#' contour(x, y, z1)
-#' filled.contour(x, y, z2, xlim = c(-2, 2), ylim = c(-2, 2))
-meshgrid <- function(x, y = x) {
-  lenx <- length(x)
-  leny <- length(y)
-  list(matrix(rep(x, each = leny), nrow = leny, ncol = lenx),
-       matrix(rep(y, times = lenx), nrow = leny, ncol = lenx))
-#   list(as.mat(matrix(rep(x, each = leny), nrow = leny, ncol = lenx)),
-#        as.mat(matrix(rep(y, times = lenx), nrow = leny, ncol = lenx)))
-}
-
-
 #' Row/Column Max/Min Indices
 #'
 #' Returns the indices of the maximum or minimum values along an axis.
@@ -262,6 +234,31 @@ logspace <- function(a, b, n = 50, base = 10) {
 }
 
 
+#' Rectangular 2-D Grid
+#' 
+#' Creates matrices for vectorized evaluations of 2-D scalar/vector fields over 
+#' 2-D grids.
+#' 
+#' @param x Numeric vector representing the first coordinate of the grid.
+#' @param y Numeric vector representing the second coordinate of the grid.
+#' @return a list of matrices, each having class \code{c("matrix", "mat")}.
+#' @seealso \code{\link{expand.grid}}, \code{\link{outer}}.
+#' @export
+#' @examples
+#' mg <- meshgrid(linspace(-4*pi, 4*pi, 27))  # list of input matrices
+#' z <- cos(mg[[1]]^2 + mg[[2]]^2) * exp(-sqrt(mg[[1]]^2 + mg[[2]]^2)/6)
+#' image(z, axes = FALSE)  # color image
+#' contour(z, add = TRUE, drawlabels = FALSE)  # add contour lines
+meshgrid <- function(x, y = x) {
+  lenx <- length(x)
+  leny <- length(y)
+  list(matrix(rep(x, each = leny), nrow = leny, ncol = lenx),
+       matrix(rep(y, times = lenx), nrow = leny, ncol = lenx))
+  #   list(as.mat(matrix(rep(x, each = leny), nrow = leny, ncol = lenx)),
+  #        as.mat(matrix(rep(y, times = lenx), nrow = leny, ncol = lenx)))
+}
+
+
 #' Matrix/Array of Uniform Random Numbers
 #' 
 #' Construct a matrix or multi-way array of uniform random deviates.
@@ -415,4 +412,89 @@ resize <- function(x, nrow, ncol, ..., across = c("rows", "columns"),
 #' size(m)
 size <- function(x) {
   dim(x)
+}
+
+
+#' Lower Triangular Matrix
+#' 
+#' Construct a matrix with ones at and below the given diagonal and zeros 
+#' elsewhere.
+#' 
+#' @param nrow The desired number of rows.
+#' @param ncol The desired number of columns.
+#' @param k The sub-diagonal at and below which the matrix is filled. 
+#'          \code{k = 0} is the main diagonal, while k < 0 is below it, and 
+#'          k > 0 is above. The default is 0.
+#' @param diag Logical indicating whether to include the diagonal. Default is 
+#'             \code{TRUE}.
+#' @export
+#' @examples
+#' tri(5, 5)
+#' tri(5, 5, 2)
+#' tri(5, 5, -1)
+tri <- function(nrow, ncol = nrow, k = 0, diag = TRUE) {
+  x <- matrix(nrow = nrow, ncol = ncol)
+  if (diag) {
+    m <- as.integer(row(x) >= col(x) - k)
+  }
+  else {
+    m <- as.integer(row(x) > col(x) - k)
+  }
+  dim(m) <- dim(x)
+  class(m) <- c("matrix", "mat", "ltri")
+  m
+}
+
+
+#' Extract Lower Triangular Matrix
+#' 
+#' Extract the lower triangular part of a matrix.
+#' 
+#' @param x A matrix.
+#' @param k Diagonal above which to zero elements. \code{k = 0} (the default) is 
+#'          the main diagonal, k < 0 is below it and k > 0 is above.
+#' @param diag Logical indicating whether to include the diagonal. Default is 
+#'             \code{TRUE}.
+#' @export
+#' @examples
+#' tril(ones(5, 5))
+#' tril(ones(5, 5), diag = TRUE)
+tril <- function(x, k = 0, diag = TRUE) {
+  if (diag) {
+    m <- ifelse(row(x) >= col(x) - k, x, 0)
+  }
+  else {
+    m <- ifelse(row(x) > col(x) - k, x, 0)
+  }  
+  class(m) <- typeof(x)
+  dim(m) <- dim(x)
+  class(m) <- c("matrix", "mat", "ltri")
+  m
+}
+
+
+#' Extract Upper Triangular Matrix
+#' 
+#' Extract the upper triangular part of a matrix.
+#' 
+#' @param x A matrix.
+#' @param k Diagonal below which to zero elements. \code{k = 0} (the default) is 
+#'          the main diagonal, k < 0 is below it and k > 0 is above.
+#' @param diag Logical indicating whether to include the diagonal. Default is 
+#'             \code{TRUE}.
+#' @export
+#' @examples
+#' triu(ones(5, 5))
+#' triu(ones(5, 5), diag = FALSE)
+triu <- function(x, k = 0, diag = TRUE) {
+  if (diag) {
+    m <- ifelse(row(x) <= col(x) - k, x, 0)
+  }
+  else {
+    m <- ifelse(row(x) < col(x) - k, x, 0)
+  }  
+  class(m) <- typeof(x)
+  dim(m) <- dim(x)
+  class(m) <- c("matrix", "mat", "utri")
+  m
 }

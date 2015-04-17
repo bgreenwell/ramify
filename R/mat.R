@@ -30,6 +30,7 @@ mat <- function(x, ...) {
   UseMethod("mat")
 }
 
+
 #' @rdname mat
 #' @method mat default
 #' @export
@@ -37,6 +38,7 @@ mat.default <- function(x, ...) {
   m <- matrix(x, ...)  # default to base matrix function
   class(m) <- c("matrix", "mat")
 }
+
 
 #' @rdname mat
 #' @method mat character
@@ -58,6 +60,7 @@ mat.character <- function(x, rows = TRUE, sep = ",", ...) {
   m
   
 }
+
 
 #' @rdname mat
 #' @method mat list

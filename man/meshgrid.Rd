@@ -19,15 +19,12 @@ Creates matrices for vectorized evaluations of 2-D scalar/vector fields over
 2-D grids.
 }
 \examples{
-x <- seq(-5, 5, by = 0.1)
-y <- seq(-5, 5, by = 0.1)
-mg <- meshgrid(x, y)
-z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
-z2 <- mg[[1]] * exp(-mg[[1]]^2 - mg[[2]]^2)
-contour(x, y, z1)
-filled.contour(x, y, z2, xlim = c(-2, 2), ylim = c(-2, 2))
+mg <- meshgrid(linspace(-4*pi, 4*pi, 27))  # list of input matrices
+z <- cos(mg[[1]]^2 + mg[[2]]^2) * exp(-sqrt(mg[[1]]^2 + mg[[2]]^2)/6)
+image(z, axes = FALSE)  # color image
+contour(z, add = TRUE, drawlabels = FALSE)  # add contour lines
 }
 \seealso{
-\code{\link{expand.grid}}, \code{\link{contour}}.
+\code{\link{expand.grid}}, \code{\link{outer}}.
 }
 

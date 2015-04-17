@@ -18,6 +18,13 @@ add_dots <- function(x, pos = 3) {
 #' 
 #' @keywords internal
 desc_mat <- function(x) {
+  msg <- if (inherits(x, "ltri")) {
+    "lower triangular matrix of"
+  } else if (inherits(x, "utri")) {
+    "upper triangular matrix of"
+  } else {
+    "matrix of"
+  }
   dims <- paste(dim(x), collapse = " by ")
-  paste(dims, "matrix of", paste0(typeof(x), "s"))
+  paste(dims, msg, paste0(typeof(x), "s"))
 }

@@ -30,7 +30,7 @@ The main functions in this package are:
     \item \code{inv} - calculate the inverse of a square matrix
     \item \code{linspace}/\code{logspace} - construct a vector of linearly-
           spaced/logarithmically-spaced elements
-    \item \code{meshgrid} -
+    \item \code{meshgrid} - rectangular 2-D grids
     \item \code{ones}/\code{zeros} - construct a matrix or array of all
           ones/zeros
     \item \code{rand}/\code{randi}/\code{randn} - construct a matrix or array
@@ -38,6 +38,7 @@ The main functions in this package are:
     \item \code{resize} - change the size and shape of a given matrix or
           array
     \item \code{size} - extract the dimensions of a matrix or array.
+    \item \code{tri}, \code{tril}, \code{triu} - constructing trinagular matrices
     \item \code{trues}/\code{falses} - construct a matrix or array of all
           \code{TRUE}s/\code{FALSE}s
   }
