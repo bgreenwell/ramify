@@ -5,7 +5,7 @@
 #' @keywords internal
 add_dots <- function(x, pos = 3) {
   if (length(x) >= pos + 2) {
-    c(x[1:(pos-1)], "...", x[length(x)])
+    c(x[seq_len(pos-1)], "...", x[length(x)])
   } else {
     x
   }
@@ -18,13 +18,5 @@ add_dots <- function(x, pos = 3) {
 #' 
 #' @keywords internal
 desc_mat <- function(x) {
-  msg <- if (inherits(x, "ltri")) {
-    "lower triangular matrix of"
-  } else if (inherits(x, "utri")) {
-    "upper triangular matrix of"
-  } else {
-    "matrix of"
-  }
-  dims <- paste(dim(x), collapse = " by ")
-  paste(dims, msg, paste0(typeof(x), "s"))
+  paste(paste(dim(x), collapse = " by "), "matrix of", paste0(typeof(x), "s"))
 }

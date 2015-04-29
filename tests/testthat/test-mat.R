@@ -43,26 +43,3 @@ test_that("dmat functions as expected", {
   expect_that(m1, is_identical_to(t(m2)))
   
 })
-
-
-test_that("subsetting works as expected", {
-  
-  # Example matrix
-  set.seed(1)
-  m1 <- matrix(rnorm(100), 10, 10)
-  m2 <- as.mat(m1)
-  
-  # Check equality
-  expect_that(m1, equals(m2, check.attributes = FALSE))
-  expect_that(m1[1:5, 6:8], 
-              equals(m2[1:5, 6:8], check.attributes = FALSE))  # submatrix
-  expect_that(m1[2, 4], is_identical_to(m2[2, 4]))  # element
-  expect_that(m1[7, ], is_identical_to(m2[7, ]))  # slice
-  
-  # Check class
-  expect_that(m2, is_a("mat"))
-  expect_that(m2[1:5, 6:8], is_a("mat"))
-  expect_that(m2[2, 4], is_a("numeric"))
-  expect_that(m2[7, ], is_a("numeric"))
-  
-})
