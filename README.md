@@ -14,17 +14,18 @@ The main function in this package is `mat`, an extention to the built-in matrix 
   * `flatten` - flatten (i.e., collapse) a matrix or array to one dimension
   * `inv` - calculate the inverse of a square matrix
   * `linspace`/`logspace` - construct a vector of linearly-spaced/logarithmically-spaced elements
-  * `meshgrid` - 
+  * `meshgrid` - construct matrices for evaluating functions over rectangular 2-D grids (useful for contour plots)
   * `ones`/`zeros` - construct a matrix or array of all ones/zeros
   * `rand`/`randi`/`randn` - construct a matrix or array of uniformly/normally distributed random numbers
   * `resize` - change the size and shape of a given matrix or array
   * `size` - extract the dimensions of a matrix or array.
   * `trues`/`falses` - construct a matrix or array of all `TRUE`s/`FALSE`s
 
-Matrices created using the `ramify` package carry an additional class: `"mat"`. This is useful for printing purposes. Ordinary matrices created by `matrix` (for example) are printed completely on the screen which is not very helpful for large matrices. Matrices inheriting from class `"mat"`, however, are printed in a much more efficient way. For example,
+`ramify` introduces a pretty print function called `pprint`. This is a generic function. Ordinarily, matrices are printed completely on the screen which is not very helpful when the dimensions are large. Using the `pprint` function, however, allows you to see a more efficient printed version of the matrix. For example,
 ```r
 > library(ramify)
-> randn(1000, 1000)  # matrix filled with a million normal random deviates
+> m <- randn(1000, 1000)  # matrix filled with a million normal random deviates
+> pprint(m)  # compare this output to `print(m)` and `head(m)`
 # 1000 by 1000 matrix of doubles 
 # 
 #            [,1]    [,2]    [,3] ... [,1000]
@@ -33,9 +34,12 @@ Matrices created using the `ramify` package carry an additional class: `"mat"`. 
 # [3,]    -0.1308 -0.9673  0.6388 ... -0.2852
 # ...         ...     ...     ... ...     ...
 # [1000,]  0.4980  0.6902  1.4920 ... -2.7023
-
+```
+This can be useful for viewing large data frames too:
+```r
 > data(Boston, package = "MASS")  # Boston housing data
-> as.mat(Boston)
+> bos <- data.matrix(Boston)
+> pprint(bos)
 # 506 by 14 matrix of doubles 
 # 
 #       crim      zn   indus ...    medv

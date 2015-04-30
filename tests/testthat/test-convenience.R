@@ -4,17 +4,17 @@ context("Convenience functions")
 test_that("convenience functions work as expected", {
   
   # Identity matrix
-  expect_that(eye(3), equals(diag(3), check.attributes = FALSE))
-  expect_that(eye(3, 5), equals(diag(1, 3, 5), check.attributes = FALSE))
-  expect_that(eye(5, 3), equals(diag(1, 5, 3), check.attributes = FALSE))
+  expect_that(eye(3), is_identical_to(diag(3)))
+  expect_that(eye(3, 5), is_identical_to(diag(1, 3, 5)))
+  expect_that(eye(5, 3), is_identical_to(diag(1, 5, 3)))
   
   m1 <- matrix(c(0.1112850, 0.3735504, 0.7667462, 0.2012106), 2, 2)
   m2 <- matrix(c(0.6049852, 0.2716786), 1, 2)
   m3 <- matrix(c(0.6049852, 0.2716786), 2, 1)
   
   # Concatenate matrices
-  expect_that(vcat(m1, m2), equals(rbind(m1, m2), check.attributes = FALSE))
-  expect_that(hcat(m1, m3), equals(cbind(m1, m3), check.attributes = FALSE))
+  expect_that(vcat(m1, m2), is_identical_to(rbind(m1, m2)))
+  expect_that(hcat(m1, m3), is_identical_to(cbind(m1, m3)))
   
   # Flatten a matrix
   expect_that(flatten(mat("1:3; 4:6; 7:9")), is_identical_to(1:9))
@@ -22,7 +22,7 @@ test_that("convenience functions work as expected", {
               is_identical_to(1:9))
   
   # Matrix inverse
-  expect_that(inv(m1), equals(solve(m1), check.attributes = FALSE))
+  expect_that(inv(m1), is_identical_to(solve(m1)))
   expect_that(inv(3 * eye(3)), is_identical_to(eye(3) / 3))
   
   # Arrays
@@ -47,8 +47,8 @@ test_that("convenience functions work as expected", {
   mg <- meshgrid(x, y)
   mx <- mat("0, 0.5, 1; 0, 0.5, 1")
   my <- mat("0, 0, 0; 1, 1, 1")
-  expect_that(mg[[1]], equals(mx, check.attributes = FALSE))
-  expect_that(mg[[2]], equals(my, check.attributes = FALSE))
+  expect_that(mg[[1]], is_identical_to(mx))
+  expect_that(mg[[2]], is_identical_to(my))
   
   # Meshgrid (identical)
   x <- y <- seq(-5, 5, by = 0.1)
