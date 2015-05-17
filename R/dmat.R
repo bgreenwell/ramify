@@ -12,7 +12,6 @@
 #' z <- list(a = 1:10, b = 11:20, c = 21:30)
 #' dmat(z)  # list elements form rows
 #' dmat(z, rows= FALSE)  # list elements form columns
-#' as.mat(dmat(z))  # equivalent to mat(z), but with column names
 dmat <- function(x, ...) {
   as.data.frame(mat(x, ...))  # FIXME: data.frame or as.data.frame?
 }

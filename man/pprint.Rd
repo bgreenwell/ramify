@@ -7,14 +7,17 @@
 \usage{
 pprint(x, ...)
 
-\method{pprint}{matrix}(x, dot.row = 4, dot.col = 4, digits = NULL, ...)
+\method{pprint}{matrix}(x, rowdots = getOption("mat.rowdots"),
+  coldots = getOption("mat.coldots"), digits = NULL, ...)
 }
 \arguments{
 \item{x}{An object of class \code{"matrix"} or \code{"data.frame"}.}
 
-\item{dot.row}{Abc.}
+\item{...}{Additional optional arguments. None are used at present.}
 
-\item{dot.col}{Def.}
+\item{rowdots}{Abc.}
+
+\item{coldots}{Def.}
 
 \item{digits}{The minimum number of significant digits to be printed in
 values.}

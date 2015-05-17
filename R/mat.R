@@ -42,7 +42,8 @@ mat.default <- function(x, ...) {
 #' @rdname mat
 #' @method mat character
 #' @export
-mat.character <- function(x, rows = TRUE, sep = ",", ...) {
+mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"), 
+                          ...) {
   
   ## Gather rows and individual values
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors

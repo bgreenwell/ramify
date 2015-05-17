@@ -11,7 +11,7 @@ mat(x, ...)
 
 \method{mat}{default}(x, ...)
 
-\method{mat}{character}(x, rows = TRUE, sep = ",", ...)
+\method{mat}{character}(x, rows = TRUE, sep = getOption("mat.sep"), ...)
 
 \method{mat}{list}(x, rows = TRUE, ...)
 }

@@ -3,10 +3,11 @@
 #' Prettier printing for matrices and data frames.
 #' 
 #' @param x An object of class \code{"matrix"} or \code{"data.frame"}.
-#' @param dot.row Abc.
-#' @param dot.col Def.
+#' @param rowdots Abc.
+#' @param coldots Def.
 #' @param digits The minimum number of significant digits to be printed in 
 #'   values.
+#' @param ... Additional optional arguments. None are used at present.
 #' @export
 #' @examples
 #' pprint(randn(100, 100))
@@ -18,7 +19,10 @@ pprint <- function(x, ...) {
 #' @rdname pprint
 #' @method pprint matrix
 #' @export
-pprint.matrix <- function(x, dot.row = 4, dot.col = 4, digits = NULL, ...) {
+pprint.matrix <- function(x, 
+                          rowdots = getOption("mat.rowdots"), 
+                          coldots = getOption("mat.coldots"), 
+                          digits = NULL, ...) {
   
   # Row labels
   row_labels <- if (is.null(rownames(x))) {
@@ -46,34 +50,34 @@ pprint.matrix <- function(x, dot.row = 4, dot.col = 4, digits = NULL, ...) {
   dim(charx) <- dim(x)
   
   # Case 1: rows and columns do not have dots
-  if (nrow(x) <= dot.row + 1 && ncol(x) <= dot.col + 1) {
+  if (nrow(x) <= rowdots + 1 && ncol(x) <= coldots + 1) {
     res <- x  
   }
   
   # Case 2: rows have dots, columns do not
-  if (nrow(x) > dot.row + 1 && ncol(x) <= dot.col + 1) {
-    res <- rbind(as.matrix(charx[seq_len(dot.row - 1), ]), 
+  if (nrow(x) > rowdots + 1 && ncol(x) <= coldots + 1) {
+    res <- rbind(as.matrix(charx[seq_len(rowdots - 1), ]), 
                  rep("...", ncol(charx)),
                  charx[nrow(charx), ])
-    row_labels <- add_dots(row_labels, pos = dot.row) 
+    row_labels <- add_dots(row_labels, pos = rowdots) 
   }
   
   # Case 3: rows do not have dots, columns have dots
-  if (nrow(x) <= dot.row + 1 && ncol(x) > dot.col + 1) {
-    res <- t(apply(charx, 1, add_dots, pos = dot.col))
-    col_labels <- add_dots(col_labels, pos = dot.col)
+  if (nrow(x) <= rowdots + 1 && ncol(x) > coldots + 1) {
+    res <- t(apply(charx, 1, add_dots, pos = coldots))
+    col_labels <- add_dots(col_labels, pos = coldots)
   }
   
   # Case 4: rows and columns have dots
-  if (nrow(x) > dot.row + 1 && ncol(x) > dot.col + 1) {
-    # Add first dot.row-1 rows
-    smallx <- t(apply(charx[seq_len(dot.row - 1), ], 1, add_dots, 
-                      pos = dot.col))
+  if (nrow(x) > rowdots + 1 && ncol(x) > coldots + 1) {
+    # Add first rowdots-1 rows
+    smallx <- t(apply(charx[seq_len(rowdots - 1), ], 1, add_dots, 
+                      pos = coldots))
     res <- rbind(smallx, 
                  rep("...", ncol(smallx)),
-                 add_dots(charx[nrow(charx), ], pos = dot.col))
-    row_labels <- add_dots(row_labels, pos = dot.row)
-    col_labels <- add_dots(col_labels, pos = dot.col)
+                 add_dots(charx[nrow(charx), ], pos = coldots))
+    row_labels <- add_dots(row_labels, pos = rowdots)
+    col_labels <- add_dots(col_labels, pos = coldots)
   } 
   
   # Print "pretty" matrix
