@@ -3,6 +3,26 @@ context("Convenience functions")
 
 test_that("convenience functions work as expected", {
   
+  # One-dimensional arrays should be flat (by default)
+  z <- zeros(10)
+  rn <- randn(10)
+  ru <- rand(10)
+  ri <- randi(imax = 100, 10)
+  expect_that(dim(z), is_null())
+  expect_that(dim(rn), is_null())
+  expect_that(dim(ru), is_null())
+  expect_that(dim(ri), is_null())
+  
+  # Two-dimensional arrays should NOT be flat (by default)
+  z2 <- zeros(10, 3)
+  rn2 <- randn(10, 3)
+  ru2 <- rand(10, 3)
+  ri2 <- randi(imax = 100, 10, 3)
+  expect_that(dim(z2), equals(c(10, 3)))
+  expect_that(dim(rn2), equals(c(10, 3)))
+  expect_that(dim(ru2), equals(c(10, 3)))
+  expect_that(dim(ri2), equals(c(10, 3)))
+  
   # Identity matrix
   expect_that(eye(3), is_identical_to(diag(3)))
   expect_that(eye(3, 5), is_identical_to(diag(1, 3, 5)))

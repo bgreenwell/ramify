@@ -4,7 +4,7 @@
 \alias{randn}
 \title{Matrix/Array of Normal Random Numbers}
 \usage{
-randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1)
+randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1, atleast_2d = NULL)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
@@ -17,6 +17,11 @@ randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1)
 
 \item{sd}{Standard deviation for the normal distribution.
 (\code{randn} only).}
+
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This
+behavior can also be changed globally using, for example
+\code{options(atleast_2d = TRUE)}.}
 }
 \value{
 A  matrix or array of pseudorandom numbers. If the result is a

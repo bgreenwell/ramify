@@ -19,10 +19,13 @@ pprint <- function(x, ...) {
 #' @rdname pprint
 #' @method pprint matrix
 #' @export
-pprint.matrix <- function(x, 
-                          rowdots = getOption("mat.rowdots"), 
-                          coldots = getOption("mat.coldots"), 
-                          digits = NULL, ...) {
+pprint.matrix <- function(x, rowdots = NULL, coldots = NULL, digits = NULL, 
+                          ...) {
+  
+  # Default values
+  if (is.null(rowdots)) rowdots <- getOption("pprint.rowdots")
+  if (is.null(coldots)) coldots <- getOption("pprint.coldots")
+  if (is.null(digits)) digits <- getOption("digits")
   
   # Row labels
   row_labels <- if (is.null(rownames(x))) {
@@ -44,7 +47,6 @@ pprint.matrix <- function(x,
   } else if (typeof(x) %in% c("integer", "logical")) {
     as.character(x)
   } else {
-    if (is.null(digits)) digits <- getOption("digits")
     sprintf(paste0("%.", digits, "f"), x)
   }
   dim(charx) <- dim(x)

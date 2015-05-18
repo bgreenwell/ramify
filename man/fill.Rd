@@ -8,15 +8,15 @@
 \alias{zeros}
 \title{Fill a Matrix}
 \usage{
-fill(x, nrow = 1, ncol = 1, ...)
+fill(x, nrow = 1, ncol = 1, ..., atleast_2d = NULL)
 
-falses(nrow = 1, ncol = 1, ...)
+falses(nrow = 1, ncol = 1, ..., atleast_2d = NULL)
 
-trues(nrow = 1, ncol = 1, ...)
+trues(nrow = 1, ncol = 1, ..., atleast_2d = NULL)
 
-ones(nrow = 1, ncol = 1, ...)
+ones(nrow = 1, ncol = 1, ..., atleast_2d = NULL)
 
-zeros(nrow = 1, ncol = 1, ...)
+zeros(nrow = 1, ncol = 1, ..., atleast_2d = NULL)
 }
 \arguments{
 \item{x}{The (single) value to fill the matrix with.}
@@ -26,6 +26,11 @@ zeros(nrow = 1, ncol = 1, ...)
 \item{ncol}{The desired number of columns.}
 
 \item{...}{Further dimensions of the array.}
+
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This
+behavior can also be changed globally using, for example
+\code{options(atleast_2d = TRUE)}.}
 }
 \value{
 A matrix or array filled with the value \code{x}. If the result is a
@@ -38,6 +43,8 @@ Create a matrix filled with the value \code{x}.
 fill(pi, 3, 5)  # 3-by-5 matrix filled with the value of pi
 fill(pi, 3, 5, 2, 2)  # 3-by-5-by-2-by-2 array filled with the value of pi
 pi * ones(3, 5)
+zeros(10)
+zeros(10, atleast_2d = TRUE)
 }
 \seealso{
 \code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}},

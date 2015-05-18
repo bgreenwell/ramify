@@ -7,8 +7,8 @@
 \usage{
 pprint(x, ...)
 
-\method{pprint}{matrix}(x, rowdots = getOption("mat.rowdots"),
-  coldots = getOption("mat.coldots"), digits = NULL, ...)
+\method{pprint}{matrix}(x, rowdots = NULL, coldots = NULL, digits = NULL,
+  ...)
 }
 \arguments{
 \item{x}{An object of class \code{"matrix"} or \code{"data.frame"}.}

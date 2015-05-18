@@ -58,6 +58,10 @@ eye <- function(nrow = 1, ncol = nrow) {
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
+#' @param atleast_2d Logical indicating whether or not to force column vectors 
+#'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
+#'   behavior can also be changed globally using, for example 
+#'   \code{options(atleast_2d = TRUE)}.
 #' @return A matrix or array filled with the value \code{x}. If the result is a
 #'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}}, 
@@ -67,9 +71,16 @@ eye <- function(nrow = 1, ncol = nrow) {
 #' fill(pi, 3, 5)  # 3-by-5 matrix filled with the value of pi
 #' fill(pi, 3, 5, 2, 2)  # 3-by-5-by-2-by-2 array filled with the value of pi
 #' pi * ones(3, 5)
-fill <- function(x, nrow = 1, ncol = 1, ...) {
+#' zeros(10)
+#' zeros(10, atleast_2d = TRUE)
+fill <- function(x, nrow = 1, ncol = 1, ..., atleast_2d = NULL) {
   if (length(list(...)) == 0) {
-    matrix(x, nrow = nrow, ncol = ncol)
+    if (is.null(atleast_2d)) atleast_2d <- getOption("atleast_2d")
+    if (!atleast_2d && ncol == 1) {  # no dim attribute!
+      rep_len(x, length.out = nrow)
+    } else {
+      matrix(x, nrow = nrow, ncol = ncol)
+    }
   } else {
     array(x, dim = c(nrow, ncol, unlist(list(...))))
   }
@@ -78,26 +89,26 @@ fill <- function(x, nrow = 1, ncol = 1, ...) {
 
 #' @rdname fill
 #' @export
-falses <- function(nrow = 1, ncol = 1, ...) {
-  fill(FALSE, nrow = nrow, ncol = ncol, ...)
+falses <- function(nrow = 1, ncol = 1, ..., atleast_2d = NULL) {
+  fill(FALSE, nrow = nrow, ncol = ncol, ..., atleast_2d = atleast_2d)
 }
 
 #' @rdname fill
 #' @export
-trues <- function(nrow = 1, ncol = 1, ...) {
-  fill(TRUE, nrow = nrow, ncol = ncol, ...)
+trues <- function(nrow = 1, ncol = 1, ..., atleast_2d = NULL) {
+  fill(TRUE, nrow = nrow, ncol = ncol, ..., atleast_2d = atleast_2d)
 }
 
 #' @rdname fill
 #' @export
-ones <- function(nrow = 1, ncol = 1, ...) {
-  fill(1L, nrow = nrow, ncol = ncol, ...)
+ones <- function(nrow = 1, ncol = 1, ..., atleast_2d = NULL) {
+  fill(1L, nrow = nrow, ncol = ncol, ..., atleast_2d = atleast_2d)
 }
 
 #' @rdname fill
 #' @export
-zeros <- function(nrow = 1, ncol = 1, ...) {
-  fill(0L, nrow = nrow, ncol = ncol, ...)
+zeros <- function(nrow = 1, ncol = 1, ..., atleast_2d = NULL) {
+  fill(0L, nrow = nrow, ncol = ncol, ..., atleast_2d = atleast_2d)
 }
 
 
@@ -260,6 +271,10 @@ meshgrid <- function(x, y = x) {
 #'   (\code{rand} only).
 #' @param max Upper limit for the uniform distribution. Must be finite. 
 #'   (\code{rand} only).
+#' @param atleast_2d Logical indicating whether or not to force column vectors 
+#'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
+#'   behavior can also be changed globally using, for example 
+#'   \code{options(atleast_2d = TRUE)}.
 #' @return A  matrix or array of pseudorandom numbers. If the result is a
 #'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
@@ -267,10 +282,15 @@ meshgrid <- function(x, y = x) {
 #' @examples
 #' rand(100, 100)  # 100 by 100 matrix of uniform random numbers
 #' rand(2, 3, min = 100, max = 200)  
-rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
+rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1, atleast_2d = NULL) {
   if (length(list(...)) == 0) {
-    matrix(runif(nrow * ncol, min = min, max = max), nrow = nrow, 
-           ncol = ncol)
+    if (is.null(atleast_2d)) atleast_2d <- getOption("atleast_2d")
+    if (!atleast_2d && ncol == 1) {  # no dim attribute!
+      runif(nrow, min = min, max = max)
+    } else {
+      matrix(runif(nrow * ncol, min = min, max = max), nrow = nrow, 
+             ncol = ncol)
+    }
   } else {
     array(runif(nrow * ncol * prod(unlist(list(...))), min = min, max = max), 
           dim = c(nrow, ncol, unlist(list(...))))
@@ -287,20 +307,29 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1) {
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
 #' @param ... Further dimensions of the array.
+#' @param atleast_2d Logical indicating whether or not to force column vectors 
+#'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
+#'   behavior can also be changed globally using, for example 
+#'   \code{options(atleast_2d = TRUE)}.
 #' @return A matrix or array of pseudorandom numbers. If the result is a matrix, 
 #'         it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{rand}}, \code{\link{randn}}, \code{\link{sample}}.
 #' @export
 #' @examples
 #' randi(2, 5, 5)
-randi <- function(imax, nrow, ncol = 1, ...) {
+randi <- function(imax, nrow, ncol = 1, ..., atleast_2d = NULL) {
   if (!is.integer(imax)) imax <- as.integer(imax)
   if (imax < 1)  {  # make sure imax is a positive integer
     stop("imax must be a positive integer.") 
   }
   if (length(list(...)) == 0) {
-    matrix(sample(imax, size = nrow * ncol, replace = TRUE), nrow = nrow, 
-           ncol = ncol)
+    if (is.null(atleast_2d)) atleast_2d <- getOption("atleast_2d")
+    if (!atleast_2d && ncol == 1) {  # no dim attribute!
+      sample(imax, size = nrow, replace = TRUE)
+    } else {
+      matrix(sample(imax, size = nrow * ncol, replace = TRUE), nrow = nrow, 
+             ncol = ncol)
+    }
   } else {
     array(sample(imax, size = nrow * ncol * prod(unlist(list(...))), 
                  replace = TRUE), dim = c(nrow, ncol, unlist(list(...))))
@@ -318,6 +347,10 @@ randi <- function(imax, nrow, ncol = 1, ...) {
 #' @param mean Mean for the normal distribution. (\code{randn} only).
 #' @param sd Standard deviation for the normal distribution. 
 #'   (\code{randn} only).
+#' @param atleast_2d Logical indicating whether or not to force column vectors 
+#'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
+#'   behavior can also be changed globally using, for example 
+#'   \code{options(atleast_2d = TRUE)}.
 #' @return A  matrix or array of pseudorandom numbers. If the result is a 
 #'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
@@ -325,10 +358,16 @@ randi <- function(imax, nrow, ncol = 1, ...) {
 #' @examples
 #' randn(100, 100)  # 100 by 100 matrix of standard normal random variates
 #' randn(2, 3, mean = 10, sd = 0.1)
-randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1) {
+randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1, 
+                  atleast_2d = NULL) {
   if (length(list(...)) == 0) {
-    matrix(rnorm(nrow * ncol, mean = mean, sd = sd), nrow = nrow, 
-           ncol = ncol)
+    if (is.null(atleast_2d)) atleast_2d <- getOption("atleast_2d")
+    if (!atleast_2d && ncol == 1) {  # no dim attribute!
+      rnorm(nrow, mean = mean, sd = sd)
+    } else {
+      matrix(rnorm(nrow * ncol, mean = mean, sd = sd), nrow = nrow, 
+             ncol = ncol)
+    }
   } else {
     array(rnorm(nrow * ncol * prod(unlist(list(...))), mean = mean, sd = sd), 
           dim = c(nrow, ncol, unlist(list(...))))

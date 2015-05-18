@@ -4,7 +4,7 @@
 \alias{randi}
 \title{Matrix/Array of Uniform Random Integers}
 \usage{
-randi(imax, nrow, ncol = 1, ...)
+randi(imax, nrow, ncol = 1, ..., atleast_2d = NULL)
 }
 \arguments{
 \item{imax}{A positive integer.}
@@ -14,6 +14,11 @@ randi(imax, nrow, ncol = 1, ...)
 \item{ncol}{The desired number of columns.}
 
 \item{...}{Further dimensions of the array.}
+
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This
+behavior can also be changed globally using, for example
+\code{options(atleast_2d = TRUE)}.}
 }
 \value{
 A matrix or array of pseudorandom numbers. If the result is a matrix,

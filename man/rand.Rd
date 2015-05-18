@@ -4,7 +4,7 @@
 \alias{rand}
 \title{Matrix/Array of Uniform Random Numbers}
 \usage{
-rand(nrow = 1, ncol = 1, ..., min = 0, max = 1)
+rand(nrow = 1, ncol = 1, ..., min = 0, max = 1, atleast_2d = NULL)
 }
 \arguments{
 \item{nrow}{The desired number of rows.}
@@ -18,6 +18,11 @@ rand(nrow = 1, ncol = 1, ..., min = 0, max = 1)
 
 \item{max}{Upper limit for the uniform distribution. Must be finite.
 (\code{rand} only).}
+
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This
+behavior can also be changed globally using, for example
+\code{options(atleast_2d = TRUE)}.}
 }
 \value{
 A  matrix or array of pseudorandom numbers. If the result is a
