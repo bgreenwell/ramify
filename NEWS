@@ -14,4 +14,12 @@ Changes for version 0.2.0
 
 Changes for version 0.2.1
 =========================
-* Retains "mat" class when extracting or replacing parts
+* Retains "mat" class when extracting or replacing parts.
+
+Changes for version 0.3.0
+=========================
+* Removed "mat" class in favor of a generic pprint function.
+* Added an at_least2d option to many functions for base R compatibility.
+* Added global options for controlling pprint and others.
+* New functions tri, tril, triu, etc. for constructing triangular functions.
+* New function meshgrid for MATLAB and Python+NumPy compatibility.

@@ -1,8 +1,8 @@
 Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
-Version: 0.2.1.9999
-Date: 2015-04-12
+Version: 0.3.0.9999
+Date: 2015-06-7
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))
 Description: Additional matrix functionality for R including: (1) wrappers
@@ -10,7 +10,7 @@ Description: Additional matrix functionality for R including: (1) wrappers
   strings and lists (the former is especially useful for creating block 
   matrices), (ii) better default printing of large matrices, and (iii) a number 
   of convenience functions for users more familiar with other scientific 
-  languages like Julia, Matlab/Octave, or Python.
+  languages like Julia, Matlab/Octave, or Python+NumPy.
 Suggests:
     testthat
 License: GPL (>= 2)
