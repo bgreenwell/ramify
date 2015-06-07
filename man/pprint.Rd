@@ -19,9 +19,11 @@ pprint(x, ...)
 
 \item{...}{Additional optional arguments. None are used at present.}
 
-\item{rowdots}{Abc.}
+\item{rowdots}{Integer specifying the row to replace with \code{...}
+notation. Default is 4.}
 
-\item{coldots}{Def.}
+\item{coldots}{Integer specifying the column to replace with \code{...}
+notation. Default is 4.}
 
 \item{digits}{The minimum number of significant digits to be printed in
 values.}
