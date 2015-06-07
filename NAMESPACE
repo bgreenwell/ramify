@@ -3,6 +3,7 @@
 S3method(mat,character)
 S3method(mat,default)
 S3method(mat,list)
+S3method(pprint,data.frame)
 S3method(pprint,matrix)
 export(argmax)
 export(argmin)

@@ -2,6 +2,7 @@
 % Please edit documentation in R/pprint.R
 \name{pprint}
 \alias{pprint}
+\alias{pprint.data.frame}
 \alias{pprint.matrix}
 \title{Pretty Printing}
 \usage{
@@ -9,6 +10,9 @@ pprint(x, ...)
 
 \method{pprint}{matrix}(x, rowdots = NULL, coldots = NULL, digits = NULL,
   ...)
+
+\method{pprint}{data.frame}(x, rowdots = NULL, coldots = NULL,
+  digits = NULL, ...)
 }
 \arguments{
 \item{x}{An object of class \code{"matrix"} or \code{"data.frame"}.}

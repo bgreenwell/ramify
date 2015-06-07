@@ -92,3 +92,13 @@ pprint.matrix <- function(x, rowdots = NULL, coldots = NULL, digits = NULL,
   invisible(x)
   
 }
+
+
+#' @rdname pprint
+#' @method pprint data.frame
+#' @export
+pprint.data.frame <- function(x, rowdots = NULL, coldots = NULL, digits = NULL, 
+                              ...) {
+  pprint(data.matrix(x), rowdots = rowdots, coldots = coldots, digits = digits,
+         ...) 
+}
