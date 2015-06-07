@@ -46,8 +46,13 @@ mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"),
                           ...) {
   
   ## Gather rows and individual values
+  # seps <- paste0("[;", "sep", "]")  # separate all at once
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
-  char_vals <- unname(unlist(lapply(vecs, strsplit, split = sep)))
+  char_vals <- if (!is.null(sep)) {
+    unname(unlist(lapply(vecs, strsplit, split = sep)))
+  } else {
+    vecs
+  }
   num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
   
   ## Form matrix from parsed values by calling R's built-in matrix function

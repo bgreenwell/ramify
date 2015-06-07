@@ -2,9 +2,9 @@
   op <- options()
   op.mat <- list(
     mat.sep = ",",
-    pprint.rowdots = 5L,
-    pprint.coldots = 5L,
-    atleast_2d = FALSE
+    pprint.rowdots = 4L,
+    pprint.coldots = 4L,
+    atleast_2d = TRUE
   )
   toset <- !(names(op.mat) %in% names(op))
   if(any(toset)) options(op.mat[toset])
