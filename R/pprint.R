@@ -3,8 +3,10 @@
 #' Prettier printing for matrices and data frames.
 #' 
 #' @param x An object of class \code{"matrix"} or \code{"data.frame"}.
-#' @param rowdots Abc.
-#' @param coldots Def.
+#' @param rowdots Integer specifying the row to replace with \code{...} 
+#'   notation. Default is 4.
+#' @param coldots Integer specifying the column to replace with \code{...} 
+#'   notation. Default is 4.
 #' @param digits The minimum number of significant digits to be printed in 
 #'   values.
 #' @param ... Additional optional arguments. None are used at present.
