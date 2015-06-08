@@ -31,7 +31,16 @@ values.}
 \description{
 Prettier printing for matrices and data frames.
 }
+\details{
+For object of class \code{"matrix"} or \code{"data.frame"} (which are coerced
+to a matrix via the \code{data.matrix} function), \code{pprint} will replace
+all the rows starting from \code{rowdots} up to and including the second-to-last
+row with a single row filled with \code{...}s. The same is applied to the
+columns as well. Hence a large matrix (or data frame) will be printed in a
+much more compact form.
+}
 \examples{
 pprint(randn(100, 100))
+pprint(resize(1:100, 10, 10))
 }
 

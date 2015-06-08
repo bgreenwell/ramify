@@ -410,8 +410,8 @@ resize <- function(x, nrow, ncol, ..., across = c("rows", "columns"),
   # Flatten and reshape/resize matrix.
   across <- match.arg(across)
   if (length(list(...)) == 0) {
-    matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, 
-           byrow = byrow)
+    x <- matrix(flatten(x, across = across), nrow = nrow, ncol = ncol, 
+                byrow = byrow)
   } else {
     dim(x) <- c(nrow, ncol, unlist(list(...)))
   }
