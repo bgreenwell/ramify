@@ -3,73 +3,74 @@ context("Convenience functions")
 
 test_that("convenience functions work as expected", {
   
-  # One-dimensional arrays should be flat (by default)
-  z <- zeros(10, atleast_2d = FALSE)
-  rn <- randn(10, atleast_2d = FALSE)
-  ru <- rand(10, atleast_2d = FALSE)
-  ri <- randi(imax = 100, 10, atleast_2d = FALSE)
-  expect_that(dim(z), is_null())
-  expect_that(dim(rn), is_null())
-  expect_that(dim(ru), is_null())
-  expect_that(dim(ri), is_null())
+  # argmax/argmin
+  a <- resize(0:5, 2, 3)
+  expect_identical(argmax(a), c(3L, 3L))
+  expect_identical(argmax(a, rows = FALSE), c(2L, 2L, 2L))
+  expect_identical(argmin(a), c(1L, 1L))
+  expect_identical(argmin(a, rows = FALSE), c(1L, 1L, 1L))
   
-  # Two-dimensional arrays should NOT be flat (by default)
-  z2 <- zeros(10, 3)
-  rn2 <- randn(10, 3)
-  ru2 <- rand(10, 3)
-  ri2 <- randi(imax = 100, 10, 3)
-  expect_that(dim(z2), equals(c(10, 3)))
-  expect_that(dim(rn2), equals(c(10, 3)))
-  expect_that(dim(ru2), equals(c(10, 3)))
-  expect_that(dim(ri2), equals(c(10, 3)))
+  # eye
+  d <- eye(3, 3)
+  expect_identical(d, diag(1L, 3, 3))
+  expect_identical(d, inv(d))  # inverse of identity is identity
   
-  # Identity matrix
-  expect_that(eye(3), is_identical_to(diag(3)))
-  expect_that(eye(3, 5), is_identical_to(diag(1, 3, 5)))
-  expect_that(eye(5, 3), is_identical_to(diag(1, 5, 3)))
+  # fill (ones, zeros, trues, falses), rand, randi, randn
+  expect_equal(dim(fill(0L, 10)), c(10, 1))
+  expect_equal(dim(randn(10)), c(10, 1))
+  expect_equal(dim(rand(10)), c(10, 1))
+  expect_equal(dim(randi(imax = 100, 10)), c(10, 1))
+  expect_null(dim(fill(0L, 10, atleast_2d = FALSE)))
+  expect_null(dim(randn(10, atleast_2d = FALSE)))
+  expect_null(dim(rand(10, atleast_2d = FALSE)))
+  expect_null(dim(randi(imax = 100, 10, atleast_2d = FALSE)))
+  expect_that(dim(fill(0L, 2, 2, 2)), equals(c(2, 2, 2)))
+  expect_that(dim(rand(2, 2, 2)), equals(c(2, 2, 2)))
+  expect_that(dim(randi(imax = 100, 2, 2, 2)), equals(c(2, 2, 2)))
+  expect_that(dim(randn(2, 2, 2)), equals(c(2, 2, 2)))
   
-  m1 <- matrix(c(0.1112850, 0.3735504, 0.7667462, 0.2012106), 2, 2)
-  m2 <- matrix(c(0.6049852, 0.2716786), 1, 2)
-  m3 <- matrix(c(0.6049852, 0.2716786), 2, 1)
+  # flatten
+  m1 <- matrix(1:9, 3, 3, byrow = TRUE)
+  m2 <- matrix(1:9, 3, 3, byrow = FALSE)
+  expect_identical(flatten(m1), 1:9)
+  expect_identical(flatten(m1), flatten(m2, across = "columns"))
+  expect_identical(flatten(m2), as.integer(c(1, 4, 7, 2, 5, 8, 3, 6, 9)))
   
-  # Concatenate matrices
-  expect_that(vcat(m1, m2), is_identical_to(rbind(m1, m2)))
-  expect_that(hcat(m1, m3), is_identical_to(cbind(m1, m3)))
+  # inv, tr
+  expect_error(inv(fill(3L, 2, 2)))  # singular matrix
+  expect_identical(inv(2 * eye(3, 3)), 0.5 * eye(3, 3))
+  expect_identical(tr(5 * eye(3, 4)), 15)
   
-  # Flatten a matrix
-  expect_that(flatten(mat("1:3; 4:6; 7:9")), is_identical_to(1:9))
-  expect_that(flatten(mat("1:3; 4:6; 7:9", rows = FALSE), across = "columns"), 
-              is_identical_to(1:9))
+  # hcat, vcat
+  m1 <- randn(2, 3)
+  m2 <- randn(2, 3)
+  expect_identical(hcat(m1, m2), cbind(m1, m2))
+  expect_identical(vcat(m1, m2), rbind(m1, m2))
   
-  # Matrix inverse
-  expect_that(inv(m1), is_identical_to(solve(m1)))
-  expect_that(inv(3 * eye(3)), is_identical_to(eye(3) / 3))
+  # linspace, logspace
   
-  # Arrays
-  a1 <- fill(pi, 2, 2, 2)
-  a2 <- pi * ones(2, 2, 2)
-  a3 <- array(pi, dim = c(2, 2, 2))
+  # meshgrid
+  x <- linspace(0, 1, 3)
+  y <- linspace(0, 1, 2)
+  expect_identical(meshgrid(x, y), list(mat("0, 0.5, 1; 0, 0.5, 1"),
+                                        mat("0, 0,   0; 1, 1,   1")))
+  x <- y <- seq(-5, 5, by = 0.1)
+  mg <- meshgrid(x, y)
+  z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
+  z2 <- outer(x, y, function(x, y) sin(x^2 + y^2) / (x^2 + y^2))
+  expect_identical(z1, z2)
   
-  expect_that(a1, is_identical_to(a2))
-  expect_that(a1, is_identical_to(a3))  
-  expect_that(size(a1), equals(c(2, 2, 2)))  
-  expect_that(size(a2), equals(c(2, 2, 2)))  
+  # resize, size
   
+  # tri, tril, triu, is.tril, is.triu
+
   # Resize a vector into an array
   x <- 1:8
   a <- resize(1:8, 2, 2, 2)
   expect_that(a, is_a("array"))
   expect_that(flatten(a), is_identical_to(x))
   
-  # Meshgrid (equals)
-  x <- linspace(0, 1, 3)
-  y <- linspace(0, 1, 2)
-  mg <- meshgrid(x, y)
-  mx <- mat("0, 0.5, 1; 0, 0.5, 1")
-  my <- mat("0, 0, 0; 1, 1, 1")
-  expect_that(mg[[1]], is_identical_to(mx))
-  expect_that(mg[[2]], is_identical_to(my))
-  
+
   # Meshgrid (identical)
   x <- y <- seq(-5, 5, by = 0.1)
   mg <- meshgrid(x, y)
