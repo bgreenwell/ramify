@@ -35,11 +35,10 @@ The main function in this package is `mat`, an extention to the built-in matrix 
 # ...         ...     ...     ... ...     ...
 # [1000,]  0.4980  0.6902  1.4920 ... -2.7023
 ```
-This can be useful for viewing large data frames too:
+This can be useful for viewing large (numeric) data frames too:
 ```r
 > data(Boston, package = "MASS")  # Boston housing data
-> bos <- data.matrix(Boston)
-> pprint(bos)
+> pprint(Boston)
 # 506 by 14 matrix of doubles 
 # 
 #       crim      zn   indus ...    medv
