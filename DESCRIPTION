@@ -2,15 +2,16 @@ Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
 Version: 0.3.1
-Date: 2015-06-7
+Date: 2015-07-05
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))
 Description: Additional matrix functionality for R including: (1) wrappers
   for the base matrix function that allows matrices to be created from character 
   strings and lists (the former is especially useful for creating block 
-  matrices), (ii) better default printing of large matrices, and (iii) a number 
-  of convenience functions for users more familiar with other scientific 
-  languages like Julia, Matlab/Octave, or Python+NumPy.
+  matrices), (ii) better printing of large matrices via a new generic function
+  for "pretty" printing, and (iii) a number of convenience functions for users 
+  more familiar with other scientific languages like Julia, Matlab/Octave, or 
+  Python+NumPy.
 Depends:
     base,
     stats
