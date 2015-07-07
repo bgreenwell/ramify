@@ -29,3 +29,4 @@ Changes for version 0.3.1
 * Function resize did not work correctly for matrices.
 * Added base and stats packages to Depends.
 * Minor bug fixes.
+* Explicitly import functions from stats package.

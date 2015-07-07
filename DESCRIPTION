@@ -1,8 +1,8 @@
 Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
-Version: 0.3.1
-Date: 2015-07-05
+Version: 0.3.1.9999
+Date: 2015-07-07
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))
 Description: Additional matrix functionality for R including: (1) wrappers
@@ -14,6 +14,7 @@ Description: Additional matrix functionality for R including: (1) wrappers
   Python+NumPy.
 Depends:
     base,
+Imports:
     stats
 Suggests:
     testthat

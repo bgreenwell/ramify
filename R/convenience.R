@@ -279,6 +279,7 @@ meshgrid <- function(x, y = x) {
 #'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
 #' @export
+#' @importFrom stats runif
 #' @examples
 #' rand(100, 100)  # 100 by 100 matrix of uniform random numbers
 #' rand(2, 3, min = 100, max = 200)  
@@ -355,6 +356,7 @@ randi <- function(imax, nrow, ncol = 1, ..., atleast_2d = NULL) {
 #'         matrix, it will have class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
 #' @export
+#' @importFrom stats rnorm
 #' @examples
 #' randn(100, 100)  # 100 by 100 matrix of standard normal random variates
 #' randn(2, 3, mean = 10, sd = 0.1)
