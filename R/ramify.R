@@ -5,7 +5,7 @@
 #' character strings and lists (the former is especially useful for creating 
 #' block matrices), (ii) better default printing of large matrices, and (iii) a 
 #' number of convenience functions for users more familiar with other scientific 
-#' languages like Julia, MATLAB/Octave, or Python.
+#' languages like 'Julia', 'MATLAB'/'Octave', or 'Python'+'NumPy'.
 #' 
 #' The main functions in this package are:
 #'   \itemize{

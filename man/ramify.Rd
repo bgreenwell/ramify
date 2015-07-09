@@ -11,7 +11,7 @@ for the base matrix function that allows matrices to be created from
 character strings and lists (the former is especially useful for creating
 block matrices), (ii) better default printing of large matrices, and (iii) a
 number of convenience functions for users more familiar with other scientific
-languages like Julia, MATLAB/Octave, or Python.
+languages like 'Julia', 'MATLAB'/'Octave', or 'Python'+'NumPy'.
 }
 \details{
 The main functions in this package are:
