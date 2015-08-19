@@ -6,7 +6,7 @@ output:
   rmarkdown::html_vignette: 
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{Introduction to ramify}
+  %\VignetteIndexEntry{introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -49,7 +49,7 @@ The `ramify` package is hosted on GitHub at \url{https://github.com/bgreenwell/r
 install.packages("ramify")  # latest stable release
 ```
 
-To install the development version from GitHub you can use the [`devtools`](https://cran.r-project.org/web/packages/devtools/index.html) package:
+To install the development version from GitHub you can use the [`devtools`](https://cran.r-project.org/package=devtools) package:
 
 ```
 # install.packages("devtools")
@@ -74,7 +74,7 @@ The colon operator can also be used, as in `mat("1:4; 5:8")`.
 
 The character method of `mat` is very simple. First, the character string is split on the semicolons creating character strings representing the row vectors. Second, the resulting character strings are further split on commas. The individual characters are then parsed, evaluated, and fed to `matrix`. 
 
-The first argument to `mat` (and the only one required) should be a character string in which semicolons separate row vectors and commas separate individual elements. However, at the time of this writing, there are two optional arguments: `rows` and `sep`. `rows` accepts a logical indicating whether the semicolon separates rows (`rows = TRUE`) or columns (`rows = FALSE`). The default is `TRUE}. For instance, to create the matrix 
+The first argument to `mat` (and the only one required) should be a character string in which semicolons separate row vectors and commas separate individual elements. However, at the time of this writing, there are two optional arguments: `rows` and `sep`. `rows` accepts a logical indicating whether the semicolon separates rows (`rows = TRUE`) or columns (`rows = FALSE`). The default is `TRUE`. For instance, to create the matrix 
 $$
   \begin{pmatrix} 1 & 5 \\ 2 & 6 \\ 3 & 7 \\ 4 & 8 \end{pmatrix}
 $$
@@ -168,14 +168,7 @@ pprint(m)
 
 produces a $1000 \times 1000$ matrix of normally distributed random numbers, but only the first few rows and columns, along with the last row and column, of the resulting matrix are shown. The dimension and storage mode are also printed above the matrix.
 
-This printing behavior is also useful for viewing large numeric data frames:
-
-```{r}
-data(Boston, package = "MASS")
-pprint(Boston)
-```
-
-`pprint` will convert data frames to a matrix via the base function `data.matrix`. Consequently, logicals and factors will be converted to integers before being printed. For data frames, nicer printing is available via the `"tbl\_df"` class from the popular `dplyr` package.
+This printing behavior is also useful for viewing large numeric data frames. `pprint` will convert data frames to a matrix via the base function `data.matrix`. Consequently, logicals and factors will be converted to integers before being printed. For data frames, nicer printing is available via the [`"tbl_df"`](https://cran.r-project.org/package=dplyr) class from the popular `dplyr` package.
 
 ## Data frames and block matrices
 
@@ -202,7 +195,7 @@ z2 <- list(Joe  = c(Height = 6.2, Weight = 192.2, Gender = 0),
            Pete = c(Height = 6.1, Weight = 201.7, Gender = 0))
 ```
 
-Here, each list element represents an individual record. In order to convert this to a [tidy data frame](https://cran.r-project.org/web/packages/tidyr/index.html) (in a "tidy" data frame, each variable forms a column, and each record forms a row), the necessary code in base R would be 
+Here, each list element represents an individual record. In order to convert this to a [tidy data frame](https://cran.r-project.org/package=tidyr) (in a "tidy" data frame, each variable forms a column, and each record forms a row), the necessary code in base R would be 
 
 ```{r}
 as.data.frame(t(as.data.frame(z2)))
@@ -252,7 +245,7 @@ This function may be familiar to heavy Python+NumPy users since NumPy has a simi
 
 ## Convenience functions
 
-The main functions in this package are `mat`, `dmat`, and `bmat` and can be viewed as an extension to `matrix`; however, a number of convenience functions are also available, most of which are listed in Table~\ref{tab:functions}. Some of these functions appear in other R packages as well. Of particular note are the [`matlab`](https://cran.r-project.org/web/packages/matlab/index.html) and [`pracma`](https://cran.r-project.org/web/packages/pracma/index.html) packages.
+The main functions in this package are `mat`, `dmat`, and `bmat` and can be viewed as an extension to `matrix`; however, a number of convenience functions are also available, most of which are listed in Table~\ref{tab:functions}. Some of these functions appear in other R packages as well. Of particular note are the [`matlab`](https://cran.r-project.org/package=matlab) and [`pracma`](https://cran.r-project.org/package=pracma) packages.
 
 Function(s)                                | Description
 ------------------------------------------ | -----------------------------------
