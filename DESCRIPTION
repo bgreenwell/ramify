@@ -1,8 +1,8 @@
 Package: ramify
 Type: Package
 Title: Additional Matrix Functionality
-Version: 0.3.1.9999
-Date: 2015-07-07
+Version: 0.3.2
+Date: 2015-08-19
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com", 
   role = c("aut", "cre"))
 Description: Additional matrix functionality for R including: (1) wrappers

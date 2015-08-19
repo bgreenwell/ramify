@@ -11,7 +11,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Matrices are a fundamental component of any scientific programming language. In fact, MATLAB, a scientific language used by millions of engineers, is an acronym for MATrix LABoratory. In R, there are several ways to create and manipulate a matrix. However, R's matrix syntax is quite different from most other programming languages --- most of which do share a familiar syntax. In this vignette, we discuss `ramify`, a simple package providing R with additional matrix functionality. The added functions and syntax should make R users who are more familiar with other languages --- such as Julia, MATLAB/Octave, or Python --- feel closer to home.
+Matrices are a fundamental component of any scientific programming language. In fact, MATLAB, a scientific language used by millions of engineers, is an acronym for MATrix LABoratory. In R, there are several ways to create and manipulate a matrix. However, R's matrix syntax is quite different from most other programming languages --- most of which do share a familiar syntax. In this vignette, we discuss `ramify`, a simple package providing R with additional matrix functionality. The added functions and syntax should make R users who are more familiar with other languages --- such as [Julia](http://julialang.org/), [MATLAB](http://www.mathworks.com/products/matlab/)/[GNU Octave](https://www.gnu.org/software/octave/), or [Python](https://www.python.org/) --- feel closer to home.
 
 ## Introduction
 
@@ -314,13 +314,14 @@ $$
 $$
 over the Cartesian grid $\left[-4\pi, 4\pi\right] \times \left[-4\pi, 4\pi\right]$. The resulting plot is created as follows.
 
-```{r, fig.cap='Color image and contour lines for $y$.'}
+```{r, fig.cap='Color image and contour lines for $y$.', fig.width=7, fig.height=5}
 x <- meshgrid(linspace(-4*pi, 4*pi, 27))  # list of input matrices
 y <- cos(x[[1]]^2 + x[[2]]^2) * exp(-sqrt(x[[1]]^2 + x[[2]]^2)/6)
+par(mar = c(0, 0, 0, 0))  # remove margins
 image(y, axes = FALSE)  # color image
 contour(y, add = TRUE, drawlabels = FALSE)  # add contour lines
 ```
 
 ## Summary
 
-Matrices are a fundamental feature of any scientific language. In this paper, I introduced the simple R package `ramify`, which provides additional matrix functionality in R. Using `ramify`, I showed how to craft matrices using: (i) character strings and (ii) lists. A similar construction of block matrices and data frames was also briefly discussed. I also provided a quick summary of a number of convenience functions for easing the transition to R from other popular scientific languages such as Julia, MATLAB/Octave, and Python+NumPy.
+Matrices are a fundamental feature of any scientific language. This vignette introduced the simple R package `ramify`, which provides additional matrix functionality in R. Using `ramify`, I showed how to craft matrices using: (i) character strings and (ii) lists. A similar construction of block matrices and data frames was also briefly discussed. I also provided a quick summary of a number of convenience functions for easing the transition to R from other popular scientific languages such as Julia, MATLAB/Octave, and Python+NumPy.
