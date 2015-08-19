@@ -30,6 +30,24 @@ argmin <- function(x, rows = TRUE) {
 }
 
 
+#' View Input as an Array with at Least Two Dimensions.
+#' 
+#' Ensure that the input has at least two dimensions.
+#' 
+#' @param x An R object, for example a vector, matrix, array, or data frame.
+#' @return The same object, but with a \code{"dim"} attribute.
+#' @export
+#' @examples
+#' x <- 1:10
+#' x
+#' atleast_2d(x)
+atleast_2d <- function(x) {
+  if (is.null(dim(x))) {
+    dim(x) <- c(length(x), 1L)
+  }
+  x
+}
+
 #' Identity Matrix
 #' 
 #' Creates an \code{nrow}-by-\code{ncol} identity matrix.
