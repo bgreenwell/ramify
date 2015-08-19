@@ -12,12 +12,14 @@ Description: Additional matrix functionality for R including: (1) wrappers
   for "pretty" printing, and (iii) a number of convenience functions for users 
   more familiar with other scientific languages like 'Julia', 'Matlab'/'Octave', 
   or 'Python'+'NumPy'.
-Depends:
+Depends: 
     base,
-Imports:
+Imports: 
     stats
-Suggests:
-    testthat
+Suggests: 
+    testthat,
+    knitr
 License: GPL (>= 2)
 URL: https://github.com/bgreenwell/ramify
 BugReports: https://github.com/bgreenwell/ramify/issues
+VignetteBuilder: knitr
