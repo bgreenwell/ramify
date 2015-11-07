@@ -45,6 +45,10 @@ mat.default <- function(x, ...) {
 mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"), 
                           ...) {
   
+  # FIXME: You one strsplit instead of two?
+#   txt <- c("1, 2, 3, 4; 5, 6, 7, 8")
+#   tokens <- strsplit(txt, "[;,']")[[1]]
+  
   ## Gather rows and individual values
   # seps <- paste0("[;", "sep", "]")  # separate all at once
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
