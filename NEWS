@@ -35,3 +35,8 @@ Changes for version 0.3.2
 =========================
 * Added introductory vignette.
 * New function atleast_2d.
+
+Changes for version 0.3.3
+=========================
+* New generic function clip.
+* New function repmat.

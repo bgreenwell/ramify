@@ -57,7 +57,14 @@ atleast_2d <- function(x) {
 #' @param .min .minimum value.
 #' @param .max .maximum value.
 #' @param ... Additional optional arguments.
+#' @return Returns \code{x} with values outside the interval 
+#'   [\code{.min}, \code{.max}] clipped to the interval edges. That is, values 
+#'   in \code{x} smaller than \code{.min} become \code{.min}, and values larger 
+#'   than \code{.max} become \code{.max}.
 #' @export
+#' @examples 
+#' clip(1:10, 3, 8)  # [1] 3 3 3 4 5 6 7 8 8 8
+#' clip(randn(5, 5), .min = -1, .max = 1)
 clip <- function(x, .min, .max, ...) {
   UseMethod("clip")
 }
@@ -437,6 +444,26 @@ randn <- function(nrow = 1, ncol = 1, ..., mean = 0, sd = 1,
     array(rnorm(nrow * ncol * prod(unlist(list(...))), mean = mean, sd = sd), 
           dim = c(nrow, ncol, unlist(list(...))))
   }
+}
+
+
+#' Repeat Vectors and Matrices
+#' 
+#' Repeat a vector or matrix a specific number of times.
+#' 
+#' @param x A vector or matrix.
+#' @param m Integer specifying how many times to repeat \code{x} in the first
+#'   dimension.
+#' @param n Integer specifying how many times to repeat \code{x} in the second
+#'   dimension.
+#' @return A block matrix of dimension \code{m}*\code{nrow(x)} by 
+#'   \code{n}*\code{ncol(x)}.
+#' @export
+#' @examples
+#' repmat(1:3, 3, 2)  # will have dimension 9 by 2
+#' repmat(randn(2, 2), 3, 2)
+repmat <- function(x, m, n) {
+  kronecker(ones(m, n), x)
 }
 
 
