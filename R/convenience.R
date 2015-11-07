@@ -330,6 +330,75 @@ meshgrid <- function(x, y = x) {
 }
 
 
+
+#' Pad Vectors and Matrices
+#' 
+#' Pad a vector or matrix.
+#' 
+#' @param x A vector or matrix object.
+#' @param width Integer specifying the number of values to be padded to the 
+#'   edges of each axis of \code{x}.
+#' @param with Character string specifying what values to use to pad \code{x}. 
+#'   Choices are \code{"constant"}, \code{"edge"}, or \code{"function"}. 
+#'   Default is \code{"constant"}.
+#' @param value Value used to pad \code{x} if \code{with = "constant"}.
+#' @param FUN Function used to pad \code{x} if \code{with = "constant"}.
+#' @param ... Additional optional arguments to be passed onto \code{FUN}.
+#' @return The padded object.
+#' @export
+#' @examples
+#' pad(1:3, value = "a")
+#' pad(c(4, 1, 3, 0), with = "edge", width = 5)
+#' 
+#' most_freq <- function(x) x[which.max(table(x))]
+#' x <- sample(2, size = 5, replace = TRUE)  # random 1s and 2s
+#' print(x)
+#' pad(x, with = "function", FUN = most_freq)
+pad <- function(x, ...) {
+  UseMethod("pad")
+}
+
+
+#' @rdname pad
+#' @method pad default
+#' @export
+pad.default <- function(x, width = 1, with = c("constant", "edge", "function"), 
+                        value, FUN, ...) {
+  
+  pad_with <- match.arg(with)
+  
+  # Pad vector with a constant value
+  if (pad_with == "constant") {
+    res <- c(rep(value, times = width), x, rep(value, times = width))
+  } 
+  
+  # Pad vector with edge values
+  if (pad_with == "edge") {
+    res <- c(rep(x[1], times = width), x, rep(x[length(x)], times = width))
+  }
+  
+  # Pad vector with function output
+  if (pad_with == "function") {
+    pad_fun <- match.fun(FUN)  # extract function
+    pad_val <- pad_fun(x, ...)  # incase function is expensive
+    res <- c(rep(pad_fun(x, ...), times = width), x, 
+             rep(pad_fun(x, ...), times = width))
+  } 
+  
+  # Return padded vector
+  res
+  
+}
+
+
+#' @rdname pad
+#' @method pad matrix
+#' @export
+pad.matrix <- function(x, ...) {
+  stop("Matrix method not yet implemented.")
+}
+
+
 #' Matrix/Array of Uniform Random Numbers
 #' 
 #' Construct a matrix or multi-way array of uniform random deviates.
