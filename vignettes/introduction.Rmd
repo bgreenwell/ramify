@@ -234,11 +234,11 @@ A <- rbind(cbind(A1, A2), A3)
 
 This can become rather complicated depending on the structure of the blocks. Specifying the matrices via character strings is more natural and greatly simplifies the task:
 
-```{r}
-# A1 <- mat("1, 2; 5, 6")
-# A2 <- mat("3, 4; 7, 8")
-# A3 <- mat("9, 10, 11, 12")
-# A <- bmat("A1, A2; A3")
+```{r, eval=FALSE}
+A1 <- mat("1, 2; 5, 6")
+A2 <- mat("3, 4; 7, 8")
+A3 <- mat("9, 10, 11, 12")
+A <- bmat("A1, A2; A3")
 ```
 
 This function may be familiar to heavy Python+NumPy users since NumPy has a similar function also called `bmat`. See, for example, http://docs.scipy.org/doc/numpy/reference/generated/numpy.bmat.html#numpy.bmat.

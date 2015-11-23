@@ -24,10 +24,10 @@ test_that("convenience functions work as expected", {
   expect_null(dim(randn(10, atleast_2d = FALSE)))
   expect_null(dim(rand(10, atleast_2d = FALSE)))
   expect_null(dim(randi(imax = 100, 10, atleast_2d = FALSE)))
-  expect_that(dim(fill(0L, 2, 2, 2)), equals(c(2, 2, 2)))
-  expect_that(dim(rand(2, 2, 2)), equals(c(2, 2, 2)))
-  expect_that(dim(randi(imax = 100, 2, 2, 2)), equals(c(2, 2, 2)))
-  expect_that(dim(randn(2, 2, 2)), equals(c(2, 2, 2)))
+  expect_equal(dim(fill(0L, 2, 2, 2)), c(2, 2, 2))
+  expect_equal(dim(rand(2, 2, 2)), c(2, 2, 2))
+  expect_equal(dim(randi(imax = 100, 2, 2, 2)),c(2, 2, 2))
+  expect_equal(dim(randn(2, 2, 2)), c(2, 2, 2))
   
   # flatten
   m1 <- matrix(1:9, 3, 3, byrow = TRUE)
@@ -60,6 +60,11 @@ test_that("convenience functions work as expected", {
   z2 <- outer(x, y, function(x, y) sin(x^2 + y^2) / (x^2 + y^2))
   expect_identical(z1, z2)
   
+  # pad
+  m1 <- mat("1, 2; 3, 4")
+  m2 <- mat("0, 0, 0, 0; 0, 1, 2, 0; 0, 3, 4, 0; 0, 0, 0, 0")
+  expect_identical(pad(m1), m2)
+  
   # resize, size
   
   # tri, tril, triu, is.tril, is.triu
@@ -67,8 +72,8 @@ test_that("convenience functions work as expected", {
   # Resize a vector into an array
   x <- 1:8
   a <- resize(1:8, 2, 2, 2)
-  expect_that(a, is_a("array"))
-  expect_that(flatten(a), is_identical_to(x))
+  expect_is(a, "array")
+  expect_identical(flatten(a), x)
   
 
   # Meshgrid (identical)
@@ -76,7 +81,7 @@ test_that("convenience functions work as expected", {
   mg <- meshgrid(x, y)
   z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
   z2 <- outer(x, y, function(x, y) sin(x^2 + y^2) / (x^2 + y^2))
-  expect_that(z1, is_identical_to(z2))
+  expect_identical(z1, z2)
   
   # Triangular matrices
   m1 <- mat("1, 1, 1, 0, 0; 
@@ -85,9 +90,9 @@ test_that("convenience functions work as expected", {
   m2 <- mat("0, 0, 0, 0, 0; 
              1, 0, 0, 0, 0; 
              1, 1, 0, 0, 0")
-  expect_that(tri(3, 5, k = 2), equals(m1, check.attributes = FALSE))
-  expect_that(tri(3, 5, k = -1), equals(m2, check.attributes = FALSE))                       
-  expect_that(tri(3, 5, diag = FALSE), equals(m2, check.attributes = FALSE))
+  expect_equal(tri(3, 5, k = 2), m1, check.attributes = FALSE)
+  expect_equal(tri(3, 5, k = -1), m2, check.attributes = FALSE)                     
+  expect_equal(tri(3, 5, diag = FALSE), m2, check.attributes = FALSE)
   
   m3 <- matrix(1:12, nrow = 4, ncol = 3, byrow = TRUE)
   m4 <- mat(" 0,  0,  0; 

@@ -8,10 +8,11 @@
 \usage{
 pad(x, ...)
 
-\method{pad}{default}(x, width = 1, with = c("constant", "edge",
+\method{pad}{default}(x, width = 1, padding = c("constant", "edge",
   "function"), value, FUN, ...)
 
-\method{pad}{matrix}(x, ...)
+\method{pad}{matrix}(x, padding = "constant", constant = 0, width = 1,
+  ...)
 }
 \arguments{
 \item{x}{A vector or matrix object.}
@@ -21,13 +22,13 @@ pad(x, ...)
 \item{width}{Integer specifying the number of values to be padded to the
 edges of each axis of \code{x}.}
 
-\item{with}{Character string specifying what values to use to pad \code{x}.
-Choices are \code{"constant"}, \code{"edge"}, or \code{"function"}.
-Default is \code{"constant"}.}
-
 \item{value}{Value used to pad \code{x} if \code{with = "constant"}.}
 
 \item{FUN}{Function used to pad \code{x} if \code{with = "constant"}.}
+
+\item{with}{Character string specifying what values to use to pad \code{x}.
+Choices are \code{"constant"}, \code{"edge"}, or \code{"function"}.
+Default is \code{"constant"}.}
 }
 \value{
 The padded object.
@@ -43,5 +44,8 @@ most_freq <- function(x) x[which.max(table(x))]
 x <- sample(2, size = 5, replace = TRUE)  # random 1s and 2s
 print(x)
 pad(x, with = "function", FUN = most_freq)
+m <- randn(10, 10)
+image(m)
+image(pad(m, width = 10))
 }
 

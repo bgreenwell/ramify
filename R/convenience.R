@@ -362,7 +362,8 @@ pad <- function(x, ...) {
 #' @rdname pad
 #' @method pad default
 #' @export
-pad.default <- function(x, width = 1, with = c("constant", "edge", "function"), 
+pad.default <- function(x, width = 1, 
+                        padding = c("constant", "edge", "function"), 
                         value, FUN, ...) {
   
   pad_with <- match.arg(with)
@@ -394,8 +395,28 @@ pad.default <- function(x, width = 1, with = c("constant", "edge", "function"),
 #' @rdname pad
 #' @method pad matrix
 #' @export
-pad.matrix <- function(x, ...) {
-  stop("Matrix method not yet implemented.")
+#' @examples
+#' m <- randn(10, 10)
+#' image(m)
+#' image(pad(m, width = 10))
+pad.matrix <- function(x, padding = "constant", constant = 0, width = 1, ...) {
+  
+  # By default, gives a matrix with width 0s of padding on every side.
+  
+  # Type of padding to be given
+  padding <- match.arg(padding)
+  
+  # Add constant on every side
+  if (padding == "constant") {
+    for (i in seq_len(width)) {
+      x <- rbind(constant, cbind(constant, x, constant), constant)
+    }
+    dimnames(x) <- NULL
+  }
+
+  # Return padded matrix
+  x
+    
 }
 
 
