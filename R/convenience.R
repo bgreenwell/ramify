@@ -366,20 +366,20 @@ pad.default <- function(x, width = 1,
                         padding = c("constant", "edge", "function"), 
                         value, FUN, ...) {
   
-  pad_with <- match.arg(with)
+  padding <- match.arg(padding)
   
   # Pad vector with a constant value
-  if (pad_with == "constant") {
+  if (padding == "constant") {
     res <- c(rep(value, times = width), x, rep(value, times = width))
   } 
   
   # Pad vector with edge values
-  if (pad_with == "edge") {
+  if (padding == "edge") {
     res <- c(rep(x[1], times = width), x, rep(x[length(x)], times = width))
   }
   
   # Pad vector with function output
-  if (pad_with == "function") {
+  if (padding == "function") {
     pad_fun <- match.fun(FUN)  # extract function
     pad_val <- pad_fun(x, ...)  # incase function is expensive
     res <- c(rep(pad_fun(x, ...), times = width), x, 
