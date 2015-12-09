@@ -348,7 +348,7 @@ meshgrid <- function(x, y = x) {
 #' @export
 #' @examples
 #' pad(1:3, value = "a")
-#' pad(c(4, 1, 3, 0), with = "edge", width = 5)
+#' pad(c(4, 1, 3, 0), padding = "edge", width = 5)
 #' 
 #' most_freq <- function(x) x[which.max(table(x))]
 #' x <- sample(2, size = 5, replace = TRUE)  # random 1s and 2s
