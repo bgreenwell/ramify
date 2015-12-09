@@ -1,6 +1,7 @@
 ramify
 ================================================================================
 
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ramify)](http://cran.r-project.org/package=ramify)
 [![Build Status](https://travis-ci.org/bgreenwell/ramify.svg?branch=master)](https://travis-ci.org/bgreenwell/ramify)
 [![Coverage Status](https://img.shields.io/codecov/c/github/bgreenwell/ramify.svg)](https://codecov.io/github/bgreenwell/ramify?branch=master)
 [![Downloads](http://cranlogs.r-pkg.org/badges/ramify)](http://cranlogs.r-pkg.org/badges/ramify)
