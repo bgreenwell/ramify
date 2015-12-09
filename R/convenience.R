@@ -353,7 +353,7 @@ meshgrid <- function(x, y = x) {
 #' most_freq <- function(x) x[which.max(table(x))]
 #' x <- sample(2, size = 5, replace = TRUE)  # random 1s and 2s
 #' print(x)
-#' pad(x, with = "function", FUN = most_freq)
+#' pad(x, padding = "function", FUN = most_freq)
 pad <- function(x, ...) {
   UseMethod("pad")
 }
