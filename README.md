@@ -3,6 +3,8 @@ ramify
 
 [![Build Status](https://travis-ci.org/bgreenwell/ramify.svg?branch=master)](https://travis-ci.org/bgreenwell/ramify)
 [![Coverage Status](https://img.shields.io/codecov/c/github/bgreenwell/ramify.svg)](https://codecov.io/github/bgreenwell/ramify?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/ramify)](http://cranlogs.r-pkg.org/badges/ramify)
+[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ramify)](http://cranlogs.r-pkg.org/badges/grand-total/ramify)
 
 Package `ramify` provides `a`dditional `m`atr`i`x `f`unctionalit`y` for R including: (1) wrappers for the base matrix function that allows matrices to be created from character strings and lists (the former is especially useful for creating block  matrices), (ii) better default printing of large matrices, and (iii) a number of convenience functions for users more familiar with other scientific languages like Julia, MATLAB/Octave, or Python.
 
