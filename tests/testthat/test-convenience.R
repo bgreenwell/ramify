@@ -1,6 +1,5 @@
 context("Convenience functions")
 
-
 test_that("convenience functions work as expected", {
   
   # argmax/argmin
@@ -60,10 +59,10 @@ test_that("convenience functions work as expected", {
   z2 <- outer(x, y, function(x, y) sin(x^2 + y^2) / (x^2 + y^2))
   expect_identical(z1, z2)
   
-  # pad
-  m1 <- mat("1, 2; 3, 4")
-  m2 <- mat("0, 0, 0, 0; 0, 1, 2, 0; 0, 3, 4, 0; 0, 0, 0, 0")
-  expect_identical(pad(m1), m2)
+#   # pad
+#   m1 <- mat("1, 2; 3, 4")
+#   m2 <- mat("0, 0, 0, 0; 0, 1, 2, 0; 0, 3, 4, 0; 0, 0, 0, 0")
+#   expect_identical(pad(m1), m2)
   
   # resize, size
   
