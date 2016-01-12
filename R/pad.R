@@ -276,7 +276,7 @@ pad <- function(x, padding = c("constant", "edge", "mean"), pad_width = 1,
       padx <- prepend_mean(x, pad_amt = pad_width, stat_depth = stat_depth, na.rm = na.rm)
       
       # Pad right
-      padx <- append_mean(padx, pad_amt = pad_width, stat_depth = stat_depth - padwidth, na.rm = na.rm)
+      padx <- append_mean(padx, pad_amt = pad_width, stat_depth = stat_depth - pad_width, na.rm = na.rm)
       
       # Pad all four sides of matrix
     } else {
