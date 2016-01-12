@@ -52,15 +52,34 @@ pprint.matrix <- function(x, rowdots = NULL, coldots = NULL, digits = NULL,
     colnames(x)
   }
   
+#   # Convert to character matrix (after rounding, if appropriate)
+#   charx <- if (typeof(x) == "character") {
+#     x
+#   } else if (typeof(x) %in% c("integer", "logical")) {
+#     as.character(x)
+#   } else {
+#     sprintf(paste0("%.", digits, "f"), x)
+#   }
+#   dim(charx) <- dim(x)
+  
+  # Much faster!
+  
+  # Omit all values that will not be printed. This will significantly speed up 
+  # the code for larger matrices
+  x2 <- rbind(cbind(x[1:rowdots, 1:coldots, drop = FALSE], 
+                    x[1:rowdots, ncol(x), drop = FALSE]), 
+              cbind(x[nrow(x), 1:coldots, drop = FALSE], 
+                    x[nrow(x), ncol(x), drop = FALSE]))
+
   # Convert to character matrix (after rounding, if appropriate)
-  charx <- if (typeof(x) == "character") {
-    x
-  } else if (typeof(x) %in% c("integer", "logical")) {
-    as.character(x)
+  charx <- if (typeof(x2) == "character") {
+    x2
+  } else if (typeof(x2) %in% c("integer", "logical")) {
+    as.character(x2)
   } else {
-    sprintf(paste0("%.", digits, "f"), x)
+    sprintf(paste0("%.", digits, "f"), x2)
   }
-  dim(charx) <- dim(x)
+  dim(charx) <- dim(x2)
   
   # Case 1: rows and columns do not have dots
   if (nrow(x) <= rowdots + 1 && ncol(x) <= coldots + 1) {
