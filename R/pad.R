@@ -140,16 +140,16 @@ append_mean <- function(x, pad_amt, stat_depth, rows = TRUE, na.rm = FALSE) {
     if (stat_depth > dim(x)[1L]) {
       stat_depth <- dim(x)[1L]
     }
-    mean_slice <- apply(x[(dim(x)[1L] - stat_depth + 1):dim(x)[1L], , drop = FALSE], 
-                        MARGIN = 2, FUN = mean, na.rm = na.rm)
+    mean_slice <- apply(x[(dim(x)[1L] - stat_depth + 1):dim(x)[1L], , 
+                          drop = FALSE], MARGIN = 2, FUN = mean, na.rm = na.rm)
     rbind(reprow(mean_slice, pad_amt), x)
     
   } else {
     if (stat_depth < dim(x)[2L]) {
       stat_depth <- dim(x)[2L]
     }
-    mean_slice <- apply(x[, (dim(x)[2L] - stat_depth + 1):dim(x)[2L], drop = FALSE],
-                        MARGIN = 1, FUN = mean, na.rm = na.rm)
+    mean_slice <- apply(x[, (dim(x)[2L] - stat_depth + 1):dim(x)[2L], 
+                          drop = FALSE], MARGIN = 1, FUN = mean, na.rm = na.rm)
     cbind(repcol(mean_slice, pad_amt), x)
   }
   
@@ -273,10 +273,12 @@ pad <- function(x, padding = c("constant", "edge", "mean"), pad_width = 1,
     if (is.null(dim(x))) {
       
       # Pad left
-      padx <- prepend_mean(x, pad_amt = pad_width, stat_depth = stat_depth, na.rm = na.rm)
+      padx <- prepend_mean(x, pad_amt = pad_width, stat_depth = stat_depth, 
+                           na.rm = na.rm)
       
       # Pad right
-      padx <- append_mean(padx, pad_amt = pad_width, stat_depth = stat_depth - pad_width, na.rm = na.rm)
+      padx <- append_mean(padx, pad_amt = pad_width, 
+                          stat_depth = stat_depth - pad_width, na.rm = na.rm)
       
       # Pad all four sides of matrix
     } else {
@@ -284,19 +286,23 @@ pad <- function(x, padding = c("constant", "edge", "mean"), pad_width = 1,
       # Pad matrix in a clockwise fashion starting from noon!
       
       # Pad top
-      padx <- prepend_mean(x, pad_amt = pad_width, stat_depth = stat_depth, rows = TRUE, 
+      padx <- prepend_mean(x, pad_amt = pad_width, stat_depth = stat_depth, 
+                           rows = TRUE, 
                            na.rm = na.rm)
       
       # Pad right
-      padx <- append_mean(padx, pad_amt = pad_width, stat_depth = stat_depth, rows = FALSE, 
+      padx <- append_mean(padx, pad_amt = pad_width, 
+                          stat_depth = stat_depth, rows = FALSE, 
                           na.rm = na.rm)
       
       # Pad bottom
-      padx <- append_mean(padx, pad_amt = pad_width, stat_depth = stat_depth - pad_width, rows = TRUE, 
+      padx <- append_mean(padx, pad_amt = pad_width, 
+                          stat_depth = stat_depth - pad_width, rows = TRUE, 
                           na.rm = na.rm)
       
       # Pad left
-      padx <- prepend_mean(padx, pad_amt = pad_width, stat_depth = stat_depth - pad_width, rows = FALSE, 
+      padx <- prepend_mean(padx, pad_amt = pad_width, 
+                           stat_depth = stat_depth - pad_width, rows = FALSE, 
                            na.rm = na.rm)
       
     }
