@@ -40,3 +40,4 @@ Changes for version 0.3.3
 =========================
 * New functions clip, repmat, and pad (experimental).
 * pprint is now much faster for large matrices and data frames.
+* mat.character is now a few times faster for numeric matrices.

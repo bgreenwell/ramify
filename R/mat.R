@@ -48,11 +48,21 @@ mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"),
   # Gather rows and individual values
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
   char_vals <- if (!is.null(sep)) {
-    unname(unlist(lapply(vecs, strsplit, split = sep)))
+    trimws(unname(unlist(lapply(trimws(vecs), strsplit, split = sep))))
   } else {
     vecs
   }
-  num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
+  
+  # Conver to numeric
+  if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {
+    # vals <- unlist(lapply(vals, function(x) eval(parse(text = x))))
+    num_vals <- as.numeric(char_vals)  # much faster!
+  } else {
+    num_vals <- eval(parse(text = paste0("c(", 
+                                         paste0(char_vals, collapse = ","), 
+                                         ")")))
+  }
+  # num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
   
   # Form matrix from parsed values by calling R's built-in matrix function
   if (rows) {
