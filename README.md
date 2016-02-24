@@ -7,7 +7,7 @@ ramify
 [![Downloads](http://cranlogs.r-pkg.org/badges/ramify)](http://cranlogs.r-pkg.org/badges/ramify)
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ramify)](http://cranlogs.r-pkg.org/badges/grand-total/ramify)
 
-Package `ramify` provides additional matrix functionality and tools including: (1) wrappers for the base matrix function that allow matrices to be created from character strings and lists (the former is especially useful for creating block matrices), (ii) the generic "pretty print" function `pprint` for printing large matrices to the screen or console, and (iii) a number of convenience functions for users more familiar with other scientific languages like Julia, MATLAB/Octave, or Python+NumPy.
+Package `ramify` provides additional matrix functionality and tools including: (1) wrappers for the base matrix function that allow matrices to be created from character strings and lists (the former is especially useful for creating block matrices), (2) the generic "pretty print" function `pprint` for printing large matrices to the screen or console, and (3) a number of convenience functions for users more familiar with other scientific languages like Julia, MATLAB/Octave, or Python+NumPy.
 
 ## Installation
 You can install the latest stable release from CRAN:
