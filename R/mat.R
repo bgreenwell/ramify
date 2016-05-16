@@ -5,11 +5,14 @@
 #' or a list of vectors.
 #' 
 #' @param x A data vector, character string, or a list.
-#' @param rows Logical. If TRUE (the default) the matrix is filled by rows, 
+#' @param rows Logical. If \code{TRUE} (the default) the matrix is filled by rows, 
 #'             otherwise the matrix is filled by columns.
 #' @param sep Separator string. Values within each row/column of x are 
 #'            separated by this string. Default is \code{","}.
-#' @param ... Aditional optional arguments.
+#' @param eval Logical indicating whether or not the character string contains R 
+#'   expressions that need to be evaluated. Default is \code{FALSE}. See examples 
+#'   below for usage.
+#' @param ... Aditional optional arguments to be passed on to \code{matrix}.
 #' @return A matrix of class \code{c("matrix", "mat")}.
 #' @seealso \code{\link{bmat}}, \code{\link{dmat}}, \code{\link{matrix}}.
 #' @export
@@ -19,6 +22,12 @@
 #' mat("1, 2, 3, 4; 5, 6, 7, 8", rows = FALSE)  # ";" separates columns
 #' mat("1 2 3 4; 5 6 7 8", sep = "")  # use spaces instead of commas
 #' mat(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)  # works like matrix too
+#'
+#' # Character strings containing R expressions
+#' mat("rnorm(3); rnorm(3)")
+#' mat("rnorm(3); rnorm(3)", eval = TRUE)
+#' matc("1, 2, 3; 4, 5, pi")
+#' matc("1, 2, 3; 4, 5, pi", eval = TRUE)
 #'
 #' # Creating a matrix from a list
 #' z1 <- list(1:5, 6:10)
@@ -42,7 +51,7 @@ mat.default <- function(x, ...) {
 #' @rdname mat
 #' @method mat character
 #' @export
-mat.character <- function(x, rows = TRUE, sep = ",", expressions = FALSE, ...) {
+mat.character <- function(x, rows = TRUE, sep = ",", eval = FALSE, ...) {
 
   # Gather rows and individual values
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
@@ -53,7 +62,7 @@ mat.character <- function(x, rows = TRUE, sep = ",", expressions = FALSE, ...) {
   }
 
   # Extract matrix values
-  vals <- if (expressions) {
+  vals <- if (eval) {
     eval(parse(text = paste0("c(", paste0(char_vals, collapse = ","), ")")))
   } else {
     if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {  # convert to numeric
