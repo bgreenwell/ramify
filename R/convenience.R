@@ -74,26 +74,7 @@ clip <- function(x, .min, .max, ...) {
 #' @method clip default
 #' @export
 clip.default <- function(x, .min, .max, ...) {
-  if (!missing(.min)) x[x < .min] <- .min
-  if (!missing(.max)) x[x > .max] <- .max
-  x
-}
-
-
-#' @rdname clip
-#' @method clip matrix
-#' @export
-clip.matrix <- function(x, .min, .max, ...) {
-  if (!missing(.min)) x[x < .min] <- .min
-  if (!missing(.max)) x[x > .max] <- .max
-  x
-}
-
-
-#' @rdname clip
-#' @method clip array
-#' @export
-clip.array <- function(x, .min, .max, ...) {
+  # Default should work for matrices and arrays
   if (!missing(.min)) x[x < .min] <- .min
   if (!missing(.max)) x[x > .max] <- .max
   x
