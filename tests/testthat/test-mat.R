@@ -1,6 +1,9 @@
 context("Basic functionality")
 
 
+################################################################################
+# Character method
+################################################################################
 test_that("character method functions as expected", {
   
   # Three versions of the same matrix
@@ -16,14 +19,22 @@ test_that("character method functions as expected", {
 })
 
 
+################################################################################
+# List method
+################################################################################
 test_that("list method functions as expected", {
   
+  # Example list
   z <- list(a = 1:10, b = 1:10, c = 1:10)
+  
+  # Convert to matrix using various approaches
   m1 <- mat(z)
   m2 <- mat(z, rows = FALSE)
   m3 <- matrix(unlist(z), nrow = 3, byrow = TRUE)
   m4 <- do.call(rbind, z)
   m5 <- simplify2array(z)
+  
+  # Expectations
   expect_identical(rownames(m1), names(z))  # check names
   expect_identical(colnames(m2), names(z))  # check names
   expect_identical(m1, t(m2))
@@ -34,13 +45,23 @@ test_that("list method functions as expected", {
 })
 
 
+################################################################################
+# Data frames
+################################################################################
 test_that("dmat functions as expected", {
   
+  # Example list
   z <- list(a = 1:10, b = 1:10, c = 1:10)
+  
+  # Convert to data frame
   d1 <- dmat(z)
   d2 <- dmat(z, rows = FALSE)
+  
+  # Convert to matrix
   m1 <- mat(z)
   m2 <- mat(z, rows = FALSE)
+  
+  # Expectations
   expect_identical(d1, as.data.frame(m1))
   expect_identical(d2, as.data.frame(m2))
   expect_identical(m1, t(m2))
