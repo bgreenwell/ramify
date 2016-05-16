@@ -1,14 +1,3 @@
-# For original version of pprint
-#
-# add_dots <- function(x, pos = 3) {
-#   if (length(x) >= pos + 2) {
-#     c(x[seq_len(pos-1)], "...", x[length(x)])
-#   } else {
-#     x
-#   }
-# }
-
-
 add_dots <- function(x, pos = 3) {
   if (length(x) > pos) {
     c(x[seq_len(pos-1)], "...", x[length(x)])
