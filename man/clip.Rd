@@ -2,18 +2,12 @@
 % Please edit documentation in R/convenience.R
 \name{clip}
 \alias{clip}
-\alias{clip.array}
 \alias{clip.default}
-\alias{clip.matrix}
 \title{Clip Values}
 \usage{
 clip(x, .min, .max, ...)
 
 \method{clip}{default}(x, .min, .max, ...)
-
-\method{clip}{matrix}(x, .min, .max, ...)
-
-\method{clip}{array}(x, .min, .max, ...)
 }
 \arguments{
 \item{x}{A vector, matrix, or multi-way array.}
