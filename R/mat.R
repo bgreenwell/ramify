@@ -42,9 +42,8 @@ mat.default <- function(x, ...) {
 #' @rdname mat
 #' @method mat character
 #' @export
-mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"), 
-                          ...) {
-  
+mat.character <- function(x, rows = TRUE, sep = ",", expressions = FALSE, ...) {
+
   # Gather rows and individual values
   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
   char_vals <- if (!is.null(sep)) {
@@ -52,26 +51,56 @@ mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"),
   } else {
     vecs
   }
-  
-  # Conver to numeric
-  if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {
-    # vals <- unlist(lapply(vals, function(x) eval(parse(text = x))))
-    num_vals <- as.numeric(char_vals)  # much faster!
+
+  # Extract matrix values
+  vals <- if (expressions) {
+    eval(parse(text = paste0("c(", paste0(char_vals, collapse = ","), ")")))
   } else {
-    num_vals <- eval(parse(text = paste0("c(", 
-                                         paste0(char_vals, collapse = ","), 
-                                         ")")))
+    if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {  # convert to numeric
+      as.numeric(char_vals)  # much faster!
+    } else {  # keep as character
+      char_vals
+    }
   }
-  # num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
-  
+
   # Form matrix from parsed values by calling R's built-in matrix function
   if (rows) {
-    matrix(num_vals, nrow = length(vecs), byrow = TRUE, ...)
+    matrix(vals, nrow = length(vecs), byrow = TRUE, ...)
   } else {
-    matrix(num_vals, ncol = length(vecs), byrow = FALSE, ...)
+    matrix(vals, ncol = length(vecs), byrow = FALSE, ...)
   }
-  
+
 }
+# mat.character <- function(x, rows = TRUE, sep = getOption("mat.sep"), 
+#                           ...) {
+#   
+#   # Gather rows and individual values
+#   vecs <- unlist(strsplit(x, split = ";"))  # column/row vectors
+#   char_vals <- if (!is.null(sep)) {
+#     trimws(unname(unlist(lapply(trimws(vecs), strsplit, split = sep))))
+#   } else {
+#     vecs
+#   }
+#   
+#   # Conver to numeric
+#   if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {
+#     # vals <- unlist(lapply(vals, function(x) eval(parse(text = x))))
+#     num_vals <- as.numeric(char_vals)  # much faster!
+#   } else {
+#     num_vals <- eval(parse(text = paste0("c(", 
+#                                          paste0(char_vals, collapse = ","), 
+#                                          ")")))
+#   }
+#   # num_vals <- unlist(lapply(char_vals, function(x) eval(parse(text = x))))
+#   
+#   # Form matrix from parsed values by calling R's built-in matrix function
+#   if (rows) {
+#     matrix(num_vals, nrow = length(vecs), byrow = TRUE, ...)
+#   } else {
+#     matrix(num_vals, ncol = length(vecs), byrow = FALSE, ...)
+#   }
+#   
+# }
 
 
 #' @rdname mat
