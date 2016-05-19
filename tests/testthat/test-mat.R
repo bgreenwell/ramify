@@ -44,6 +44,7 @@ test_that("list method functions as expected", {
   expect_identical(m1, m4)
   expect_identical(m2, m5)
   expect_equal(m1, m3, check.attributes = FALSE)
+  expect_error(mat(list(a = c("a", "b", "c"), b = 1:3)))
   
 })
 
