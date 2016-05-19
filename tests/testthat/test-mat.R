@@ -9,13 +9,16 @@ test_that("character method functions as expected", {
   # Three versions of the same matrix
   m1 <- mat("1.5, 2.0, pi; 4, 5, 6; 7, 8, 9", eval = TRUE)
   m2 <- mat("3/2 2.0 pi  ; 4 5 6;    7:9 ", sep = " ", eval = TRUE)
-  m3 <- matrix(c(1.5, 2, pi, 4:9), nrow = 3, byrow = TRUE)
+  m3 <- mat(c(1.5, 2, pi, 4:9), nrow = 3, byrow = TRUE)
+  m4 <- matrix(c(1.5, 2, pi, 4:9), nrow = 3, byrow = TRUE)
+  tm1 <- mat("1.5, 2.0, pi; 4, 5, 6; 7, 8, 9", eval = TRUE, rows = FALSE)
   
   # Expectations
   expect_identical(m1, m2)
   expect_identical(m1, m3)
-  expect_identical(m2, m3)
-  
+  expect_identical(m1, m4)
+  expect_identical(t(m1), tm1)
+
 })
 
 
