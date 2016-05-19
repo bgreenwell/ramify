@@ -65,6 +65,10 @@ test_that("convenience functions work as expected", {
   expect_identical(vcat(m1, m2), rbind(m1, m2))
   
   # linspace, logspace
+  x <- linspace(1, 10, 20)
+  y <- logspace(1, 10, 20)
+  expect_identical(x, seq(from = 1, to = 10, length.out = 20))
+  expect_identical(y, 10^x)
   
   # meshgrid
   x <- linspace(0, 1, 3)
