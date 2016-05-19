@@ -13,6 +13,11 @@ test_that("convenience functions work as expected", {
   expect_identical(dim(atleast_2d(1:5)), c(5L, 1L))
   expect_identical(dim(atleast_2d(a)), c(2L, 3L))
 
+  # clip
+  x <- 1:9
+  expect_identical(clip(x, 3, 7), c(3, 3, 3, 4, 5, 6, 7, 7, 7))
+  expect_identical(clip(matrix(x, nrow = 3, ncol = 3), 3, 7), cbind(3, 4:6, 7))
+
   # eye
   d <- eye(3, 3)
   expect_identical(d, diag(1L, 3, 3))
