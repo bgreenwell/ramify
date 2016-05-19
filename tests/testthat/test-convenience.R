@@ -37,6 +37,15 @@ test_that("convenience functions work as expected", {
   expect_equal(dim(randi(imax = 100, 2, 2, 2)),c(2, 2, 2))
   expect_equal(dim(randn(2, 2, 2)), c(2, 2, 2))
   
+  # falses, trues, ones, and zeros
+  expect_identical(falses(10), atleast_2d(rep(FALSE, 10)))
+  expect_identical(trues(10), atleast_2d(rep(TRUE, 10)))
+  expect_identical(trues(10), !atleast_2d(rep(FALSE, 10)))
+  expect_identical(trues(10), atleast_2d(!rep(FALSE, 10)))
+  expect_identical(trues(10), atleast_2d(rep(!FALSE, 10)))
+  expect_identical(ones(10), atleast_2d(rep(1L, 10)))
+  expect_identical(zeros(10), atleast_2d(rep(0L, 10)))
+
   # flatten
   m1 <- matrix(1:9, 3, 3, byrow = TRUE)
   m2 <- matrix(1:9, 3, 3, byrow = FALSE)
