@@ -9,6 +9,10 @@ test_that("convenience functions work as expected", {
   expect_identical(argmin(a), c(1L, 1L))
   expect_identical(argmin(a, rows = FALSE), c(1L, 1L, 1L))
   
+  # atleast_2d
+  expect_identical(dim(atleast_2d(1:5)), c(5L, 1L))
+  expect_identical(dim(atleast_2d(a)), c(2L, 3L))
+
   # eye
   d <- eye(3, 3)
   expect_identical(d, diag(1L, 3, 3))
