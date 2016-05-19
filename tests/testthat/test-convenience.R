@@ -85,10 +85,10 @@ test_that("convenience functions work as expected", {
   expect_equal(dim(randi(imax = 100, 10)), c(10, 1))
   expect_error(randi(imax = -100, 10))
   
-#   # pad
-#   m1 <- mat("1, 2; 3, 4")
-#   m2 <- mat("0, 0, 0, 0; 0, 1, 2, 0; 0, 3, 4, 0; 0, 0, 0, 0")
-#   expect_identical(pad(m1), m2)
+  # repmat
+  m1 <- mat("1, 2; 3, 4")
+  m2 <- mat("1, 2, 1, 2; 3, 4, 3, 4; 1, 2, 1, 2; 3, 4, 3, 4")
+  expect_identical(repmat(m1, 2, 2), m2)
   
   # resize, size
   
