@@ -23,19 +23,11 @@ test_that("convenience functions work as expected", {
   expect_identical(d, diag(1L, 3, 3))
   expect_identical(d, inv(d))  # inverse of identity is identity
   
-  # fill (ones, zeros, trues, falses), rand, randi, randn
+  # fill rand, randi, randn
   expect_equal(dim(fill(0L, 10)), c(10, 1))
-  expect_equal(dim(randn(10)), c(10, 1))
-  expect_equal(dim(rand(10)), c(10, 1))
-  expect_equal(dim(randi(imax = 100, 10)), c(10, 1))
   expect_null(dim(fill(0L, 10, atleast_2d = FALSE)))
-  expect_null(dim(randn(10, atleast_2d = FALSE)))
-  expect_null(dim(rand(10, atleast_2d = FALSE)))
-  expect_null(dim(randi(imax = 100, 10, atleast_2d = FALSE)))
   expect_equal(dim(fill(0L, 2, 2, 2)), c(2, 2, 2))
-  expect_equal(dim(rand(2, 2, 2)), c(2, 2, 2))
-  expect_equal(dim(randi(imax = 100, 2, 2, 2)),c(2, 2, 2))
-  expect_equal(dim(randn(2, 2, 2)), c(2, 2, 2))
+
   
   # falses, trues, ones, and zeros
   expect_identical(falses(10), atleast_2d(rep(FALSE, 10)))
@@ -80,6 +72,18 @@ test_that("convenience functions work as expected", {
   z1 <- sin(mg[[1]]^2 + mg[[2]]^2) / (mg[[1]]^2 + mg[[2]]^2)
   z2 <- outer(x, y, function(x, y) sin(x^2 + y^2) / (x^2 + y^2))
   expect_identical(z1, z2)
+  
+  # rand, randi, and randn
+  expect_equal(dim(rand(2, 2, 2)), c(2, 2, 2))
+  expect_equal(dim(randi(imax = 100, 2, 2, 2)),c(2, 2, 2))
+  expect_equal(dim(randn(2, 2, 2)), c(2, 2, 2))
+  expect_null(dim(randn(10, atleast_2d = FALSE)))
+  expect_null(dim(rand(10, atleast_2d = FALSE)))
+  expect_null(dim(randi(imax = 100, 10, atleast_2d = FALSE)))
+  expect_equal(dim(randn(10)), c(10, 1))
+  expect_equal(dim(rand(10)), c(10, 1))
+  expect_equal(dim(randi(imax = 100, 10)), c(10, 1))
+  expect_error(randi(imax = -100, 10))
   
 #   # pad
 #   m1 <- mat("1, 2; 3, 4")
