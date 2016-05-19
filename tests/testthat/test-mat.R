@@ -16,6 +16,9 @@ test_that("character method functions as expected", {
   m <- mat("rnorm(4, mean = 1); rnorm(4, mean = 2)", sep = NULL, eval = TRUE)
   expect_identical(dim(m), c(2L, 4L))
   
+  expect_identical(mat("a, b, c, d; e, f, g, h"),
+                   matrix(letters[1:8], nrow = 2, byrow = TRUE))
+  
   # Expectations
   expect_identical(m1, m2)
   expect_identical(m1, m3)
