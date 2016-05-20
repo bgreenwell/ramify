@@ -47,8 +47,11 @@ test_that("convenience functions work as expected", {
   
   # inv, tr
   expect_error(inv(fill(3L, 2, 2)))  # singular matrix
+  expect_error(inv(randn(3, 2)))  # non-square matrix
+  expect_error(inv(as.data.frame(randn(s, 2))))  # data frame
   expect_identical(inv(2 * eye(3, 3)), 0.5 * eye(3, 3))
   expect_identical(tr(5 * eye(3, 4)), 15)
+  expect_identical(tr(diag(8)), 8)
   
   # hcat, vcat
   m1 <- randn(2, 3)
