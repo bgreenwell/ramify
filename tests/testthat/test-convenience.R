@@ -96,7 +96,20 @@ test_that("convenience functions work as expected", {
   # resize, size
   
   # tri, tril, triu, is.tril, is.triu
-
+  m <- mat("1, 2, 3; 4, 5, 6; 7, 8, 9")
+  mu <- mat("1, 2, 3; 0, 5, 6; 0, 0, 9")
+  mu2 <- mat("0, 2, 3; 0, 0, 6; 0, 0, 0")
+  ml <- mat("1, 0, 0; 4, 5, 0; 7, 8, 9")
+  ml2 <- mat("0, 0, 0; 4, 0, 0; 7, 8, 0")
+  expect_identical(triu(m, diag = TRUE), mu)
+  expect_identical(triu(m, diag = FALSE), mu2)
+  expect_identical(tril(m, diag = TRUE), ml)
+  expect_identical(tril(m, diag = FALSE), ml2)
+  expect_true(is.triu(mu))
+  expect_true(is.triu(mu2))
+  expect_true(is.tril(ml))
+  expect_true(is.tril(ml2))
+  
   # Resize a vector into an array
   x <- 1:8
   a <- resize(1:8, 2, 2, 2)
