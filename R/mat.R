@@ -3,7 +3,7 @@
 #' Like \code{matrix}, \code{mat} creates a matrix from the given set of 
 #' values. However, these values can also be represented by a character string, 
 #' or a list of vectors. Initially inspired by 
-#' \href{http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.mat.html}{NumPy's mat function}.
+#' \href{http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.matrix.html}{NumPy's matrix function}.
 #' 
 #' @param x A data vector, character string, or a list.
 #' @param rows Logical. If \code{TRUE} (the default) the matrix is filled by rows, 
