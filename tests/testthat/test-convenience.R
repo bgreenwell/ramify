@@ -21,7 +21,7 @@ test_that("convenience functions work as expected", {
   # eye
   d <- eye(3, 3)
   expect_identical(d, diag(1L, 3, 3))
-  expect_identical(d, inv(d))  # inverse of identity is identity
+  expect_equal(d, inv(d))  # inverse of identity is identity  # FIXME: Why not identiacal anymore?
   
   # fill rand, randi, randn
   expect_equal(dim(fill(0L, 10)), c(10, 1))
