@@ -4,7 +4,7 @@
 #' 
 #' @param x A data vector, character string, or a list.
 #' @param ... Aditional optional arguments passed on to \code{mat}.
-#' @return A data frame.
+#' @return A data frame (i.e., an object of class \code{"data.frame"}.
 #' @seealso \code{\link{mat}}, \code{\link{bmat}}.
 #' @export
 #' @examples

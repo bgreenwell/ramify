@@ -87,8 +87,7 @@ clip.default <- function(x, .min, .max, ...) {
 #' 
 #' @param nrow The desired number of rows.
 #' @param ncol The desired number of columns.
-#' @return A \code{nrow}-by-\code{ncol} identity matrix of class 
-#'         \code{c("matrix", "mat")}.
+#' @return A \code{nrow}-by-\code{ncol} identity matrix.
 #' @seealso \code{\link{diag}}.
 #' @export
 #' @examples
@@ -113,8 +112,7 @@ eye <- function(nrow = 1, ncol = nrow) {
 #'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
 #'   behavior can also be changed globally using, for example 
 #'   \code{options(atleast_2d = TRUE)}.
-#' @return A matrix or array filled with the value \code{x}. If the result is a
-#'         matrix, it will have class \code{c("matrix", "mat")}.
+#' @return A matrix or array filled with the value \code{x}.
 #' @seealso \code{\link{ones}}, \code{\link{zeros}}, \code{\link{falses}}, 
 #'   \code{\link{trues}}, \code{\link{mat}}, \code{\link{matrix}}.
 #' @export
@@ -220,9 +218,8 @@ inv <- function(x, ...) {
 #' Concatenate matrices along the first or second dimension.
 #' 
 #' @param ... Vectors or matrices.
-#' @return A matrix of class \code{c("matrix", "mat")} formed by combining the
-#'          \code{...} arguments column-wise (\code{hcat}) or row-wise 
-#'          (\code{vcat}).
+#' @return A matrix formed by combining the \code{...} arguments column-wise 
+#'   (\code{hcat}) or row-wise (\code{vcat}).
 #' @seealso \code{\link{bmat}}, \code{\link{cbind}}, \code{\link{rbind}}.
 #' @export
 #' @examples
@@ -293,7 +290,7 @@ logspace <- function(a, b, n = 50, base = 10) {
 #' 
 #' @param x Numeric vector representing the first coordinate of the grid.
 #' @param y Numeric vector representing the second coordinate of the grid.
-#' @return a list of matrices, each having class \code{c("matrix", "mat")}.
+#' @return A list of matrices.
 #' @seealso \code{\link{expand.grid}}, \code{\link{outer}}.
 #' @export
 #' @examples
@@ -325,8 +322,7 @@ meshgrid <- function(x, y = x) {
 #'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
 #'   behavior can also be changed globally using, for example 
 #'   \code{options(atleast_2d = TRUE)}.
-#' @return A  matrix or array of pseudorandom numbers. If the result is a
-#'         matrix, it will have class \code{c("matrix", "mat")}.
+#' @return A  matrix or array of pseudorandom numbers.
 #' @seealso \code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
 #' @export
 #' @importFrom stats runif
@@ -362,8 +358,7 @@ rand <- function(nrow = 1, ncol = 1, ..., min = 0, max = 1, atleast_2d = NULL) {
 #'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
 #'   behavior can also be changed globally using, for example 
 #'   \code{options(atleast_2d = TRUE)}.
-#' @return A matrix or array of pseudorandom numbers. If the result is a matrix, 
-#'         it will have class \code{c("matrix", "mat")}.
+#' @return A matrix or array of pseudorandom numbers.
 #' @seealso \code{\link{rand}}, \code{\link{randn}}, \code{\link{sample}}.
 #' @export
 #' @examples
@@ -402,8 +397,7 @@ randi <- function(imax, nrow, ncol = 1, ..., atleast_2d = NULL) {
 #'   to have a second dimension equal to one. Defaults to \code{FALSE}. This 
 #'   behavior can also be changed globally using, for example 
 #'   \code{options(atleast_2d = TRUE)}.
-#' @return A  matrix or array of pseudorandom numbers. If the result is a 
-#'         matrix, it will have class \code{c("matrix", "mat")}.
+#' @return A  matrix or array of pseudorandom numbers.
 #' @seealso \code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
 #' @export
 #' @importFrom stats rnorm
@@ -462,8 +456,7 @@ repmat <- function(x, m, n) {
 #'                       otherwise it is filled by rows. This option is ignored
 #'                       for multi-way arrays.
 #'              
-#' @return A matrix of class \code{c("matrix", "mat")} with dimension 
-#'         \code{nrow}-by-\code{ncol}.
+#' @return A matrix with dimension \code{nrow}-by-\code{ncol}.
 #' @seealso \code{\link{flatten}}, \code{\link{mat}}, \code{\link{matrix}}.
 #' @export
 #' @examples

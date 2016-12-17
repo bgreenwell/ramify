@@ -13,9 +13,8 @@ vcat(...)
 \item{...}{Vectors or matrices.}
 }
 \value{
-A matrix of class \code{c("matrix", "mat")} formed by combining the
-         \code{...} arguments column-wise (\code{hcat}) or row-wise 
-         (\code{vcat}).
+A matrix formed by combining the \code{...} arguments column-wise 
+  (\code{hcat}) or row-wise (\code{vcat}).
 }
 \description{
 Concatenate matrices along the first or second dimension.

@@ -24,8 +24,7 @@ behavior can also be changed globally using, for example
 \code{options(atleast_2d = TRUE)}.}
 }
 \value{
-A  matrix or array of pseudorandom numbers. If the result is a 
-        matrix, it will have class \code{c("matrix", "mat")}.
+A  matrix or array of pseudorandom numbers.
 }
 \description{
 Construct a matrix or multi-way array of normal random deviates.

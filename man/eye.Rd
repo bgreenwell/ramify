@@ -12,8 +12,7 @@ eye(nrow = 1, ncol = nrow)
 \item{ncol}{The desired number of columns.}
 }
 \value{
-A \code{nrow}-by-\code{ncol} identity matrix of class 
-        \code{c("matrix", "mat")}.
+A \code{nrow}-by-\code{ncol} identity matrix.
 }
 \description{
 Creates an \code{nrow}-by-\code{ncol} identity matrix.

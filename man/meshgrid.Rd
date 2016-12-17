@@ -12,7 +12,7 @@ meshgrid(x, y = x)
 \item{y}{Numeric vector representing the second coordinate of the grid.}
 }
 \value{
-a list of matrices, each having class \code{c("matrix", "mat")}.
+A list of matrices.
 }
 \description{
 Creates matrices for vectorized evaluations of 2-D scalar/vector fields over 

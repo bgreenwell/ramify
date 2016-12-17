@@ -14,7 +14,7 @@
 #'   expressions that need to be evaluated. Default is \code{FALSE}. See examples 
 #'   below for usage.
 #' @param ... Aditional optional arguments to be passed on to \code{matrix}.
-#' @return A matrix of class \code{c("matrix", "mat")}.
+#' @return A matrix (i.e., an object of class \code{"matrix"}).
 #' @seealso \code{\link{bmat}}, \code{\link{dmat}}, \code{\link{matrix}}.
 #' @export
 #' @examples

@@ -33,8 +33,7 @@ behavior can also be changed globally using, for example
 \code{options(atleast_2d = TRUE)}.}
 }
 \value{
-A matrix or array filled with the value \code{x}. If the result is a
-        matrix, it will have class \code{c("matrix", "mat")}.
+A matrix or array filled with the value \code{x}.
 }
 \description{
 Create a matrix filled with the value \code{x}.

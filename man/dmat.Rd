@@ -12,7 +12,7 @@ dmat(x, ...)
 \item{...}{Aditional optional arguments passed on to \code{mat}.}
 }
 \value{
-A data frame.
+A data frame (i.e., an object of class \code{"data.frame"}.
 }
 \description{
 Like \code{mat}, but returns a data frame.

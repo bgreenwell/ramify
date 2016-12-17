@@ -1,43 +1,45 @@
 NEWS for ramify package
 
-Changes for version 0.1.0
+Changes for version 0.3.3
 =========================
-* Initial release.
-
-Changes for version 0.2.0
-=========================
-* Documentation fixes.
-* New functions argmax, argmin, and randi.
-* Most functions can also construct multi-way arrays.
-* New class "mat" introduced for better printing of large matrices.
-* New global options to control default printing of "mat" matrices.
-
-Changes for version 0.2.1
-=========================
-* Retains "mat" class when extracting or replacing parts.
-
-Changes for version 0.3.0
-=========================
-* Removed "mat" class in favor of a generic pprint function.
-* Added an at_least2d option to many functions for base R compatibility.
-* Added global options for controlling pprint and others.
-* New functions tri, tril, triu, etc. for constructing triangular functions.
-* New function meshgrid for MATLAB and Python+NumPy compatibility.
-
-Changes for version 0.3.1
-=========================
-* Function resize did not work correctly for matrices.
-* Added base and stats packages to Depends.
-* Minor bug fixes.
-* Explicitly import functions from stats package.
+* New functions `clip` and `repmat`.
+* `pprint` is now much faster for large matrices and data frames.
+* `mat.character` is now a few times faster for numeric matrices.
+* Removed `base` package from `Depends`.
+* Removed references to `"mat"` class in function documentation.
 
 Changes for version 0.3.2
 =========================
 * Added introductory vignette.
-* New function atleast_2d.
+* New function `atleast_2d`.
 
-Changes for version 0.3.3
+Changes for version 0.3.1
 =========================
-* New functions clip, repmat, and pad (experimental).
-* pprint is now much faster for large matrices and data frames.
-* mat.character is now a few times faster for numeric matrices.
+* Function `resize` did not work correctly for matrices.
+* Added `stats` packages to Depends.
+* Minor bug fixes.
+* Explicitly import functions from `stats` package.
+
+Changes for version 0.3.0
+=========================
+* Removed `"mat"` class in favor of a generic `pprint` function.
+* Added an `at_least2d` option to many functions for base R compatibility.
+* Added global options for controlling `pprint` and others.
+* New functions `tri`, `tril`, `triu`, etc. for constructing triangular functions.
+* New function `meshgrid` for MATLAB and Python+NumPy compatibility.
+
+Changes for version 0.2.1
+=========================
+* Retains `"mat"` class when extracting or replacing parts.
+
+Changes for version 0.2.0
+=========================
+* Documentation fixes.
+* New functions `argmax`, `argmin`, and `randi`.
+* Most functions can also construct multi-way arrays.
+* New class `"mat"` introduced for better printing of large matrices.
+* New global options to control default printing of `"mat"` matrices.
+
+Changes for version 0.1.0
+=========================
+* Initial release.

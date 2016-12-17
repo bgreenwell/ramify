@@ -31,12 +31,13 @@ expressions that need to be evaluated. Default is \code{FALSE}. See examples
 below for usage.}
 }
 \value{
-A matrix of class \code{c("matrix", "mat")}.
+A matrix (i.e., an object of class \code{"matrix"}).
 }
 \description{
 Like \code{matrix}, \code{mat} creates a matrix from the given set of 
 values. However, these values can also be represented by a character string, 
-or a list of vectors.
+or a list of vectors. Initially inspired by 
+\href{http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.matrix.html}{NumPy's matrix function}.
 }
 \examples{
 # Creating a matrix from a character string

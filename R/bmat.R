@@ -8,7 +8,7 @@
 #' @param sep Separator string. Values within each row/column of x are 
 #'            separated by this string. Default is \code{","}.
 #' @param ... Aditional optional arguments.
-#' @return A matrix of class \code{c("matrix", "mat")}.
+#' @return A matrix (i.e., an object of class \code{"matrix"}).
 #' @seealso \code{\link{mat}}, \code{\link{dmat}}.
 #' @export
 #' @examples

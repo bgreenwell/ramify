@@ -18,7 +18,7 @@ separated by this string. Default is \code{","}.}
 \item{...}{Aditional optional arguments.}
 }
 \value{
-A matrix of class \code{c("matrix", "mat")}.
+A matrix (i.e., an object of class \code{"matrix"}).
 }
 \description{
 Construct a block matrix using a character string initializer.
