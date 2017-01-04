@@ -29,6 +29,7 @@
 #' mat("rnorm(3); rnorm(3)", eval = TRUE)
 #' mat("1, 2, 3; 4, 5, pi")
 #' mat("1, 2, 3; 4, 5, pi", eval = TRUE)
+#' mat("-1, -.1; -0.1, -1.0")
 #'
 #' # Creating a matrix from a list
 #' z1 <- list(1:5, 6:10)
@@ -66,7 +67,7 @@ mat.character <- function(x, rows = TRUE, sep = ",", eval = FALSE, ...) {
   vals <- if (eval) {
     eval(parse(text = paste0("c(", paste0(char_vals, collapse = ","), ")")))
   } else {
-    if (all(grepl("^\\d*(\\.\\d+)?$", char_vals))) {  # convert to numeric
+    if (all(grepl("^-?\\d*(\\.\\d+)?$", char_vals))) {  # convert to numeric
       as.numeric(char_vals)  # much faster!
     } else {  # keep as character
       char_vals

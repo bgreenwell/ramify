@@ -51,6 +51,7 @@ mat("rnorm(3); rnorm(3)")
 mat("rnorm(3); rnorm(3)", eval = TRUE)
 mat("1, 2, 3; 4, 5, pi")
 mat("1, 2, 3; 4, 5, pi", eval = TRUE)
+mat("-1, -.1; -0.1, -1.0")
 
 # Creating a matrix from a list
 z1 <- list(1:5, 6:10)
