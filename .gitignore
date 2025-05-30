@@ -1,6 +1,48 @@
-.Rproj.user
-.Rhistory
-.RData
-ramify.Rproj
-inst/doc
-README.html
+# Revised code for pprint_matrix function
+
+pprint_matrix <- function(mat, digits = 2) {
+  # Check if mat is a matrix
+  if (!is.matrix(mat)) {
+    stop("Input must be a matrix.")
+  }
+  
+  # Check for empty matrix
+  if (length(mat) == 0) {
+    stop("Input matrix is empty.")
+  }
+  
+  # Preserve the attributes like dimnames
+  row_names <- rownames(mat)
+  col_names <- colnames(mat)
+  
+  # Apply formatting function to each element and preserve matrix structure
+  result <- apply(mat, c(1, 2), function(x) {
+    if (is.na(x) || is.nan(x) || is.infinite(x)) {
+      # Handle special numeric values gracefully
+      as.character(x)
+    } else if (is.complex(x)) {
+      # Format complex numbers with specified digits
+      format(x, digits = digits)
+    } else {
+      # Format real numbers with specified digits
+      format(x, digits = digits)
+    }
+  })
+  
+  # Return a matrix with the same dimensions and formatted values
+  formatted_matrix <- matrix(result, nrow = nrow(mat), ncol = ncol(mat))
+  
+  # Restore attributes like dimnames
+  if (!is.null(row_names)) {
+    rownames(formatted_matrix) <- row_names
+  }
+  if (!is.null(col_names)) {
+    colnames(formatted_matrix) <- col_names
+  }
+  
+  return(formatted_matrix)
+}
+
+# Example usage:
+# complex_matrix <- matrix(c(1+2i, 3-4i, 5+0i, 7, NA), nrow = 2, ncol = 3)
+# pprint_matrix(complex_matrix, digits = 2)
