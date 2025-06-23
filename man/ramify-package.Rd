@@ -22,6 +22,7 @@ To learn more about ramify, read the introductory vignette:
 Useful links:
 \itemize{
   \item \url{https://github.com/bgreenwell/ramify}
+  \item \url{http://bgreenwell.github.io/ramify/}
   \item Report bugs at \url{https://github.com/bgreenwell/ramify/issues}
 }
 
