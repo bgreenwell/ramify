@@ -7,7 +7,7 @@
 inv(x, ...)
 }
 \arguments{
-\item{x}{A square numeric or complex matrix}
+\item{x}{A square numeric or complex \link{matrix}.}
 
 \item{...}{Additional optional arguments.}
 }
@@ -15,14 +15,12 @@ inv(x, ...)
 Calculates the inverse of a square matrix.
 }
 \details{
-See the documentation for the \code{base} function 
-        \code{\link{solve}}.
+See \link{solve} for details.
 }
 \examples{
 m <- 3 * eye(5)
 inv(m)
 }
 \seealso{
-\code{\link{solve}}.
+\link{solve}.
 }
-

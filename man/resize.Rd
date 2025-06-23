@@ -7,7 +7,7 @@
 resize(x, nrow, ncol, ..., across = c("rows", "columns"), byrow = FALSE)
 }
 \arguments{
-\item{x}{A matrix or multi-way array.}
+\item{x}{A \link{matrix} or multi-way \link{array}.}
 
 \item{nrow}{The desired number of rows.}
 
@@ -15,16 +15,15 @@ resize(x, nrow, ncol, ..., across = c("rows", "columns"), byrow = FALSE)
 
 \item{...}{Further dimensions of the array.}
 
-\item{across}{Character string specifying whether to flatten the matrix 
-across \code{"rows"} (default) or \code{"columns"}. This option
-is ignored for multi-way arrays.}
+\item{across}{Character string specifying whether to flatten the matrix
+across \code{"rows"} (default) or \code{"columns"}. This option is ignored for
+multi-way arrays.}
 
-\item{byrow}{Logical. If FALSE (default) the new matrix is filled by columns, 
-otherwise it is filled by rows. This option is ignored
-for multi-way arrays.}
+\item{byrow}{Logical. If \code{FALSE} (default) the new matrix is filled by columns,
+otherwise it is filled by rows. This option is ignored for multi-way arrays.}
 }
 \value{
-A matrix with dimension \code{nrow}-by-\code{ncol}.
+A \link{matrix} with dimension \code{nrow}-by-\code{ncol}.
 }
 \description{
 Change shape and size of a matrix or array.
@@ -36,6 +35,5 @@ resize(m, 3, 3)
 resize(m, 2, 2)
 }
 \seealso{
-\code{\link{flatten}}, \code{\link{mat}}, \code{\link{matrix}}.
+\code{\link[=flatten]{flatten()}}, \code{\link[=mat]{mat()}}, \code{\link[=matrix]{matrix()}}.
 }
-

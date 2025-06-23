@@ -11,15 +11,15 @@ tri(nrow, ncol = nrow, k = 0, diag = TRUE)
 
 \item{ncol}{The desired number of columns.}
 
-\item{k}{The sub-diagonal at and below which the matrix is filled. 
-\code{k = 0} is the main diagonal, while k < 0 is below it, and 
-k > 0 is above. The default is 0.}
+\item{k}{The sub-diagonal at and below which the matrix is filled.
+\code{k = 0} is the main diagonal, while \code{k} < 0 is below it, and  \code{k} > 0 is
+above. The default is 0.}
 
-\item{diag}{Logical indicating whether to include the diagonal. Default is 
+\item{diag}{Logical indicating whether to include the diagonal. Default is
 \code{TRUE}.}
 }
 \description{
-Construct a matrix with ones at and below the given diagonal and zeros 
+Construct a matrix with ones at and below the given diagonal and zeros
 elsewhere.
 }
 \examples{
@@ -27,4 +27,3 @@ tri(5, 5)
 tri(5, 5, 2)
 tri(5, 5, -1)
 }
-

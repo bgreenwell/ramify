@@ -19,15 +19,14 @@ logspace(a, b, n = 50, base = 10)
 A vector of logarithmically-spaced elements.
 }
 \description{
-Construct a vector of \code{n} logarithmically-spaced elements from 
+Construct a vector of \code{n} logarithmically-spaced elements from
 10^\code{a} to 10^\code{b}.
 }
 \note{
-If \code{b = pi} and \code{base = 10}, the points are between 
-\code{10^a} and \code{pi}, not \code{10^a} and \code{10^pi}, for 
+If \code{b = pi} and \code{base = 10}, the points are between
+\code{10^a} and \code{pi}, not \code{10^a} and \code{10^pi}, for
 compatibility with the corresponding MATLAB/Octave, and NumPy functions.
 }
 \seealso{
-\code{\link{linspace}}, \code{\link{seq}}.
+\code{\link[=linspace]{linspace()}}, \code{\link[=seq]{seq()}}.
 }
-

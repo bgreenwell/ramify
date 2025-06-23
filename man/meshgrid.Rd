@@ -15,16 +15,15 @@ meshgrid(x, y = x)
 A list of matrices.
 }
 \description{
-Creates matrices for vectorized evaluations of 2-D scalar/vector fields over 
+Creates matrices for vectorized evaluations of 2-D scalar/vector fields over
 2-D grids.
 }
 \examples{
-mg <- meshgrid(linspace(-4*pi, 4*pi, 27))  # list of input matrices
-z <- cos(mg[[1]]^2 + mg[[2]]^2) * exp(-sqrt(mg[[1]]^2 + mg[[2]]^2)/6)
-image(z, axes = FALSE)  # color image
-contour(z, add = TRUE, drawlabels = FALSE)  # add contour lines
+mg <- meshgrid(linspace(-4 * pi, 4 * pi, 27)) # list of input matrices
+z <- cos(mg[[1]]^2 + mg[[2]]^2) * exp(-sqrt(mg[[1]]^2 + mg[[2]]^2) / 6)
+image(z, axes = FALSE) # color image
+contour(z, add = TRUE, drawlabels = FALSE) # add contour lines
 }
 \seealso{
-\code{\link{expand.grid}}, \code{\link{outer}}.
+\code{\link[=expand.grid]{expand.grid()}}, \code{\link[=outer]{outer()}}.
 }
-

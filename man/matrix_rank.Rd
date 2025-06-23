@@ -2,9 +2,9 @@
 % Please edit documentation in R/matrix_rank.R
 \name{matrix_rank}
 \alias{matrix_rank}
-\alias{matrix_rank.data.frame}
 \alias{matrix_rank.default}
 \alias{matrix_rank.matrix}
+\alias{matrix_rank.data.frame}
 \title{Matrix Rank}
 \usage{
 matrix_rank(x, tol)
@@ -16,7 +16,7 @@ matrix_rank(x, tol)
 \method{matrix_rank}{data.frame}(x, tol)
 }
 \arguments{
-\item{x}{an object that inherits from class \code{"matrix"}.}
+\item{x}{A \link{matrix}.}
 
 \item{tol}{Threshold below which SVD values are considered zero.}
 }
@@ -25,10 +25,9 @@ Compute the rank of a matrix using the singular value decomposition (SVD)
 method.
 }
 \details{
-The singular value decomposition method simply computes the SVD of \code{x}
+The singular value decomposition (SVD) method simply computes the SVD of \code{x}
 and returns the number of singular values of \code{x} that are greater than
-\code{tol}. See the function \code{\link{rankMatrix}} in package 
-\code{\link{Matrix}} for alternative methods.
+\code{tol}. See \code{\link[Matrix:rankMatrix]{Matrix::rankMatrix()}} for alternative methods.
 }
 \examples{
 matrix_rank(1:5)
@@ -37,4 +36,3 @@ matrix_rank(cbind(c(1, 1, 1), c(2, 2, 2)))
 matrix_rank(ones(3, 3))
 matrix_rank(zeros(3, 5))
 }
-

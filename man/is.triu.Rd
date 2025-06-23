@@ -7,17 +7,16 @@
 is.triu(x)
 }
 \arguments{
-\item{x}{A matrix}
+\item{x}{A \link{matrix}.}
 }
 \value{
 Logical indicating whether the given matrix is lower triangular.
 }
 \description{
-Determine if a Matrix is Upper Triangular
+Determine if a matrix is upper triangular.
 }
 \examples{
 m <- mat("1, -1, -1, -1; 0, 1, -2, -2; 0, 0, 1, -3; 0, 0, 0, 1")
 is.triu(m)
 is.triu(eye(3, 5))
 }
-

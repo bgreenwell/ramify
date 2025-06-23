@@ -1,6 +1,17 @@
-.Rproj.user
+# RStudio project files
+.Rproj.user/
+ramify.Rproj
+
+# R history and session data
 .Rhistory
 .RData
-ramify.Rproj
+
+# Miscellaneous
 inst/doc
-README.html
+*.html
+*_files
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+docs

@@ -15,13 +15,13 @@ randi(imax, nrow, ncol = 1, ..., atleast_2d = NULL)
 
 \item{...}{Further dimensions of the array.}
 
-\item{atleast_2d}{Logical indicating whether or not to force column vectors 
-to have a second dimension equal to one. Defaults to \code{FALSE}. This 
-behavior can also be changed globally using, for example 
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This behavior
+can also be changed globally using, for example
 \code{options(atleast_2d = TRUE)}.}
 }
 \value{
-A matrix or array of pseudorandom numbers.
+A \link{matrix} or \link{array} of pseudorandom numbers.
 }
 \description{
 Construct a matrix or multi-way array of uniform random integers.
@@ -30,6 +30,5 @@ Construct a matrix or multi-way array of uniform random integers.
 randi(2, 5, 5)
 }
 \seealso{
-\code{\link{rand}}, \code{\link{randn}}, \code{\link{sample}}.
+\code{\link[=rand]{rand()}}, \code{\link[=randn]{randn()}}, \code{\link[=sample]{sample()}}.
 }
-

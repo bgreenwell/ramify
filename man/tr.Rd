@@ -7,7 +7,7 @@
 tr(x)
 }
 \arguments{
-\item{x}{A matrix.}
+\item{x}{A \link{matrix}.}
 }
 \value{
 The sum of the diagonal elements of \code{x}.
@@ -20,4 +20,3 @@ tr(ones(5, 10))
 x <- replicate(1000, tr(rand(25, 25)))
 hist(x)
 }
-

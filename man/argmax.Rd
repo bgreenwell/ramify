@@ -10,7 +10,7 @@ argmax(x, rows = TRUE)
 argmin(x, rows = TRUE)
 }
 \arguments{
-\item{x}{A matrix.}
+\item{x}{A \link{matrix}.}
 
 \item{rows}{If \code{TRUE} (the default) the indices of each row max/min is
 returned.}
@@ -26,4 +26,3 @@ m <- mat("94, 20, 44; 40, 92, 51; 27, 69, 74")
 argmax(m)
 argmin(m)
 }
-

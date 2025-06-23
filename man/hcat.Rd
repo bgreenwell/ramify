@@ -13,8 +13,8 @@ vcat(...)
 \item{...}{Vectors or matrices.}
 }
 \value{
-A matrix formed by combining the \code{...} arguments column-wise 
-  (\code{hcat}) or row-wise (\code{vcat}).
+A \link{matrix} formed by combining the \code{...} arguments column-wise
+(\code{hcat}) or row-wise (\code{vcat}).
 }
 \description{
 Concatenate matrices along the first or second dimension.
@@ -22,10 +22,9 @@ Concatenate matrices along the first or second dimension.
 \examples{
 m1 <- mat("1, 2, 3; 4, 5, 6")
 m2 <- mat("7, 8, 9; 10, 11, 12")
-hcat(m1, m2)  # same as 'bmat("m1, m2")'
-vcat(m1, m2)  # same as 'bmat("m1; m2")'
+hcat(m1, m2) # same as 'bmat("m1, m2")'
+vcat(m1, m2) # same as 'bmat("m1; m2")'
 }
 \seealso{
-\code{\link{bmat}}, \code{\link{cbind}}, \code{\link{rbind}}.
+\code{\link[=bmat]{bmat()}}, \code{\link[=cbind]{cbind()}}, \code{\link[=rbind]{rbind()}}.
 }
-

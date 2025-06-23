@@ -7,12 +7,13 @@
 tril(x, k = 0, diag = TRUE)
 }
 \arguments{
-\item{x}{A matrix.}
+\item{x}{A \link{matrix}.}
 
-\item{k}{Diagonal above which to zero elements. \code{k = 0} (the default) is 
-the main diagonal, k < 0 is below it and k > 0 is above.}
+\item{k}{The sub-diagonal at and below which the matrix is filled.
+\code{k = 0} is the main diagonal, while \code{k} < 0 is below it, and  \code{k} > 0 is
+above. The default is 0.}
 
-\item{diag}{Logical indicating whether to include the diagonal. Default is 
+\item{diag}{Logical indicating whether to include the diagonal. Default is
 \code{TRUE}.}
 }
 \description{
@@ -22,4 +23,3 @@ Extract the lower triangular part of a matrix.
 tril(ones(5, 5))
 tril(ones(5, 5), diag = TRUE)
 }
-

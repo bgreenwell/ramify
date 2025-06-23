@@ -7,7 +7,7 @@
 repmat(x, m, n)
 }
 \arguments{
-\item{x}{A vector or matrix.}
+\item{x}{A \link{vector} or \link{matrix}.}
 
 \item{m}{Integer specifying how many times to repeat \code{x} in the first
 dimension.}
@@ -16,14 +16,12 @@ dimension.}
 dimension.}
 }
 \value{
-A block matrix of dimension \code{m}*\code{nrow(x)} by 
-  \code{n}*\code{ncol(x)}.
+A block matrix of dimension \code{m*nrow(x)} by \code{n*ncol(x)}.
 }
 \description{
 Repeat a vector or matrix a specific number of times.
 }
 \examples{
-repmat(1:3, 3, 2)  # will have dimension 9 by 2
+repmat(1:3, 3, 2) # will have dimension 9 by 2
 repmat(randn(2, 2), 3, 2)
 }
-

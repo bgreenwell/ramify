@@ -19,7 +19,7 @@ There are several methods available for constructing matrices in R. The usual ap
 $\bigl(\begin{smallmatrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \end{smallmatrix} \bigr)$:
 
 ```{r}
-  matrix(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)
+matrix(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 2, byrow = TRUE)
 ```
 
 Notice that we need to specify the shape of the matrix (here we used `nrow = 2`, but could also have set `ncol  = 4`, or both). Also, by default, R fills matrices using column-major order. To fill the matrix using row-major order, we had to set the`byrow` argument in `matrix` to `TRUE`.(Even though we set `byrow = TRUE`, the matrix is still stored in column-major order. This may have unintended side-effects. For instance, removing the dimension attribute flattens the matrix into a vector by appending each column together.) Although the code is simple, users coming from other scientific languages may prefer a more familiar syntax. 
@@ -37,8 +37,10 @@ Python+NumPy      | `numpy.mat("1, 2, 3, 4; 5, 6, 7, 8")` | commas may be omitte
 What is most convenient about the matrix syntax expressed in column two is the visual separation of rows. This makes it quite easy for the user to see the structure of the matrix they are working with. You do not see this with the traditional matrix function in R, unless you force individual rows onto new lines manually:
 
 ```{r}
-matrix(c(1, 2, 3, 4,
-         5, 6, 7, 8), nrow = 2, byrow = TRUE)
+matrix(c(
+  1, 2, 3, 4,
+  5, 6, 7, 8
+), nrow = 2, byrow = TRUE)
 ```
 
 But this is rather hacky in comparison and still requires the user to specify how the vector should be split up (e.g., `nrow = 2` and `byrow = TRUE`). The `ramify` package's main function `mat` extends `matrix` by adding this simplicity using the more common syntax.
@@ -46,7 +48,7 @@ But this is rather hacky in comparison and still requires the user to specify ho
 The `ramify` package is hosted on GitHub at \url{https://github.com/bgreenwell/ramify}. It is also available on CRAN. To install the latest stable release from CRAN:
 
 ```{r, eval=FALSE}
-install.packages("ramify")  # latest stable release
+install.packages("ramify") # latest stable release
 ```
 
 To install the development version from GitHub you can use the [`devtools`](https://cran.r-project.org/package=devtools) package:
@@ -66,7 +68,7 @@ The main function in this package is `mat`. For all intents and purposes, `mat` 
 Function `mat` provides a new way of creating matrices using a convenient string initializer (not unlike the matrix constructor in NumPy). For instance, we can recreate the matrix $\bigl(\begin{smallmatrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \end{smallmatrix} \bigr)$ using `mat` as follows:
 
 ```{r}
-library(ramify)  # load package
+library(ramify) # load package
 mat("1, 2, 3, 4; 5, 6, 7, 8")
 ```
 
@@ -81,19 +83,19 @@ $$
 just write
 
 ```{r}
-mat("1:4; 5:8", rows = FALSE)  # ; separates columns
+mat("1:4; 5:8", rows = FALSE) # ; separates columns
 ```
 
 The second optional argument, `sep`, accepts a character vector containing regular expressions to use for splitting up the individual elements within each row/column. By default, `sep = ","`. To change the default behavior of separating individual elements by commas, change the value of `sep` to any other valid character. For example, in order to use spaces instead of commas, write 
 
 ```{r}
-mat("1 2 3 4; 5 6 7 8", sep = "")  # blank spaces separate columns
+mat("1 2 3 4; 5 6 7 8", sep = "") # blank spaces separate columns
 ```
 
 To bypass setting these options every time, the user can change them globally with 
 
 ```{r}
-options(mat.rows = FALSE, mat.sep = "")  # change default behavior
+options(mat.rows = FALSE, mat.sep = "") # change default behavior
 ```
 
 R functions can be used within the character string as well, but one must be careful. For example, `mat("rnorm(10)")` works because there are no semicolons or commas, hence, the character string is just parsed and evaluated. However, `mat("rnorm(10, sd = 3)")` produces an error because `mat` will split the character string on the comma resulting in two substrings that cannot be parsed:
@@ -141,7 +143,7 @@ All three approaches succeed in constructing the correct matrix. Using `matrix` 
 Using `mat` we can construct the matrix as follows:
 
 ```{r}
-mat(z) 
+mat(z)
 ```
 
 Notice how the element names are preserved as row names. We could force the list elements to be columns instead by setting `rows = FALSE`. Similar to approach two, `mat` uses `do.call` with `rbind` and `cbind` to construct matrices from lists.
@@ -162,7 +164,7 @@ A new generic function `pprint` (which stands for pretty print) is included with
 With `pprint`, large matrices are printed in a much nicer way. For instance,
 
 ```{r}
-m <- randn(1000, 1000)  # see Table 2 for a description of randn
+m <- randn(1000, 1000) # see Table 2 for a description of randn
 pprint(m)
 ```
 
@@ -179,20 +181,24 @@ Converting a list to a data frame in R is rather simple. An example is given in 
 
 ```{r}
 # List holding individual variables
-z1 <- list(Height = c(Joe = 6.2,   Mary = 5.7,   Pete = 6.1),
-           Weight = c(Joe = 192.2, Mary = 164.3, Pete = 201.7),
-           Gender = c(Joe = 0,     Mary = 1,     Pete = 0))
+z1 <- list(
+  Height = c(Joe = 6.2, Mary = 5.7, Pete = 6.1),
+  Weight = c(Joe = 192.2, Mary = 164.3, Pete = 201.7),
+  Gender = c(Joe = 0, Mary = 1, Pete = 0)
+)
 
-as.data.frame(z1)  # convert z1 to a data frame
+as.data.frame(z1) # convert z1 to a data frame
 ```
 
 When applied to a list, `as.data.frame` treats the individual elements (i.e., `Height`, `Weight`, and `Gender`) as columns. However, it is often the case that list elements represent records, rather than individual variables. (This is a common use for Python dictionaries which are naturally imported into R as a list.) For example, consider the same list, but in a different format:
 
 ```{r}
 # List holding records (i.e., individual observations)
-z2 <- list(Joe  = c(Height = 6.2, Weight = 192.2, Gender = 0),
-           Mary = c(Height = 5.7, Weight = 164.3, Gender = 1),
-           Pete = c(Height = 6.1, Weight = 201.7, Gender = 0))
+z2 <- list(
+  Joe = c(Height = 6.2, Weight = 192.2, Gender = 0),
+  Mary = c(Height = 5.7, Weight = 164.3, Gender = 1),
+  Pete = c(Height = 6.1, Weight = 201.7, Gender = 0)
+)
 ```
 
 Here, each list element represents an individual record. In order to convert this to a [tidy data frame](https://cran.r-project.org/package=tidyr) (in a "tidy" data frame, each variable forms a column, and each record forms a row), the necessary code in base R would be 
@@ -204,8 +210,8 @@ as.data.frame(t(as.data.frame(z2)))
 That is, we first convert it to a data frame, then transpose the result (which converts the data frame to a `"matrix"` object), and then convert it back to a data frame. Using `dmat` is much simpler:
 
 ```{r}
-dmat(z1, rows = FALSE)  # treat list elements as columns of a data frame
-dmat(z2)  # treat list elements as rows of a data frame
+dmat(z1, rows = FALSE) # treat list elements as columns of a data frame
+dmat(z2) # treat list elements as rows of a data frame
 ```
 
 ### Construct block matrices with bmat
@@ -269,8 +275,8 @@ Another example is finding the trace of a matrix. To obtain the trace of a matri
 
 ```{r}
 m <- rand(10, 10)
-sum(diag(m))  # compute the trace in base R
-tr(m)  # compute the trace using ramify's tr function
+sum(diag(m)) # compute the trace in base R
+tr(m) # compute the trace using ramify's tr function
 ```
 
 The function is called `tr`, rather than `trace`, to avoid conflicts with a base R function called `trace` that is used for interactive tracing and debugging.
@@ -278,9 +284,9 @@ The function is called `tr`, rather than `trace`, to avoid conflicts with a base
 Many popular scientific languages also provide convenient ways to generate vectors and matrices of pseudo-random numbers. Commonly found functions are `rand` (for uniform random numbers) and `randn` (for normally distributed random numbers). These and more are available from `ramify`. We saw basic use of `randn` in the section describing the `pprint` function. The following snippet of code compares creating a $100 \times 100 \times 2$ array of $\mathcal{U}\left(0, 1\right)$ random deviates in both base R and `ramify` via the `rand` function.
 
 ```{r}
-a <- array(runif(20000), c(100, 100, 2))  # base R
-a <- rand(100, 100, 2)  # ramify
-pprint(a[,,1])  # print the first matrix
+a <- array(runif(20000), c(100, 100, 2)) # base R
+a <- rand(100, 100, 2) # ramify
+pprint(a[, , 1]) # print the first matrix
 ```
 
 Of course, the base R approach is more flexible as it allows you to use any one of the built-in distributions (e.g., binomial), however, generating uniform (continuous or discrete) and normal random variates is far more common, hence, the popularity of the `rand`, `randi`, and `randn` functions often seen in other languages.
@@ -288,15 +294,15 @@ Of course, the base R approach is more flexible as it allows you to use any one 
 As seen in the previous example, many of the functions listed in Table~\ref{tab:functions} can be used to construct vectors, matrices, or multi-way arrays just by specifying the extra dimensions. For example,
 
 ```{r}
-zeros(10)            # 10x1 matrix (i.e., column vector) of zeros
-ones(10, 10)         # 10x10 matrix of ones
+zeros(10) # 10x1 matrix (i.e., column vector) of zeros
+ones(10, 10) # 10x10 matrix of ones
 # fill(pi, 10, 10, 3)  # 10x10x3 array filled with the constant pi
 ```
 
 Note that these functions, by default, always return a `"matrix"` or `"array"` object meaning there is always a `"dim"` attribute. In contrast, in base R, vectors do not have a `"dim"` attribute. So, when creating a vector using `zeros(10)`, for example, the result will be a matrix of zeros with ten rows and one column. To bypass this behavior, you can use the `atleast_2d` option:
 
 ```{r}
-zeros(10, atleast_2d = FALSE)  # has class "integer", rather than "matrix"
+zeros(10, atleast_2d = FALSE) # has class "integer", rather than "matrix"
 ```
 
 This behavior can also be changed globally using `options(atleast_2d = FALSE)`.
@@ -308,11 +314,11 @@ $$
 over the Cartesian grid $\left[-4\pi, 4\pi\right] \times \left[-4\pi, 4\pi\right]$. The resulting plot is created as follows.
 
 ```{r, fig.cap='Color image and contour lines for $y$.', fig.width=7, fig.height=5}
-x <- meshgrid(linspace(-4*pi, 4*pi, 27))  # list of input matrices
-y <- cos(x[[1]]^2 + x[[2]]^2) * exp(-sqrt(x[[1]]^2 + x[[2]]^2)/6)
-par(mar = c(0, 0, 0, 0))  # remove margins
-image(y, axes = FALSE)  # color image
-contour(y, add = TRUE, drawlabels = FALSE)  # add contour lines
+x <- meshgrid(linspace(-4 * pi, 4 * pi, 27)) # list of input matrices
+y <- cos(x[[1]]^2 + x[[2]]^2) * exp(-sqrt(x[[1]]^2 + x[[2]]^2) / 6)
+par(mar = c(0, 0, 0, 0)) # remove margins
+image(y, axes = FALSE) # color image
+contour(y, add = TRUE, drawlabels = FALSE) # add contour lines
 ```
 
 ## Summary

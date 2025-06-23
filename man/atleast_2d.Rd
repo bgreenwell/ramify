@@ -7,7 +7,8 @@
 atleast_2d(x)
 }
 \arguments{
-\item{x}{An R object, for example a vector, matrix, array, or data frame.}
+\item{x}{An appropriate R object supported by \code{\link[=dim]{dim()}}, for example a
+\link{vector}, \link{matrix}, \link{array}, or \link{data.frame}.}
 }
 \value{
 The same object, but with a \code{"dim"} attribute.
@@ -20,4 +21,3 @@ x <- 1:10
 x
 atleast_2d(x)
 }
-

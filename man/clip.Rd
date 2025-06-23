@@ -10,25 +10,24 @@ clip(x, .min, .max, ...)
 \method{clip}{default}(x, .min, .max, ...)
 }
 \arguments{
-\item{x}{A vector, matrix, or multi-way array.}
+\item{x}{A \link{vector}, \link{matrix}, or multi-way \link{array}.}
 
-\item{.min}{.minimum value.}
+\item{.min}{Minimum value.}
 
-\item{.max}{.maximum value.}
+\item{.max}{Maximum value.}
 
 \item{...}{Additional optional arguments.}
 }
 \value{
-Returns \code{x} with values outside the interval 
-  [\code{.min}, \code{.max}] clipped to the interval edges. That is, values 
-  in \code{x} smaller than \code{.min} become \code{.min}, and values larger 
-  than \code{.max} become \code{.max}.
+Returns \code{x} with values outside the interval
+[\code{.min}, \code{.max}] clipped to the interval edges. That is, values
+in \code{x} smaller than \code{.min} become \code{.min}, and values larger
+than \code{.max} become \code{.max}.
 }
 \description{
 Clip (i.e., limit) the values in a vector, matrix, or array.
 }
 \examples{
-clip(1:10, 3, 8)  # [1] 3 3 3 4 5 6 7 8 8 8
+clip(1:10, 3, 8) # [1] 3 3 3 4 5 6 7 8 8 8
 clip(randn(5, 5), .min = -1, .max = 1)
 }
-

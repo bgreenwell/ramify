@@ -1,7 +1,6 @@
 context("Utility functions")
 
 test_that("utility functions work correctly", {
-
   expect_identical(add_dots(1:10, pos = 3), c("1", "2", "...", "10"))
   expect_identical(add_dots(1:10, pos = 10), 1:10)
 
@@ -11,5 +10,4 @@ test_that("utility functions work correctly", {
   expect_identical(desc_mat(m1), "2 x 2 matrix of integers:")
   expect_identical(desc_mat(m2), "2 x 2 matrix of doubles:")
   expect_identical(desc_mat(m3), "2 x 2 matrix of characters:")
-
 })

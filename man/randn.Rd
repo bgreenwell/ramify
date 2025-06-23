@@ -15,25 +15,22 @@ randn(nrow = 1, ncol = 1, ..., mean = 0, sd = 1, atleast_2d = NULL)
 
 \item{mean}{Mean for the normal distribution. (\code{randn} only).}
 
-\item{sd}{Standard deviation for the normal distribution. 
-(\code{randn} only).}
+\item{sd}{Standard deviation for the normal distribution. (\code{randn} only).}
 
-\item{atleast_2d}{Logical indicating whether or not to force column vectors 
-to have a second dimension equal to one. Defaults to \code{FALSE}. This 
-behavior can also be changed globally using, for example 
-\code{options(atleast_2d = TRUE)}.}
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This behavior
+can also be changed globally using, for example \code{options(atleast_2d = TRUE)}.}
 }
 \value{
-A  matrix or array of pseudorandom numbers.
+A  \link{matrix} or \link{array} of pseudorandom numbers.
 }
 \description{
 Construct a matrix or multi-way array of normal random deviates.
 }
 \examples{
-randn(100, 100)  # 100 by 100 matrix of standard normal random variates
+randn(100, 100) # 100 by 100 matrix of standard normal random variates
 randn(2, 3, mean = 10, sd = 0.1)
 }
 \seealso{
-\code{\link{rand}}, \code{\link{randi}}, \code{\link{rnorm}}.
+\code{\link[=rand]{rand()}}, \code{\link[=randi]{randi()}}, \code{\link[=rnorm]{rnorm()}}.
 }
-

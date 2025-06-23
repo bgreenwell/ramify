@@ -7,23 +7,22 @@
 dmat(x, ...)
 }
 \arguments{
-\item{x}{A data vector, character string, or a list.}
+\item{x}{A data vector, character string, or a \link{list}.}
 
-\item{...}{Aditional optional arguments passed on to \code{mat}.}
+\item{...}{Aditional optional arguments passed on to \link{mat}.}
 }
 \value{
-A data frame (i.e., an object of class \code{"data.frame"}.
+A \link{data.frame}.
 }
 \description{
 Like \code{mat}, but returns a data frame.
 }
 \examples{
-dmat('1e-01, 2+5, 3, 4, 5; 6, 7, 8, 9^2, pi', rows = FALSE)
+dmat("1e-01, 2+5, 3, 4, 5; 6, 7, 8, 9^2, pi", rows = FALSE)
 z <- list(a = 1:10, b = 11:20, c = 21:30)
-dmat(z)  # list elements form rows
-dmat(z, rows= FALSE)  # list elements form columns
+dmat(z) # list elements form rows
+dmat(z, rows = FALSE) # list elements form columns
 }
 \seealso{
-\code{\link{mat}}, \code{\link{bmat}}.
+\link{mat}, \link{bmat}.
 }
-

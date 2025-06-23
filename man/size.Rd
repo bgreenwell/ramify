@@ -7,7 +7,7 @@
 size(x)
 }
 \arguments{
-\item{x}{A matrix, array, or data frame.}
+\item{x}{A \link{matrix}, \link{array}, or \link{data.frame}.}
 }
 \value{
 The dimensions of the object.
@@ -20,6 +20,5 @@ m <- mat("1, 3, 5; 7, 9, 11")
 size(m)
 }
 \seealso{
-\code{\link{dim}}.
+\link{dim}.
 }
-

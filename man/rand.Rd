@@ -13,28 +13,31 @@ rand(nrow = 1, ncol = 1, ..., min = 0, max = 1, atleast_2d = NULL)
 
 \item{...}{Further dimensions of the array.}
 
-\item{min}{Lower limit for the uniform distribution. Must be finite. 
+\item{min}{Lower limit for the uniform distribution. Must be finite.
 (\code{rand} only).}
 
-\item{max}{Upper limit for the uniform distribution. Must be finite. 
+\item{max}{Upper limit for the uniform distribution. Must be finite.
 (\code{rand} only).}
 
-\item{atleast_2d}{Logical indicating whether or not to force column vectors 
-to have a second dimension equal to one. Defaults to \code{FALSE}. This 
-behavior can also be changed globally using, for example 
+\item{atleast_2d}{Logical indicating whether or not to force column vectors
+to have a second dimension equal to one. Defaults to \code{FALSE}. This
+behavior can also be changed globally using, for example
 \code{options(atleast_2d = TRUE)}.}
 }
 \value{
 A  matrix or array of pseudorandom numbers.
+
+A  \link{matrix} or \link{array} of pseudorandom numbers.
 }
 \description{
 Construct a matrix or multi-way array of uniform random deviates.
 }
 \examples{
-rand(100, 100)  # 100 by 100 matrix of uniform random numbers
-rand(2, 3, min = 100, max = 200)  
+rand(100, 100) # 100 by 100 matrix of uniform random numbers
+rand(2, 3, min = 100, max = 200)
 }
 \seealso{
-\code{\link{randi}}, \code{\link{randn}}, \code{\link{runif}}.
-}
+\code{\link[=randi]{randi()}}, \code{\link[=randn]{randn()}}, \code{\link[=runif]{runif()}}
 
+\code{\link[=randi]{randi()}}, \code{\link[=randn]{randn()}}, \code{\link[=runif]{runif()}}.
+}

@@ -7,7 +7,7 @@
     atleast_2d = TRUE
   )
   toset <- !(names(op.mat) %in% names(op))
-  if(any(toset)) options(op.mat[toset])
-  
+  if (any(toset)) options(op.mat[toset])
+
   invisible()
 }

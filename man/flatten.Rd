@@ -7,9 +7,9 @@
 flatten(x, across = c("rows", "columns"))
 }
 \arguments{
-\item{x}{A matrix object.}
+\item{x}{A \link{matrix}.}
 
-\item{across}{Character string specifying whether to flatten the matrix 
+\item{across}{Character string specifying whether to flatten the matrix
 across \code{"rows"} (default) or \code{"columns"}. This option is ignored
 for multi-way arrays.}
 }
@@ -25,6 +25,5 @@ flatten(m)
 flatten(m, across = "columns")
 }
 \seealso{
-\code{\link{mat}}.
+\link{mat}.
 }
-

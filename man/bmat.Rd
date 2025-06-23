@@ -9,28 +9,27 @@ bmat(x, rows = TRUE, sep = ",", ...)
 \arguments{
 \item{x}{A data vector, character string, or a list.}
 
-\item{rows}{Logical. If TRUE (the default) the matrix is filled by rows, 
+\item{rows}{Logical. If TRUE (the default) the matrix is filled by rows,
 otherwise the matrix is filled by columns.}
 
-\item{sep}{Separator string. Values within each row/column of x are 
+\item{sep}{Separator string. Values within each row/column of x are
 separated by this string. Default is \code{","}.}
 
-\item{...}{Aditional optional arguments.}
+\item{...}{Additional optional arguments.}
 }
 \value{
-A matrix (i.e., an object of class \code{"matrix"}).
+A \link{matrix}.
 }
 \description{
 Construct a block matrix using a character string initializer.
 }
 \examples{
 # Construct a block matrix from matrices A1, A2, and A3
-A1 <- mat('1, 1; 1, 1')
-A2 <- mat('2, 2; 2, 2')
-A3 <- mat('3, 3, 3, 3')
-bmat('A1, A2; A3')
+A1 <- mat("1, 1; 1, 1")
+A2 <- mat("2, 2; 2, 2")
+A3 <- mat("3, 3, 3, 3")
+bmat("A1, A2; A3")
 }
 \seealso{
-\code{\link{mat}}, \code{\link{dmat}}.
+\code{\link[=mat]{mat()}}, [dmat().
 }
-
