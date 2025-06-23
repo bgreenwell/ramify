@@ -2,6 +2,7 @@
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ramify)](http://cran.r-project.org/package=ramify)
 [![R-CMD-check](https://github.com/w108bmg/ramify/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/w108bmg/ramify/actions/workflows/R-CMD-check.yaml)
+![](https://img.shields.io/badge/lifecycle-retired-orange.svg)
 
 `ramify` is an R package that provides additional matrix functionality. Its goal is to make matrix creation and manipulation more convenient, especially for users familiar with scientific languages like MATLAB, Octave, or Python with NumPy.
 
