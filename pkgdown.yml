@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   ramify: ramify.html
-last_built: 2025-06-23T17:15Z
+last_built: 2025-06-23T17:33Z
 urls:
   reference: http://bgreenwell.github.io/ramify/reference
   article: http://bgreenwell.github.io/ramify/articles
